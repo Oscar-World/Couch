@@ -14,6 +14,7 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.couch.R;
@@ -51,6 +52,8 @@ public class Mode3Activity extends AppCompatActivity {
     ImageView btnHome;
     ImageView btnRanking;
     Random random = new Random();
+
+    ProgressBar pB_FeverTime;
 
     FeverThread feverThread;
 
@@ -143,7 +146,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 score += 100;
                             }
                             score += 100;
-                            scoreView.setText("Score : " + score);
+                            scoreView.setText("" + score);
                             combo++;
                             if(combo == 20){
 
@@ -158,7 +161,8 @@ public class Mode3Activity extends AppCompatActivity {
                                 });
 
                                 feverMediaPlayer.start();
-
+                                pB_FeverTime.setProgress(7);
+                                pB_FeverTime.setVisibility(View.VISIBLE);
                                 feverThread = new FeverThread();
                                 feverTime();
                                 combo = 0;
@@ -177,6 +181,8 @@ public class Mode3Activity extends AppCompatActivity {
                             });
 
                             wrongMediaPlayer.start();
+
+
                             if (life > 0) {
                                 life--;
                                 gameOver();
@@ -221,7 +227,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 score += 100;
                             }
                             score += 100;
-                            scoreView.setText("Score : " + score);
+                            scoreView.setText("" + score);
                             combo++;
                             if(combo == 20){
 
@@ -234,7 +240,8 @@ public class Mode3Activity extends AppCompatActivity {
                                         mediaPlayer.release();
                                     }
                                 });
-
+                                pB_FeverTime.setProgress(7);
+                                pB_FeverTime.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -301,7 +308,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 score += 100;
                             }
                             score += 100;
-                            scoreView.setText("Score : " + score);
+                            scoreView.setText("" + score);
                             combo++;
                             if(combo == 20){
 
@@ -314,7 +321,8 @@ public class Mode3Activity extends AppCompatActivity {
                                         mediaPlayer.release();
                                     }
                                 });
-
+                                pB_FeverTime.setProgress(7);
+                                pB_FeverTime.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -380,7 +388,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 score += 100;
                             }
                             score += 100;
-                            scoreView.setText("Score : " + score);
+                            scoreView.setText("" + score);
                             combo++;
                             if(combo == 20){
 
@@ -393,7 +401,8 @@ public class Mode3Activity extends AppCompatActivity {
                                         mediaPlayer.release();
                                     }
                                 });
-
+                                pB_FeverTime.setProgress(7);
+                                pB_FeverTime.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -459,7 +468,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 score += 100;
                             }
                             score += 100;
-                            scoreView.setText("Score : " + score);
+                            scoreView.setText("" + score);
                             combo ++;
                             if(combo == 20){
 
@@ -472,7 +481,8 @@ public class Mode3Activity extends AppCompatActivity {
                                         mediaPlayer.release();
                                     }
                                 });
-
+                                pB_FeverTime.setProgress(7);
+                                pB_FeverTime.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -660,6 +670,10 @@ public class Mode3Activity extends AppCompatActivity {
         btnRestart = findViewById(R.id.btnRestart);
         btnHome = findViewById(R.id.btnHome);
         btnRanking = findViewById(R.id.btnRanking);
+
+        pB_FeverTime = (ProgressBar) findViewById(R.id.pB_FeverTime);
+        pB_FeverTime.setMax(7);
+
     }
 
     public void setColor() {
@@ -799,7 +813,7 @@ public class Mode3Activity extends AppCompatActivity {
             super.run();
 
             for (int i = 0; i < 14; i++) {
-
+                int ii = i;
 
                 handler.post(new Runnable() {
                     @Override
@@ -831,12 +845,22 @@ public class Mode3Activity extends AppCompatActivity {
                     public void run() {
                         feverTop.setBackgroundColor(Color.RED);
                         feverBottom.setBackgroundColor(Color.RED);
+                        if(ii%2 == 0 ){
+                            pB_FeverTime.incrementProgressBy(-1);
+                        }
                     }
                 });
+
+
+
+
+
+
             }
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+                    pB_FeverTime.setVisibility(View.GONE);
                     feverTop.setBackgroundColor(Color.WHITE);
                     feverBottom.setBackgroundColor(Color.WHITE);
                 }
@@ -871,7 +895,7 @@ public class Mode3Activity extends AppCompatActivity {
         gameLayout.setVisibility(View.VISIBLE);
         overLayout.setVisibility(View.GONE);
 
-        scoreView.setText("Score : " + score);
+        scoreView.setText("" + score);
         lifeView.setText("" + life);
 
         levelArray();

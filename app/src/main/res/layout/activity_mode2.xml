@@ -20,7 +20,7 @@
             <!-- 상단 리니어 레이아웃 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/topLayout"
                 android:orientation="vertical"
                 android:gravity="center" >
 
@@ -29,15 +29,30 @@
                     android:id="@+id/scoreView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Score : 0"
-                    android:textSize="30sp"/>
+                    android:text="0"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="40sp"/>
 
-                <TextView
-                    android:id="@+id/mode2Time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                <ProgressBar
+                    android:id="@+id/pB_Mod2Time"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:scaleY="4"
+                    android:progressBackgroundTint="#ced4da"
+                    android:layout_width="300dp"
                     android:layout_marginTop="20dp"
-                    android:text="3" />
+                    android:layout_height="wrap_content" />
+
+                <ProgressBar
+                    android:id="@+id/pB_Mod2BonusTime"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:scaleY="4"
+                    android:progressTint="#FF0000"
+                    android:layout_width="300dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
 
             </LinearLayout> <!-- 상단 리니어 레이아웃 닫기 -->
 
@@ -915,7 +930,6 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:background="@color/black"
-                    android:text="TextView 11"
                     />
 
                 <TextView
@@ -1766,7 +1780,7 @@
             <!-- 하단 리니어 레이아웃 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/bottomLayout"
                 android:orientation="vertical">
 
             </LinearLayout>
@@ -1916,148 +1930,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-        </LinearLayout>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/bonus2Layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <GridLayout
-                android:id="@+id/layoutbonus"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:rowCount="3"
-                android:columnCount="3"
-                android:padding="3dp">
-
-                <!-- 텍스트뷰 1 -->
-                <TextView
-                    android:id="@+id/bonus00"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 2 -->
-                <TextView
-                    android:id="@+id/bonus01"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-
-                    android:layout_marginLeft="1dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 3 -->
-                <TextView
-                    android:id="@+id/bonus02"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 4 -->
-                <TextView
-                    android:id="@+id/bonus10"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 5 -->
-                <TextView
-                    android:id="@+id/bonus11"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-
-                    android:layout_marginLeft="1dp"
-                    android:layout_rowWeight="1"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 6 -->
-                <TextView
-                    android:id="@+id/bonus12"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="1dp"
-                    android:layout_rowWeight="1"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 7 -->
-                <TextView
-                    android:id="@+id/bonus20"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 8 -->
-                <TextView
-                    android:id="@+id/bonus21"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="1dp"
-
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-
-
-                    android:textColor="#000000" />
-
-                <!-- 텍스트뷰 9 -->
-                <TextView
-                    android:id="@+id/bonus22"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:textColor="#000000" />
-
-            </GridLayout>
-
 
         </LinearLayout>
 

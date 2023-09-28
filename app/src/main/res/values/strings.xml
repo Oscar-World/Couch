@@ -2,7 +2,7 @@
     <string name="app_name">Couch</string>
 
     <string name="timeLimit60">60s</string>
-    <string name="timeLimit5">5s / 1stage</string>
+    <string name="timeLimit5">5s/1Stage</string>
     <string name="timeLimitInfinite">∞</string>
     <string name="chance1">x1</string>
     <string name="chance3">x3</string>
@@ -12,69 +12,85 @@
     <string name="setting_KR">설정</string>
     <string name="setSound_KR">소리</string>
     <string name="setLanguage_KR">언어</string>
+    <string name="checkBox_KR">다시 보지 않기</string>
+    <string name="ok_KR">확인</string>
+    <string name="rule_KR">규칙</string>
 
     <string name="mode1Text_KR">게임 모드 1</string>
     <string name="mode2Text_KR">게임 모드 2</string>
     <string name="mode3Text_KR">게임 모드 3</string>
 
-    <string name="info_mode1_KR">일정 콤보 도달 시 보너스 스테이지 발생\n버튼을 마구 눌러주세요.</string>
-    <string name="info_mode2_KR">일정 콤보 도달 시 보너스 스테이지 발생\n쉬운 난이도의 문제가 등장합니다.</string>
-    <string name="info_mode3_KR">일정 콤보 도달 시 피버 타임 발생\n피버 타임 중에는 점수를 2배 획득합니다.</string>
+    <string name="info_mode1_KR">일정 콤보 도달 시 보너스 스테이지 발생.\n버튼을 마구 눌러주세요!</string>
+    <string name="info_mode2_KR">일정 콤보 도달 시 보너스 스테이지 발생.\n쉬운 난이도의 문제가 등장합니다!</string>
+    <string name="info_mode3_KR">일정 콤보 도달 시 피버 타임 발생.\n피버 타임 중에는 점수를 2배 획득합니다!</string>
 
 
     <string name="language_EN">English</string>
     <string name="setting_EN">Setting</string>
     <string name="setSound_EN">Sound</string>
     <string name="setLanguage_EN">Language</string>
+    <string name="checkBox_EN">Don\'t look again</string>
+    <string name="ok_EN">OK</string>
+    <string name="rule_EN">Rule</string>
+
 
     <string name="mode1Text_EN">Game Mode 1</string>
     <string name="mode2Text_EN">Game Mode 2</string>
     <string name="mode3Text_EN">Game Mode 3</string>
 
-    <string name="info_mode1_EN">Bonus stage happen when a specific combo is reached\nPress the button!</string>
-    <string name="info_mode2_EN">Bonus stage happen when a specific combo is reached\nAn easy stage appears!</string>
-    <string name="info_mode3_EN">Fever time happen when a specific combo is reached\nDuring Fever Time, score twice as much!</string>
+    <string name="info_mode1_EN">Bonus stage happen when a specific combo is reached.\nPress the button!</string>
+    <string name="info_mode2_EN">Bonus stage happen when a specific combo is reached.\nAn easy stage appears!</string>
+    <string name="info_mode3_EN">Fever time happen when a specific combo is reached.\nDuring Fever Time, score twice as much!</string>
 
 
     <string name="language_CN1">中文(简体)</string>
     <string name="setting_CN1">设定</string>
     <string name="setSound_CN1">音</string>
     <string name="setLanguage_CN1">语言</string>
+    <string name="checkBox_CN1">别再看了</string>
+    <string name="ok_CN1">好</string>
+    <string name="rule_CN1">规规矩矩</string>
 
     <string name="mode1Text_CN1">游戏模式 1</string>
     <string name="mode2Text_CN1">游戏模式 2</string>
     <string name="mode3Text_CN1">游戏模式 3</string>
 
-    <string name="info_mode1_CN1">达到一定组合时，将产生奖励舞台\n点击按钮!</string>
-    <string name="info_mode2_CN1">达到一定组合时，将产生奖励舞台\n一个简单的阶段出现</string>
-    <string name="info_mode3_CN1">达到一定组合时，将产生奖励舞台\n在奖金时间内获得2倍的分数</string>
+    <string name="info_mode1_CN1">达到一定组合时，将产生奖励舞台.\n点击按钮!</string>
+    <string name="info_mode2_CN1">达到一定组合时，将产生奖励舞台.\n一个简单的阶段出现!</string>
+    <string name="info_mode3_CN1">达到一定组合时，将产生奖励舞台.\n在奖金时间内获得2倍的分数!</string>
 
 
     <string name="language_CN2">中文(繁體)</string>
     <string name="setting_CN2">設置</string>
     <string name="setSound_CN2">聲音</string>
     <string name="setLanguage_CN2">語言</string>
+    <string name="checkBox_CN2">別再看了</string>
+    <string name="ok_CN2">好</string>
+    <string name="rule_CN2">規規矩矩</string>
 
     <string name="mode1Text_CN2">遊戲模式 1</string>
     <string name="mode2Text_CN2">遊戲模式 2</string>
     <string name="mode3Text_CN2">遊戲模式 3</string>
 
-    <string name="info_mode1_CN2">達到一定組合時，將產生獎勵舞臺\n點擊按鈕!</string>
-    <string name="info_mode2_CN2">達到一定組合時，將產生獎勵舞臺\n一個簡單的階段出現!</string>
-    <string name="info_mode3_CN2">達到一定組合時，將產生獎勵舞臺\n在額外時間中獲得2倍的分數!</string>
+    <string name="info_mode1_CN2">達到一定組合時，將產生獎勵舞臺.\n點擊按鈕!</string>
+    <string name="info_mode2_CN2">達到一定組合時，將產生獎勵舞臺.\n一個簡單的階段出現!</string>
+    <string name="info_mode3_CN2">達到一定組合時，將產生獎勵舞臺.\n在額外時間中獲得2倍的分數!</string>
 
 
     <string name="language_JP">日本語</string>
     <string name="setting_JP">設定</string>
     <string name="setSound_JP">音</string>
     <string name="setLanguage_JP">言語</string>
+    <string name="checkBox_JP">二度と見ないでください</string>
+    <string name="ok_JP">OK</string>
+    <string name="rule_JP">支配する</string>
 
     <string name="mode1Text_JP">ゲームモード 1</string>
     <string name="mode2Text_JP">ゲームモード 2</string>
     <string name="mode3Text_JP">ゲームモード 3</string>
 
-    <string name="info_mode1_JP">ボーナスステージは、特定のコンボに到達すると発生します\nボタンを押します!</string>
-    <string name="info_mode2_JP">ボーナスステージは、特定のコンボに到達すると発生します\n楽なステージが登場!</string>
-    <string name="info_mode3_JP">発熱時間は、特定のコンボに到達したときに発生します\nフィーバータイム中は点数を2倍獲得します!</string>
+    <string name="info_mode1_JP">ボーナスステージは、特定のコンボに到達すると発生します.\nボタンを押します!</string>
+    <string name="info_mode2_JP">ボーナスステージは、特定のコンボに到達すると発生します.\n楽なステージが登場!</string>
+    <string name="info_mode3_JP">発熱時間は、特定のコンボに到達したときに発生します.\nフィーバータイム中は点数を2倍獲得します!</string>
 
 </resources>

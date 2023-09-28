@@ -9,12 +9,187 @@
     tools:context=".Activity.MainActivity">
 
     <FrameLayout
+        android:id="@+id/mode1Rule_FrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        android:layout_marginVertical="100dp"
+        android:layout_marginHorizontal="40dp"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                />
+
+            <TextView
+                android:id="@+id/mode1Rule_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rule"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/mode1RuleTime_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/mode1RuleTime_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:text="@string/timeLimit60"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/mode1RuleLife_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/mode1RuleLife_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:text="@string/chance1"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <ImageView
+                android:id="@+id/mode1RuleBonus_Image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/couch"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                />
+
+            <TextView
+                android:id="@+id/mode1RuleBonus_Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="@string/info_mode1_EN"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <CheckBox
+                    android:id="@+id/mode1Rule_CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkBox_EN"
+                    android:background="@color/gray"
+                    android:textSize="10dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="15dp"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <Button
+                    android:id="@+id/mode1Rule_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok_EN"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/setUp_FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="40dp"
         android:layout_marginVertical="80dp"
-        android:background="@color/gray"
+        android:background="@color/gray2"
         android:visibility="gone"
         >
 
@@ -41,6 +216,20 @@
             />
 
 
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginBottom="120dp"
+            >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
 
             <TextView
                 android:id="@+id/soundText"
@@ -48,8 +237,15 @@
                 android:layout_height="wrap_content"
                 android:text="@string/setSound_EN"
                 android:textSize="20dp"
-                android:layout_gravity="center|top"
-                android:layout_marginTop="120dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 />
 
             <LinearLayout
@@ -57,7 +253,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:layout_marginBottom="100dp"
                 >
 
                 <Button
@@ -74,27 +269,79 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
 
-        <TextView
-            android:id="@+id/languageText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/setLanguage_EN"
-            android:textSize="20dp"
-            android:layout_gravity="center"
-            />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/language_Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="English"
-            android:textSize="20dp"
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp"
+            android:orientation="vertical"
+            android:background="@color/white"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="10dp"
-            android:background="@color/gray2"
+            android:layout_marginTop="50dp"
+            >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/languageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setLanguage_EN"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/language_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/language_EN"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:background="@color/gray"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:src="@drawable/teamlogo"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
             />
 
     </FrameLayout>
@@ -107,7 +354,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/setup"
-        android:visibility="gone"
+        android:visibility="invisible"
         />
 
     <LinearLayout

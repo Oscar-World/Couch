@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -52,13 +53,23 @@ public class MainActivity extends AppCompatActivity {
 
     int languageNum = 0;
     int getLanguageNum = 0;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    SharedPreferences languageShared;
+    SharedPreferences.Editor languageEditor;
+
+    FrameLayout ruleLayout;
+    TextView ruleText;
+    TextView ruleTimeText;
+    TextView ruleLifeText;
+    TextView ruleBonusText;
+    CheckBox ruleCheckBox;
+    Button ruleBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setVariable();
+        setView();
 
     }
 
@@ -66,10 +77,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart() 호출됨");
-
-        setVariable();
-        setView();
-
     }
 
     @Override
@@ -124,8 +131,16 @@ public class MainActivity extends AppCompatActivity {
 
         setAnim();
 
-        sharedPreferences = getSharedPreferences("language", MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+        languageShared = getSharedPreferences("language", MODE_PRIVATE);
+        languageEditor = languageShared.edit();
+
+        ruleLayout = findViewById(R.id.mode1Rule_FrameLayout);
+        ruleText = findViewById(R.id.mode1Rule_Text);
+        ruleBtn = findViewById(R.id.mode1Rule_Btn);
+        ruleTimeText = findViewById(R.id.mode1RuleTime_Text);
+        ruleLifeText = findViewById(R.id.mode1RuleLife_Text);
+        ruleBonusText = findViewById(R.id.mode1RuleBonus_Text);
+        ruleCheckBox = findViewById(R.id.mode1Rule_CheckBox);
 
         setLanguage();
 
@@ -158,8 +173,9 @@ public class MainActivity extends AppCompatActivity {
         gameMode1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Mode1Activity.class);
-                startActivity(i);
+//                Intent i = new Intent(MainActivity.this, Mode1Activity.class);
+//                startActivity(i);
+                ruleLayout.setVisibility(View.VISIBLE);
             }
         });
 
@@ -214,12 +230,28 @@ public class MainActivity extends AppCompatActivity {
         settingBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                settingLayout.clearAnimation();
                 settingLayout.setVisibility(View.GONE);
             }
         });
 
         AppearThread thread = new AppearThread();
         thread.start();
+
+
+        ruleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ruleLayout.setVisibility(View.GONE);
+
+                if (ruleCheckBox.isChecked()) {
+
+
+
+                }
+
+            }
+        });
 
     } // setView()
 
@@ -250,8 +282,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveLanguage(int num) {
 
-        editor.putInt("num", num);
-        editor.commit();
+        languageEditor.putInt("num", num);
+        languageEditor.commit();
 
         setLanguage();
 
@@ -260,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setLanguage() {
 
-        getLanguageNum = sharedPreferences.getInt("num", -1);
+        getLanguageNum = languageShared.getInt("num", -1);
 
         if (getLanguageNum == -1 | getLanguageNum == 0) {
 
@@ -272,6 +304,10 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_EN));
             languageText.setText(getString(R.string.setLanguage_EN));
             languageChoiceText.setText(getString(R.string.language_EN));
+            ruleBtn.setText(getString(R.string.ok_EN));
+            ruleCheckBox.setText(getString(R.string.checkBox_EN));
+            ruleText.setText(getString(R.string.rule_EN));
+            ruleBonusText.setText(getString(R.string.info_mode1_EN));
 
 
         } else if (getLanguageNum == 1) {
@@ -284,6 +320,10 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_KR));
             languageText.setText(getString(R.string.setLanguage_KR));
             languageChoiceText.setText(getString(R.string.language_KR));
+            ruleBtn.setText(getString(R.string.ok_KR));
+            ruleCheckBox.setText(getString(R.string.checkBox_KR));
+            ruleText.setText(getString(R.string.rule_KR));
+            ruleBonusText.setText(getString(R.string.info_mode1_KR));
 
         } else if (getLanguageNum == 2) {
 
@@ -295,6 +335,10 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_CN1));
             languageText.setText(getString(R.string.setLanguage_CN1));
             languageChoiceText.setText(getString(R.string.language_CN1));
+            ruleBtn.setText(getString(R.string.ok_CN1));
+            ruleCheckBox.setText(getString(R.string.checkBox_CN1));
+            ruleText.setText(getString(R.string.rule_CN1));
+            ruleBonusText.setText(getString(R.string.info_mode1_CN1));
 
         } else if (getLanguageNum == 3) {
 
@@ -306,6 +350,10 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_CN2));
             languageText.setText(getString(R.string.setLanguage_CN2));
             languageChoiceText.setText(getString(R.string.language_CN2));
+            ruleBtn.setText(getString(R.string.ok_CN2));
+            ruleCheckBox.setText(getString(R.string.checkBox_CN2));
+            ruleText.setText(getString(R.string.rule_CN2));
+            ruleBonusText.setText(getString(R.string.info_mode1_CN2));
 
         } else if (getLanguageNum == 4) {
 
@@ -317,6 +365,10 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_JP));
             languageText.setText(getString(R.string.setLanguage_JP));
             languageChoiceText.setText(getString(R.string.language_JP));
+            ruleBtn.setText(getString(R.string.ok_JP));
+            ruleCheckBox.setText(getString(R.string.checkBox_JP));
+            ruleText.setText(getString(R.string.rule_JP));
+            ruleBonusText.setText(getString(R.string.info_mode1_JP));
 
         }
 

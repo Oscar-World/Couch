@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.couch.R;
@@ -32,7 +33,6 @@ public class Mode2Activity extends AppCompatActivity {
 
     TextView[][] bonus = new TextView[3][3];
 
-    TextView mode2Time;
     TextView scoreView;
 
     GridLayout layout3;
@@ -40,8 +40,6 @@ public class Mode2Activity extends AppCompatActivity {
     GridLayout layout5;
     GridLayout layout6;
     GridLayout layout7;
-
-    GridLayout bonus2Layout;
 
     FrameLayout gameLayout;
     FrameLayout overLayout;
@@ -51,6 +49,9 @@ public class Mode2Activity extends AppCompatActivity {
     ImageView btnRestart;
     ImageView btnHome;
     ImageView btnRanking;
+
+    ProgressBar pB_Time;
+    ProgressBar pB_BonusTime;
 
     Random random = new Random();
 
@@ -87,7 +88,7 @@ public class Mode2Activity extends AppCompatActivity {
         btnInitialize();
         correct();
         setColor();
-        mode2Time.setText("" + time);
+
         setTime();
 
         playing();
@@ -97,6 +98,33 @@ public class Mode2Activity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() 호출됨");
+        sound = false;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() 호출됨");
+        sound = false;
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart() 호출됨");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() 호출됨");
+        sound = false;
     }
 
     public void btnInitialize() {
@@ -241,17 +269,7 @@ public class Mode2Activity extends AppCompatActivity {
         seven[6][5] = findViewById(R.id.seven65);
         seven[6][6] = findViewById(R.id.seven66);
 
-        bonus[0][0] = findViewById(R.id.bonus00);
-        bonus[0][1] = findViewById(R.id.bonus01);
-        bonus[0][2] = findViewById(R.id.bonus02);
-        bonus[1][0] = findViewById(R.id.bonus10);
-        bonus[1][1] = findViewById(R.id.bonus11);
-        bonus[1][2] = findViewById(R.id.bonus12);
-        bonus[2][0] = findViewById(R.id.bonus20);
-        bonus[2][1] = findViewById(R.id.bonus21);
-        bonus[2][2] = findViewById(R.id.bonus22);
 
-        mode2Time = findViewById(R.id.mode2Time);
         scoreView = findViewById(R.id.scoreView);
 
         gameLayout = findViewById(R.id.gameLayout);
@@ -263,6 +281,13 @@ public class Mode2Activity extends AppCompatActivity {
         btnHome = findViewById(R.id.btnHome);
         btnRanking = findViewById(R.id.btnRanking);
 
+        pB_Time = (ProgressBar) findViewById(R.id.pB_Mod2Time);
+        pB_Time.setMax(5);
+        pB_Time.setProgress(5);
+
+        pB_BonusTime = (ProgressBar) findViewById(R.id.pB_Mod2BonusTime);
+        pB_BonusTime.setMax(5);
+        pB_BonusTime.setProgress(5);
 
 
     }
@@ -321,9 +346,8 @@ public class Mode2Activity extends AppCompatActivity {
                             });
 
                             correctMediaPlayer.start();
-
+                            pB_Time.setProgress(5);
                             if (!status) {
-
 
 
                                 correct();
@@ -331,16 +355,18 @@ public class Mode2Activity extends AppCompatActivity {
                                 setColor();
                                 levelColor();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                                 Log.v("combo", "" + combo);
                                 combo++;
                                 levelArray();
                                 handler.removeMessages(0);
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 setTime();
 
                             } else {
+                                pB_Time.setVisibility(View.GONE);
+                                pB_BonusTime.setVisibility(View.VISIBLE);
 
                                 row = random.nextInt(3);
                                 column = random.nextInt(3);
@@ -348,7 +374,7 @@ public class Mode2Activity extends AppCompatActivity {
                                 bonusSetColor();
 
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
 
                             }
 
@@ -397,16 +423,28 @@ public class Mode2Activity extends AppCompatActivity {
 
                             correctMediaPlayer.start();
 
+                            pB_Time.setProgress(5);
+
                             if (combo == 14) {
+
+
+
                                 stage++;
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 handler.removeMessages(0);
                                 handler2.removeMessages(0);
+
+                                pB_Time.setVisibility(View.GONE);
+                                pB_BonusTime.setVisibility(View.VISIBLE);
+
+
                                 bonusStage();
                                 bonusSetColor();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
+
+
                             } else {
                                 correct();
                                 stage++;
@@ -414,16 +452,15 @@ public class Mode2Activity extends AppCompatActivity {
                                 levelColor();
                                 levelArray();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                                 combo++;
                                 handler.removeMessages(0);
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 setTime();
                             }
 
-                        }
-                        else {
+                        } else {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
@@ -466,16 +503,21 @@ public class Mode2Activity extends AppCompatActivity {
 
                             correctMediaPlayer.start();
 
+                            pB_Time.setProgress(5);
+
                             if (combo == 14) {
                                 stage++;
                                 time = 5;
-                                mode2Time.setText("" + time);
+
+                                pB_Time.setVisibility(View.GONE);
+                                pB_BonusTime.setVisibility(View.VISIBLE);
+
                                 handler.removeMessages(0);
                                 handler2.removeMessages(0);
                                 bonusStage();
                                 bonusSetColor();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                             } else {
 
                                 correct();
@@ -484,16 +526,15 @@ public class Mode2Activity extends AppCompatActivity {
                                 levelColor();
                                 levelArray();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                                 combo++;
                                 handler.removeMessages(0);
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 setTime();
                             }
 
-                        }
-                        else {
+                        } else {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
@@ -537,16 +578,22 @@ public class Mode2Activity extends AppCompatActivity {
 
                             correctMediaPlayer.start();
 
+                            pB_Time.setProgress(5);
+
                             if (combo == 14) {
                                 stage++;
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 handler.removeMessages(0);
                                 handler2.removeMessages(0);
+
+                                pB_Time.setVisibility(View.GONE);
+                                pB_BonusTime.setVisibility(View.VISIBLE);
+
                                 bonusStage();
                                 bonusSetColor();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                             } else {
 
                                 correct();
@@ -555,16 +602,15 @@ public class Mode2Activity extends AppCompatActivity {
                                 levelColor();
                                 levelArray();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                                 combo++;
                                 handler.removeMessages(0);
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 setTime();
                             }
 
-                        }
-                        else {
+                        } else {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
@@ -608,16 +654,22 @@ public class Mode2Activity extends AppCompatActivity {
 
                             correctMediaPlayer.start();
 
+                            pB_Time.setProgress(5);
+
                             if (combo == 14) {
                                 stage++;
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 handler.removeMessages(0);
                                 handler2.removeMessages(0);
+
+                                pB_Time.setVisibility(View.GONE);
+                                pB_BonusTime.setVisibility(View.VISIBLE);
+
                                 bonusStage();
                                 bonusSetColor();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                             } else {
 
                                 correct();
@@ -626,16 +678,15 @@ public class Mode2Activity extends AppCompatActivity {
                                 levelColor();
                                 levelArray();
                                 score += 100;
-                                scoreView.setText("Score : " + score);
+                                scoreView.setText(""+score);
                                 combo++;
                                 handler.removeMessages(0);
                                 time = 5;
-                                mode2Time.setText("" + time);
+
                                 setTime();
                             }
 
-                        }
-                        else {
+                        } else {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
@@ -674,8 +725,7 @@ public class Mode2Activity extends AppCompatActivity {
                 }
             }
             three[row][column].setBackgroundColor(Color.argb(255 - colorA, r, g, b));
-        }
-        else if (stage < 20) {
+        } else if (stage < 20) {
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
                     four[i][j].setBackgroundColor(Color.rgb(r, g, b));
@@ -684,8 +734,7 @@ public class Mode2Activity extends AppCompatActivity {
             }
             four[row][column].setBackgroundColor(Color.argb(255 - colorA, r, g, b));
 
-        }
-        else if (stage < 30) {
+        } else if (stage < 30) {
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 5; j++) {
                     five[i][j].setBackgroundColor(Color.rgb(r, g, b));
@@ -694,8 +743,7 @@ public class Mode2Activity extends AppCompatActivity {
             }
             five[row][column].setBackgroundColor(Color.argb(255 - colorA, r, g, b));
 
-        }
-        else if (stage < 40) {
+        } else if (stage < 40) {
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 6; j++) {
                     six[i][j].setBackgroundColor(Color.rgb(r, g, b));
@@ -704,8 +752,7 @@ public class Mode2Activity extends AppCompatActivity {
             }
             six[row][column].setBackgroundColor(Color.argb(255 - colorA, r, g, b));
 
-        }
-        else {
+        } else {
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 7; j++) {
                     seven[i][j].setBackgroundColor(Color.rgb(r, g, b));
@@ -721,14 +768,11 @@ public class Mode2Activity extends AppCompatActivity {
     public void correct() {
         if (stage == 10) {
             arrayCount++;
-        }
-        else if (stage == 20) {
+        } else if (stage == 20) {
             arrayCount++;
-        }
-        else if (stage == 30) {
+        } else if (stage == 30) {
             arrayCount++;
-        }
-        else if (stage == 40) {
+        } else if (stage == 40) {
             arrayCount++;
         }
         row = random.nextInt(arrayCount);
@@ -743,7 +787,6 @@ public class Mode2Activity extends AppCompatActivity {
         layout5 = findViewById(R.id.layout5);
         layout6 = findViewById(R.id.layout6);
         layout7 = findViewById(R.id.layout7);
-        bonus2Layout = findViewById(R.id.layoutbonus);
 
     }
 
@@ -799,29 +842,25 @@ public class Mode2Activity extends AppCompatActivity {
             layout5.setVisibility(View.GONE);
             layout6.setVisibility(View.GONE);
             layout7.setVisibility(View.GONE);
-        }
-        else if (stage < 20) {
+        } else if (stage < 20) {
             layout3.setVisibility(View.GONE);
             layout4.setVisibility(View.VISIBLE);
             layout5.setVisibility(View.GONE);
             layout6.setVisibility(View.GONE);
             layout7.setVisibility(View.GONE);
-        }
-        else if (stage < 30) {
+        } else if (stage < 30) {
             layout3.setVisibility(View.GONE);
             layout4.setVisibility(View.GONE);
             layout5.setVisibility(View.VISIBLE);
             layout6.setVisibility(View.GONE);
             layout7.setVisibility(View.GONE);
-        }
-        else if (stage < 40) {
+        } else if (stage < 40) {
             layout3.setVisibility(View.GONE);
             layout4.setVisibility(View.GONE);
             layout5.setVisibility(View.GONE);
             layout6.setVisibility(View.VISIBLE);
             layout7.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             layout3.setVisibility(View.GONE);
             layout4.setVisibility(View.GONE);
             layout5.setVisibility(View.GONE);
@@ -845,19 +884,31 @@ public class Mode2Activity extends AppCompatActivity {
 
     private void setTime() {
 
-        int i = 0;
+        int i = 1;
 
-        for (i = 0; i <= 5; i++) {
+        for (i = 1; i <= 6; i++) {
 
-            handler.postDelayed(new Runnable()
-            {
+
+            handler.postDelayed(new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
+
+//                        pB_BonusTime.setVisibility(View.GONE);
+//                        pB_Time.setVisibility(View.VISIBLE);
+
+
+                    pB_Time.incrementProgressBy(-1);
+
+
+
+
+
                     Log.d(TAG, "test33");
-                    mode2Time.setText("" + time);
+
+
                     time--;
-                    if (time == -1) {
+
+                    if (time == 0) {
                         if (!status) {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
@@ -868,7 +919,7 @@ public class Mode2Activity extends AppCompatActivity {
                                     mediaPlayer.release();
                                 }
                             });
-                            if(sound) {
+                            if (sound) {
                                 wrongMediaPlayer.start();
                             }
                             gameOver();
@@ -886,19 +937,20 @@ public class Mode2Activity extends AppCompatActivity {
     private void setBonusTime() {
 
         int i = 0;
+        pB_BonusTime.setProgress(5);
+        for (i = 1; i <= 6; i++) {
 
-        for (i = 0; i <= 5; i++) {
-
-            handler2.postDelayed(new Runnable()
-            {
+            handler2.postDelayed(new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
+//                    pB_Time.setVisibility(View.GONE);
+//                    pB_BonusTime.setVisibility(View.VISIBLE);
+
                     Log.d(TAG, "test33");
-                    mode2Time.setText("" + time);
+                    pB_BonusTime.incrementProgressBy(-1);
                     time--;
                     if (time == -1) {
-                        if (stage%10 != 0) {
+                        if (stage % 10 != 0) {
                             correct();
                         }
                         setColor();
@@ -906,11 +958,12 @@ public class Mode2Activity extends AppCompatActivity {
                         status = false;
                         combo = 0;
                         time = 5;
-                        mode2Time.setText("" + time);
+
                         handler.removeMessages(0);
                         setTime();
                         Log.d(TAG, "4444 : " + row + " " + column);
-
+                        pB_BonusTime.setVisibility(View.GONE);
+                        pB_Time.setVisibility(View.VISIBLE);
                     }
                 }
             }, 1000 * i);

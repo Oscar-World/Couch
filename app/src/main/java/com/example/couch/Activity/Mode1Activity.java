@@ -126,12 +126,14 @@ public class Mode1Activity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.d(TAG, "onPause() 호출됨");
+        sound = false;
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(TAG, "onStop() 호출됨");
+        sound = false;
     }
 
     @Override
@@ -144,6 +146,7 @@ public class Mode1Activity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy() 호출됨");
+        sound = false;
 
     }
 
@@ -196,7 +199,7 @@ public class Mode1Activity extends AppCompatActivity {
 
 //        timeTextView.setText(timeS);
 
-        scoreView.setText("Score : "+score);
+        scoreView.setText(""+score);
 
         button1ImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -319,7 +322,7 @@ public class Mode1Activity extends AppCompatActivity {
                             setColor();
                             levelColor();
                             score += 100;
-                            scoreView.setText("Score : "+score);
+                            scoreView.setText(""+score);
                             combo ++;
                             Log.d(TAG, "combo : " + combo);
 
@@ -403,7 +406,7 @@ public class Mode1Activity extends AppCompatActivity {
                             setColor();
                             levelColor();
                             score += 100;
-                            scoreView.setText("Score : "+score);
+                            scoreView.setText(""+score);
                             combo ++;
                             Log.d(TAG, "combo : " + combo);
 
@@ -498,7 +501,7 @@ public class Mode1Activity extends AppCompatActivity {
                             setColor();
                             levelColor();
                             score += 100;
-                            scoreView.setText("Score : "+score);
+                            scoreView.setText(""+score);
                             combo ++;
                             Log.d(TAG, "combo : " + combo);
 
@@ -579,7 +582,7 @@ public class Mode1Activity extends AppCompatActivity {
                             setColor();
                             levelColor();
                             score += 100;
-                            scoreView.setText("Score : "+score);
+                            scoreView.setText(""+score);
                             combo ++;
                             Log.d(TAG, "combo : " + combo);
 
@@ -660,7 +663,7 @@ public class Mode1Activity extends AppCompatActivity {
                             setColor();
                             levelColor();
                             score += 100;
-                            scoreView.setText("Score : "+score);
+                            scoreView.setText(""+score);
 
                             combo ++;
                             Log.d(TAG, "combo : " + combo);
