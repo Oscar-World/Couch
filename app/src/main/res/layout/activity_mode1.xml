@@ -1,0 +1,2037 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Activity.Mode1Activity">
+
+    <FrameLayout
+        android:id="@+id/gameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- 상단 리니어 레이아웃 -->
+            <LinearLayout
+                android:id="@+id/feverTop"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:gravity="center" >
+
+                <!-- 상단 텍스트 뷰 -->
+                <TextView
+                    android:id="@+id/scoreView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Score : 0"
+                    android:textSize="30sp"/>
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/timeTextView"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="20dp"-->
+                <!--                    android:text="60" />-->
+
+                <ProgressBar
+                    android:id="@+id/pBTime"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:scaleY="4"
+                    android:progressBackgroundTint="#ced4da"
+                    android:layout_width="300dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content" />
+
+                <ProgressBar
+                    android:id="@+id/pB_BonusTime"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:scaleY="4"
+                    android:progressTint="#FF0000"
+                    android:layout_width="300dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+            </LinearLayout> <!-- 상단 리니어 레이아웃 닫기 -->
+
+            <!-- 그리드 레이아웃 -->
+            <GridLayout
+                android:id="@+id/layout3"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:rowCount="3"
+                android:columnCount="3"
+                android:padding="3dp">
+
+                <!-- 텍스트뷰 1 -->
+                <TextView
+                    android:id="@+id/three00"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 2 -->
+                <TextView
+                    android:id="@+id/three01"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 3 -->
+                <TextView
+                    android:id="@+id/three02"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 4 -->
+                <TextView
+                    android:id="@+id/three10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 5 -->
+                <TextView
+                    android:id="@+id/three11"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 6 -->
+                <TextView
+                    android:id="@+id/three12"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 7 -->
+                <TextView
+                    android:id="@+id/three20"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 8 -->
+                <TextView
+                    android:id="@+id/three21"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/three22"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+            </GridLayout>
+
+            <GridLayout
+
+                android:id="@+id/layout4"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:rowCount="4"
+                android:columnCount="4"
+                android:padding="3dp">
+
+                <!-- 텍스트뷰 1 -->
+                <TextView
+                    android:id="@+id/four00"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:textColor="#FFFFFF" />
+
+
+                <TextView
+                    android:id="@+id/four01"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 3 -->
+                <TextView
+                    android:id="@+id/four02"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 4 -->
+                <TextView
+                    android:id="@+id/four03"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 5 -->
+                <TextView
+                    android:id="@+id/four10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 6 -->
+                <TextView
+                    android:id="@+id/four11"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 7 -->
+                <TextView
+                    android:id="@+id/four12"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 8 -->
+                <TextView
+                    android:id="@+id/four13"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/four20"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 6 -->
+                <TextView
+                    android:id="@+id/four21"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 7 -->
+                <TextView
+                    android:id="@+id/four22"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 8 -->
+                <TextView
+                    android:id="@+id/four23"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/four30"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 6 -->
+                <TextView
+                    android:id="@+id/four31"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 7 -->
+                <TextView
+                    android:id="@+id/four32"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 8 -->
+                <TextView
+                    android:id="@+id/four33"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+            </GridLayout> <!-- 그리드 레이아웃 닫기4 --><!-- 그리드 레이아웃 닫기 -->
+
+            <GridLayout
+                android:id="@+id/layout5"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:rowCount="5"
+                android:columnCount="5"
+                android:padding="3dp">
+
+                <!-- 텍스트뷰 1 -->
+                <TextView
+                    android:id="@+id/five00"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 2 -->
+                <TextView
+                    android:id="@+id/five01"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 3 -->
+                <TextView
+                    android:id="@+id/five02"
+                    android:layout_width="0dp"
+
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 4 -->
+                <TextView
+                    android:id="@+id/five03"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 5 -->
+                <TextView
+                    android:id="@+id/five04"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 6 -->
+                <TextView
+                    android:layout_marginLeft="1dp"
+                    android:id="@+id/five10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 7 -->
+                <TextView
+                    android:id="@+id/five11"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 8 -->
+                <TextView
+                    android:id="@+id/five12"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/five13"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 10 -->
+                <TextView
+                    android:id="@+id/five14"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 11 -->
+                <TextView
+                    android:id="@+id/five20"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 2 -->
+                <TextView
+                    android:id="@+id/five21"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 3 -->
+                <TextView
+                    android:id="@+id/five22"
+                    android:layout_width="0dp"
+
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 4 -->
+                <TextView
+                    android:id="@+id/five23"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 5 -->
+                <TextView
+                    android:id="@+id/five24"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/five30"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five31"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five32"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five33"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five34"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five40"
+                    android:layout_marginLeft="1dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five41"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five42"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five43"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/five44"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+            </GridLayout>
+
+            <GridLayout
+
+                android:id="@+id/layout6"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:rowCount="6"
+                android:columnCount="6"
+                android:padding="3dp">
+
+                <!-- 텍스트뷰 1 -->
+                <TextView
+                    android:id="@+id/six00"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 2 -->
+                <TextView
+                    android:id="@+id/six01"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 3 -->
+                <TextView
+                    android:id="@+id/six02"
+                    android:layout_width="0dp"
+
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 4 -->
+                <TextView
+                    android:id="@+id/six03"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:background="@color/black"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 5 -->
+                <TextView
+                    android:id="@+id/six04"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 6 -->
+                <TextView
+                    android:id="@+id/six05"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_marginLeft="1dp"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 7 -->
+                <TextView
+                    android:id="@+id/six10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 8 -->
+                <TextView
+                    android:id="@+id/six11"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/six12"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 10 -->
+                <TextView
+                    android:id="@+id/six13"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 11 -->
+                <TextView
+                    android:id="@+id/six14"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six15"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six20"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six21"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six22"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six23"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six24"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six25"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+
+
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six30"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six31"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six32"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six33"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six34"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="1dp"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six35"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:background="@color/black"
+
+                    />
+
+                <TextView
+                    android:id="@+id/six40"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six41"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_height="0dp"
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six42"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six43"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six44"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six45"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six50"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six51"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_height="0dp"
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six52"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+
+
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six53"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six54"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/six55"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:background="@color/black"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/layout7"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:rowCount="7"
+                android:columnCount="7"
+                android:padding="3dp">
+
+                <!-- 텍스트뷰 1 -->
+                <TextView
+                    android:id="@+id/seven00"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 2 -->
+                <TextView
+                    android:id="@+id/seven01"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 3 -->
+                <TextView
+                    android:id="@+id/seven02"
+                    android:layout_width="0dp"
+
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 4 -->
+                <TextView
+                    android:id="@+id/seven03"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 5 -->
+                <TextView
+                    android:id="@+id/seven04"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#FFFFFF" />
+
+                <!-- 텍스트뷰 6 -->
+                <TextView
+                    android:id="@+id/seven05"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_marginLeft="1dp"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 7 -->
+                <TextView
+                    android:id="@+id/seven06"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 8 -->
+                <TextView
+                    android:id="@+id/seven10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/seven11"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 10 -->
+                <TextView
+                    android:id="@+id/seven12"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 11 -->
+                <TextView
+                    android:id="@+id/seven13"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven14"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven15"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven16"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven20"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven21"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven22"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven23"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+
+
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven24"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+
+
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven25"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven26"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven30"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/seven31"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 10 -->
+                <TextView
+                    android:id="@+id/seven32"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 11 -->
+                <TextView
+                    android:id="@+id/seven33"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven34"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven35"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven36"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/seven40"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/seven41"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 10 -->
+                <TextView
+                    android:id="@+id/seven42"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 11 -->
+                <TextView
+                    android:id="@+id/seven43"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven44"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven45"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven46"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven50"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 9 -->
+                <TextView
+                    android:id="@+id/seven51"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 10 -->
+                <TextView
+                    android:id="@+id/seven52"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <!-- 텍스트뷰 11 -->
+                <TextView
+                    android:id="@+id/seven53"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven54"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven55"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven56"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/seven60"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+                <TextView
+                    android:id="@+id/seven61"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/seven62"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/seven63"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/seven64"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/seven65"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/seven66"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:layout_marginBottom="1dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+
+
+                    android:textColor="#000000" />
+
+            </GridLayout>
+
+
+            <LinearLayout
+                android:id="@+id/bonus1_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:id="@+id/touchButton1ImageView"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/button"
+                    />
+
+                <ImageView
+                    android:id="@+id/touchButton2ImageView"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:visibility="gone"
+                    android:src="@drawable/buttoned"
+                    />
+
+                <TextView
+                    android:id="@+id/scoreUpTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+17"
+                    android:textSize="40sp"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/feverBottom"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/overLayout"
+        android:layout_width="300dp"
+        android:layout_height="550dp"
+        android:layout_gravity="center"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/gameoverView"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_margin="50dp"
+                android:src="@drawable/gameover"
+                />
+
+            <TextView
+                android:id="@+id/finalScoreView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="SCORE : "
+                android:textSize="30sp"
+                android:textAlignment="center"/>
+
+            <LinearLayout
+                android:id="@+id/btnGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/btnRestart"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/restart"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/btnHome"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/home"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/btnRanking"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/ranking"
+                    android:scaleType="fitCenter" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/rankingLayout"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="50dp"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
