@@ -6,18 +6,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class RankData {
 
-    @Expose
-    @SerializedName("modeNum") public int modeNum;
-
-    @Expose
-    @SerializedName("ranking") public int ranking;
-
-    @Expose
-    @SerializedName("nickname") public String nickname;
-
-    @Expose
-    @SerializedName("score") public int score;
-
+    public int modeNum;
+    public int ranking;
+    public String nickname;
+    public int score;
 
     public RankData(int modeNum, int ranking, String nickname, int score) {
         this.modeNum = modeNum;
