@@ -12,7 +12,7 @@
         android:id="@+id/mode1Rule_FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray"
+        android:background="@drawable/custom_framelayout"
         android:layout_marginVertical="100dp"
         android:layout_marginHorizontal="40dp"
         android:visibility="gone"
@@ -24,17 +24,22 @@
             android:orientation="vertical"
             >
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                />
+            <ImageButton
+                android:id="@+id/mode1RuleBack_Btn"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/none"
+                android:scaleType="fitXY"
+                android:translationZ="1dp"
+                android:layout_gravity="end"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
             <TextView
                 android:id="@+id/mode1Rule_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rule"
+                android:text="@string/rule_EN"
                 android:textSize="28dp"
                 android:textStyle="bold"
                 android:layout_gravity="center"
@@ -63,7 +68,6 @@
                     />
 
                 <TextView
-                    android:id="@+id/mode1RuleTime_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="22dp"
@@ -98,7 +102,6 @@
                     />
 
                 <TextView
-                    android:id="@+id/mode1RuleLife_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="22dp"
@@ -154,11 +157,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/checkBox_EN"
-                    android:background="@color/gray"
+                    android:background="@drawable/custom_rulecheckbox"
                     android:textSize="10dp"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:paddingHorizontal="15dp"
+                    android:paddingHorizontal="10dp"
                     />
 
                 <View
@@ -168,7 +170,363 @@
                     />
 
                 <Button
-                    android:id="@+id/mode1Rule_Btn"
+                    android:id="@+id/mode1RuleOk_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok_EN"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/mode2Rule_FrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_framelayout"
+        android:layout_marginVertical="100dp"
+        android:layout_marginHorizontal="40dp"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <ImageButton
+                android:id="@+id/mode2RuleBack_Btn"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/none"
+                android:scaleType="fitXY"
+                android:translationZ="1dp"
+                android:layout_gravity="end"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+            <TextView
+                android:id="@+id/mode2Rule_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rule_EN"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/mode2RuleTime_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:text="@string/timeLimit5"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/mode2RuleLife_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:text="@string/chance1"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <ImageView
+                android:id="@+id/mode2RuleBonus_Image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/couch"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                />
+
+            <TextView
+                android:id="@+id/mode2RuleBonus_Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="@string/info_mode2_EN"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <CheckBox
+                    android:id="@+id/mode2Rule_CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkBox_EN"
+                    android:background="@drawable/custom_rulecheckbox"
+                    android:textSize="10dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="10dp"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <Button
+                    android:id="@+id/mode2RuleOk_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok_EN"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/mode3Rule_FrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_framelayout"
+        android:layout_marginVertical="100dp"
+        android:layout_marginHorizontal="40dp"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <ImageButton
+                android:id="@+id/mode3RuleBack_Btn"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/none"
+                android:scaleType="fitXY"
+                android:translationZ="1dp"
+                android:layout_gravity="end"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+            <TextView
+                android:id="@+id/mode3Rule_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rule_EN"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/mode3RuleTime_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:text="@string/timeLimitInfinite"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/mode3RuleLife_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:text="@string/chance3"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <ImageView
+                android:id="@+id/mode3RuleBonus_Image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/couch"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                />
+
+            <TextView
+                android:id="@+id/mode3RuleBonus_Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="@string/info_mode3_EN"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <CheckBox
+                    android:id="@+id/mode3Rule_CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkBox_EN"
+                    android:background="@drawable/custom_rulecheckbox"
+                    android:textSize="10dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="10dp"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <Button
+                    android:id="@+id/mode3RuleOk_Btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ok_EN"
@@ -189,7 +547,7 @@
         android:layout_height="match_parent"
         android:layout_marginHorizontal="40dp"
         android:layout_marginVertical="80dp"
-        android:background="@color/gray2"
+        android:background="@drawable/custom_framelayout"
         android:visibility="gone"
         >
 
@@ -220,7 +578,7 @@
             android:layout_width="200dp"
             android:layout_height="130dp"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/custom_settingbox"
             android:layout_gravity="center"
             android:layout_marginBottom="120dp"
             >
@@ -255,16 +613,24 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="끄기"
+                <ImageButton
+                    android:id="@+id/settingSoundOn_Image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ranking"
+                    android:scaleType="centerInside"
+                    android:background="@color/none"
+                    android:visibility="gone"
                     />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="켜기"
+                <ImageButton
+                    android:id="@+id/settingSoundOff_Image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/home"
+                    android:scaleType="centerInside"
+                    android:background="@color/none"
+
                     />
 
             </LinearLayout>
@@ -277,16 +643,11 @@
 
         </LinearLayout>
 
-
-
-
-
-
         <LinearLayout
             android:layout_width="200dp"
             android:layout_height="130dp"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/custom_settingbox"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             >
@@ -319,12 +680,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/language_EN"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:background="@color/gray"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="25dp"
+                android:background="@drawable/custom_framelayout"
                 />
 
             <View
@@ -345,6 +706,13 @@
             />
 
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/main_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
     <ImageView
         android:id="@+id/setUp_Image"
@@ -458,6 +826,8 @@
         android:layout_height="0dp"
         android:layout_weight="1.8"
         />
+
+    </LinearLayout>
 
 
 <!--    <Button-->

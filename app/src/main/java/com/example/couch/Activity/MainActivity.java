@@ -18,6 +18,7 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.couch.R;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     Animation appear;
 
     Handler handler;
+
+    LinearLayout mainLayout;
 
     ImageView iv_couch_c;
     ImageView iv_couch_olor;
@@ -55,14 +58,34 @@ public class MainActivity extends AppCompatActivity {
     int getLanguageNum = 0;
     SharedPreferences languageShared;
     SharedPreferences.Editor languageEditor;
+    SharedPreferences ruleShared;
+    SharedPreferences.Editor ruleEditor;
+    SharedPreferences soundShared;
+    SharedPreferences.Editor soundEditor;
 
-    FrameLayout ruleLayout;
-    TextView ruleText;
-    TextView ruleTimeText;
-    TextView ruleLifeText;
-    TextView ruleBonusText;
-    CheckBox ruleCheckBox;
-    Button ruleBtn;
+    FrameLayout rule1Layout;
+    ImageButton rule1BackBtn;
+    TextView rule1Text;
+    TextView rule1BonusText;
+    CheckBox rule1CheckBox;
+    Button rule1OkBtn;
+
+    FrameLayout rule2Layout;
+    ImageButton rule2BackBtn;
+    TextView rule2Text;
+    TextView rule2BonusText;
+    CheckBox rule2CheckBox;
+    Button rule2OkBtn;
+
+    FrameLayout rule3Layout;
+    ImageButton rule3BackBtn;
+    TextView rule3Text;
+    TextView rule3BonusText;
+    CheckBox rule3CheckBox;
+    Button rule3OkBtn;
+
+    ImageButton soundOffImage;
+    ImageButton soundOnImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart() 호출됨");
+        mainLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -109,6 +133,30 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onDestroy() 호출됨");
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (settingLayout.getVisibility() == View.VISIBLE | rule1Layout.getVisibility() == View.VISIBLE
+                | rule2Layout.getVisibility() == View.VISIBLE | rule3Layout.getVisibility() == View.VISIBLE) {
+
+            settingLayout.clearAnimation();
+            rule1Layout.clearAnimation();
+            rule2Layout.clearAnimation();
+            rule3Layout.clearAnimation();
+            settingLayout.setVisibility(View.GONE);
+            rule1Layout.setVisibility(View.GONE);
+            rule2Layout.setVisibility(View.GONE);
+            rule3Layout.setVisibility(View.GONE);
+            mainLayout.setVisibility(View.VISIBLE);
+
+        } else {
+
+            finish();
+
+        }
+
+    }
+
 
     public void setVariable() {
 
@@ -120,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
         appear = AnimationUtils.loadAnimation(MainActivity.this, R.anim.logoappear);
 
         handler = new Handler();
+
+        mainLayout = findViewById(R.id.main_Layout);
 
         setUpImage = findViewById(R.id.setUp_Image);
         settingLayout = findViewById(R.id.setUp_FrameLayout);
@@ -133,16 +183,40 @@ public class MainActivity extends AppCompatActivity {
 
         languageShared = getSharedPreferences("language", MODE_PRIVATE);
         languageEditor = languageShared.edit();
+        ruleShared = getSharedPreferences("rule", MODE_PRIVATE);
+        ruleEditor = ruleShared.edit();
+        soundShared = getSharedPreferences("sound", MODE_PRIVATE);
+        soundEditor = soundShared.edit();
 
-        ruleLayout = findViewById(R.id.mode1Rule_FrameLayout);
-        ruleText = findViewById(R.id.mode1Rule_Text);
-        ruleBtn = findViewById(R.id.mode1Rule_Btn);
-        ruleTimeText = findViewById(R.id.mode1RuleTime_Text);
-        ruleLifeText = findViewById(R.id.mode1RuleLife_Text);
-        ruleBonusText = findViewById(R.id.mode1RuleBonus_Text);
-        ruleCheckBox = findViewById(R.id.mode1Rule_CheckBox);
+        rule1Layout = findViewById(R.id.mode1Rule_FrameLayout);
+        rule1BackBtn = findViewById(R.id.mode1RuleBack_Btn);
+        rule1Text = findViewById(R.id.mode1Rule_Text);
+        rule1OkBtn = findViewById(R.id.mode1RuleOk_Btn);
+        rule1BonusText = findViewById(R.id.mode1RuleBonus_Text);
+        rule1CheckBox = findViewById(R.id.mode1Rule_CheckBox);
 
+        rule2Layout = findViewById(R.id.mode2Rule_FrameLayout);
+        rule2BackBtn = findViewById(R.id.mode2RuleBack_Btn);
+        rule2Text = findViewById(R.id.mode2Rule_Text);
+        rule2OkBtn = findViewById(R.id.mode2RuleOk_Btn);
+        rule2BonusText = findViewById(R.id.mode2RuleBonus_Text);
+        rule2CheckBox = findViewById(R.id.mode2Rule_CheckBox);
+
+        rule3Layout = findViewById(R.id.mode3Rule_FrameLayout);
+        rule3BackBtn = findViewById(R.id.mode3RuleBack_Btn);
+        rule3Text = findViewById(R.id.mode3Rule_Text);
+        rule3OkBtn = findViewById(R.id.mode3RuleOk_Btn);
+        rule3BonusText = findViewById(R.id.mode3RuleBonus_Text);
+        rule3CheckBox = findViewById(R.id.mode3Rule_CheckBox);
+
+        soundOffImage = findViewById(R.id.settingSoundOff_Image);
+        soundOnImage = findViewById(R.id.settingSoundOn_Image);
+
+        setSoundImage();
         setLanguage();
+
+        AppearThread thread = new AppearThread();
+        thread.start();
 
     } // setVariable()
 
@@ -173,25 +247,69 @@ public class MainActivity extends AppCompatActivity {
         gameMode1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this, Mode1Activity.class);
-//                startActivity(i);
-                ruleLayout.setVisibility(View.VISIBLE);
+
+                String checkShared = ruleShared.getString("mode1", "");
+
+                if (checkShared.equals("checked")) {
+
+                    Intent i = new Intent(MainActivity.this, Mode1Activity.class);
+                    startActivity(i);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+                } else {
+
+                    rule1Layout.startAnimation(appear);
+                    rule1Layout.setVisibility(View.VISIBLE);
+                    mainLayout.setVisibility(View.GONE);
+
+                }
+
             }
         });
 
         gameMode2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Mode2Activity.class);
-                startActivity(i);
+
+                String checkShared = ruleShared.getString("mode2", "");
+
+                if (checkShared.equals("checked")) {
+
+                    Intent i = new Intent(MainActivity.this, Mode2Activity.class);
+                    startActivity(i);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+                } else {
+
+                    rule2Layout.startAnimation(appear);
+                    rule2Layout.setVisibility(View.VISIBLE);
+                    mainLayout.setVisibility(View.GONE);
+
+                }
+
             }
         });
 
         gameMode3Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Mode3Activity.class);
-                startActivity(i);
+
+                String checkShared = ruleShared.getString("mode3", "");
+
+                if (checkShared.equals("checked")) {
+
+                    Intent i = new Intent(MainActivity.this, Mode3Activity.class);
+                    startActivity(i);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+                } else {
+
+                    rule3Layout.startAnimation(appear);
+                    rule3Layout.setVisibility(View.VISIBLE);
+                    mainLayout.setVisibility(View.GONE);
+
+                }
+
             }
         });
 
@@ -209,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
 
                 settingLayout.setVisibility(View.VISIBLE);
                 settingLayout.startAnimation(appear);
+                mainLayout.setVisibility(View.GONE);
 
             }
         });
@@ -232,23 +351,122 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 settingLayout.clearAnimation();
                 settingLayout.setVisibility(View.GONE);
+                mainLayout.setVisibility(View.VISIBLE);
             }
         });
 
-        AppearThread thread = new AppearThread();
-        thread.start();
 
-
-        ruleBtn.setOnClickListener(new View.OnClickListener() {
+        rule1OkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ruleLayout.setVisibility(View.GONE);
+                rule1Layout.setVisibility(View.GONE);
 
-                if (ruleCheckBox.isChecked()) {
+                if (rule1CheckBox.isChecked()) {
 
-
+                    ruleEditor.putString("mode1", "checked");
+                    ruleEditor.commit();
 
                 }
+
+                mainLayout.setVisibility(View.GONE);
+                Intent i = new Intent(MainActivity.this, Mode1Activity.class);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            }
+        });
+
+        rule1BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rule1Layout.clearAnimation();
+                rule1Layout.setVisibility(View.GONE);
+                mainLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
+        rule2OkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rule2Layout.clearAnimation();
+                rule2Layout.setVisibility(View.GONE);
+
+                if (rule2CheckBox.isChecked()) {
+
+                    ruleEditor.putString("mode2", "checked");
+                    ruleEditor.commit();
+
+                }
+
+                mainLayout.setVisibility(View.GONE);
+                Intent i = new Intent(MainActivity.this, Mode2Activity.class);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            }
+        });
+
+        rule2BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rule2Layout.clearAnimation();
+                rule2Layout.setVisibility(View.GONE);
+                mainLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
+        rule3OkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rule3Layout.clearAnimation();
+                rule3Layout.setVisibility(View.GONE);
+
+                if (rule3CheckBox.isChecked()) {
+
+                    ruleEditor.putString("mode3", "checked");
+                    ruleEditor.commit();
+
+                }
+
+                mainLayout.setVisibility(View.GONE);
+                Intent i = new Intent(MainActivity.this, Mode3Activity.class);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            }
+        });
+
+        rule3BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rule3Layout.clearAnimation();
+                rule3Layout.setVisibility(View.GONE);
+                mainLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
+        soundOffImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                soundEditor.putString("sound", "off");
+                soundEditor.commit();
+
+                soundOffImage.setVisibility(View.GONE);
+                soundOnImage.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        soundOnImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                soundEditor.putString("sound", "on");
+                soundEditor.commit();
+
+                soundOnImage.setVisibility(View.GONE);
+                soundOffImage.setVisibility(View.VISIBLE);
 
             }
         });
@@ -304,11 +522,18 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_EN));
             languageText.setText(getString(R.string.setLanguage_EN));
             languageChoiceText.setText(getString(R.string.language_EN));
-            ruleBtn.setText(getString(R.string.ok_EN));
-            ruleCheckBox.setText(getString(R.string.checkBox_EN));
-            ruleText.setText(getString(R.string.rule_EN));
-            ruleBonusText.setText(getString(R.string.info_mode1_EN));
-
+            rule1OkBtn.setText(getString(R.string.ok_EN));
+            rule1CheckBox.setText(getString(R.string.checkBox_EN));
+            rule1Text.setText(getString(R.string.rule_EN));
+            rule1BonusText.setText(getString(R.string.info_mode1_EN));
+            rule2OkBtn.setText(getString(R.string.ok_EN));
+            rule2CheckBox.setText(getString(R.string.checkBox_EN));
+            rule2Text.setText(getString(R.string.rule_EN));
+            rule2BonusText.setText(getString(R.string.info_mode2_EN));
+            rule3OkBtn.setText(getString(R.string.ok_EN));
+            rule3CheckBox.setText(getString(R.string.checkBox_EN));
+            rule3Text.setText(getString(R.string.rule_EN));
+            rule3BonusText.setText(getString(R.string.info_mode3_EN));
 
         } else if (getLanguageNum == 1) {
 
@@ -320,10 +545,18 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_KR));
             languageText.setText(getString(R.string.setLanguage_KR));
             languageChoiceText.setText(getString(R.string.language_KR));
-            ruleBtn.setText(getString(R.string.ok_KR));
-            ruleCheckBox.setText(getString(R.string.checkBox_KR));
-            ruleText.setText(getString(R.string.rule_KR));
-            ruleBonusText.setText(getString(R.string.info_mode1_KR));
+            rule1OkBtn.setText(getString(R.string.ok_KR));
+            rule1CheckBox.setText(getString(R.string.checkBox_KR));
+            rule1Text.setText(getString(R.string.rule_KR));
+            rule1BonusText.setText(getString(R.string.info_mode1_KR));
+            rule2OkBtn.setText(getString(R.string.ok_KR));
+            rule2CheckBox.setText(getString(R.string.checkBox_KR));
+            rule2Text.setText(getString(R.string.rule_KR));
+            rule2BonusText.setText(getString(R.string.info_mode2_KR));
+            rule3OkBtn.setText(getString(R.string.ok_KR));
+            rule3CheckBox.setText(getString(R.string.checkBox_KR));
+            rule3Text.setText(getString(R.string.rule_KR));
+            rule3BonusText.setText(getString(R.string.info_mode3_KR));
 
         } else if (getLanguageNum == 2) {
 
@@ -335,10 +568,18 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_CN1));
             languageText.setText(getString(R.string.setLanguage_CN1));
             languageChoiceText.setText(getString(R.string.language_CN1));
-            ruleBtn.setText(getString(R.string.ok_CN1));
-            ruleCheckBox.setText(getString(R.string.checkBox_CN1));
-            ruleText.setText(getString(R.string.rule_CN1));
-            ruleBonusText.setText(getString(R.string.info_mode1_CN1));
+            rule1OkBtn.setText(getString(R.string.ok_CN1));
+            rule1CheckBox.setText(getString(R.string.checkBox_CN1));
+            rule1Text.setText(getString(R.string.rule_CN1));
+            rule1BonusText.setText(getString(R.string.info_mode1_CN1));
+            rule2OkBtn.setText(getString(R.string.ok_CN1));
+            rule2CheckBox.setText(getString(R.string.checkBox_CN1));
+            rule2Text.setText(getString(R.string.rule_CN1));
+            rule2BonusText.setText(getString(R.string.info_mode2_CN1));
+            rule3OkBtn.setText(getString(R.string.ok_CN1));
+            rule3CheckBox.setText(getString(R.string.checkBox_CN1));
+            rule3Text.setText(getString(R.string.rule_CN1));
+            rule3BonusText.setText(getString(R.string.info_mode3_CN1));
 
         } else if (getLanguageNum == 3) {
 
@@ -350,10 +591,18 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_CN2));
             languageText.setText(getString(R.string.setLanguage_CN2));
             languageChoiceText.setText(getString(R.string.language_CN2));
-            ruleBtn.setText(getString(R.string.ok_CN2));
-            ruleCheckBox.setText(getString(R.string.checkBox_CN2));
-            ruleText.setText(getString(R.string.rule_CN2));
-            ruleBonusText.setText(getString(R.string.info_mode1_CN2));
+            rule1OkBtn.setText(getString(R.string.ok_CN2));
+            rule1CheckBox.setText(getString(R.string.checkBox_CN2));
+            rule1Text.setText(getString(R.string.rule_CN2));
+            rule1BonusText.setText(getString(R.string.info_mode1_CN2));
+            rule2OkBtn.setText(getString(R.string.ok_CN2));
+            rule2CheckBox.setText(getString(R.string.checkBox_CN2));
+            rule2Text.setText(getString(R.string.rule_CN2));
+            rule2BonusText.setText(getString(R.string.info_mode2_CN2));
+            rule3OkBtn.setText(getString(R.string.ok_CN2));
+            rule3CheckBox.setText(getString(R.string.checkBox_CN2));
+            rule3Text.setText(getString(R.string.rule_CN2));
+            rule3BonusText.setText(getString(R.string.info_mode3_CN2));
 
         } else if (getLanguageNum == 4) {
 
@@ -365,14 +614,35 @@ public class MainActivity extends AppCompatActivity {
             soundText.setText(getString(R.string.setSound_JP));
             languageText.setText(getString(R.string.setLanguage_JP));
             languageChoiceText.setText(getString(R.string.language_JP));
-            ruleBtn.setText(getString(R.string.ok_JP));
-            ruleCheckBox.setText(getString(R.string.checkBox_JP));
-            ruleText.setText(getString(R.string.rule_JP));
-            ruleBonusText.setText(getString(R.string.info_mode1_JP));
+            rule1OkBtn.setText(getString(R.string.ok_JP));
+            rule1CheckBox.setText(getString(R.string.checkBox_JP));
+            rule1Text.setText(getString(R.string.rule_JP));
+            rule1BonusText.setText(getString(R.string.info_mode1_JP));
+            rule2OkBtn.setText(getString(R.string.ok_JP));
+            rule2CheckBox.setText(getString(R.string.checkBox_JP));
+            rule2Text.setText(getString(R.string.rule_JP));
+            rule2BonusText.setText(getString(R.string.info_mode2_JP));
+            rule3OkBtn.setText(getString(R.string.ok_JP));
+            rule3CheckBox.setText(getString(R.string.checkBox_JP));
+            rule3Text.setText(getString(R.string.rule_JP));
+            rule3BonusText.setText(getString(R.string.info_mode3_JP));
 
         }
 
     } // setLanguage()
+
+
+    public void setSoundImage() {
+
+        if (soundShared.getString("sound", "").equals("off")) {
+            soundOffImage.setVisibility(View.GONE);
+            soundOnImage.setVisibility(View.VISIBLE);
+        } else {
+            soundOnImage.setVisibility(View.GONE);
+            soundOffImage.setVisibility(View.VISIBLE);
+        }
+
+    }
 
 
     public class AppearThread extends Thread {

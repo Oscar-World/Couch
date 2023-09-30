@@ -32,27 +32,56 @@
                     android:text="0"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    android:textSize="40sp"/>
+                    android:textSize="36sp"/>
 
-
-                <ProgressBar
-                    android:id="@+id/pB_Mod2Time"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:scaleY="4"
-                    android:progressBackgroundTint="#ced4da"
-                    android:layout_width="300dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_height="wrap_content" />
-
-                <ProgressBar
-                    android:id="@+id/pB_Mod2BonusTime"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:scaleY="4"
-                    android:progressTint="#FF0000"
-                    android:layout_width="300dp"
-                    android:layout_marginTop="20dp"
+                <LinearLayout
+                    android:id="@+id/mode3ProgressBar_Layout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    >
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ranking"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/pB_Mod2Time"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:scaleY="4"
+                        android:progressBackgroundTint="#ced4da"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content" />
+
+                    <ProgressBar
+                        android:id="@+id/pB_Mod2BonusTime"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:scaleY="4"
+                        android:progressTint="#FF0000"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                </LinearLayout>
+
 
             </LinearLayout> <!-- 상단 리니어 레이아웃 닫기 -->
 

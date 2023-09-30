@@ -3,6 +3,7 @@ package com.example.couch.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -76,6 +77,9 @@ public class Mode2Activity extends AppCompatActivity {
     int column;
     boolean status = false;
     boolean sound = true;
+
+    SharedPreferences soundShared;
+    String soundStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -289,6 +293,8 @@ public class Mode2Activity extends AppCompatActivity {
         pB_BonusTime.setMax(5);
         pB_BonusTime.setProgress(5);
 
+        soundShared = getSharedPreferences("sound", MODE_PRIVATE);
+        soundStatus = soundShared.getString("sound", "");
 
     }
 
@@ -297,7 +303,6 @@ public class Mode2Activity extends AppCompatActivity {
         btnRestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                resetGame();
                 Intent i = new Intent(Mode2Activity.this, Mode2Activity.class);
                 startActivity(i);
                 finish();
@@ -327,17 +332,11 @@ public class Mode2Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Log.d(TAG, "arrayCount : " + arrayCount);
-                        Log.d(TAG, "arrayCount2 : " + row + " " + column);
-                        Log.d(TAG, "bonusStage2 : " + row + " " + column);
-                        Log.d(TAG, "bonusStage3 : " + x + " " + y);
-                        Log.d(TAG, "bonusStage4 : " + status);
-
                         if (x == row && y == column) {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -382,6 +381,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -413,7 +413,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -464,6 +464,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -493,7 +494,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -538,6 +539,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -568,7 +570,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -614,6 +616,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -644,7 +647,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -690,6 +693,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -794,6 +798,7 @@ public class Mode2Activity extends AppCompatActivity {
         MediaPlayer bonusMediaPlayer = new MediaPlayer();
         bonusMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.bonus);
         bonusMediaPlayer.setLooping(false);
+        setSound(bonusMediaPlayer);
         bonusMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -913,6 +918,7 @@ public class Mode2Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode2Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -972,5 +978,17 @@ public class Mode2Activity extends AppCompatActivity {
 
 
     }
+
+
+    public void setSound(MediaPlayer mediaPlayer) {
+
+        if (soundStatus.equals("off")) {
+            mediaPlayer.setVolume(0,0);
+        } else {
+            mediaPlayer.setVolume(1,1);
+        }
+
+    } // setSound()
+
 
 }

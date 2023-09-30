@@ -28,32 +28,104 @@
 
                 <!-- 상단 텍스트 뷰 -->
 
-                <TextView
-                    android:id="@+id/scoreView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:textSize="40sp"/>
 
-                <TextView
-                    android:id="@+id/lifeView"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="3" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
 
-                <ProgressBar
-                    android:id="@+id/pB_FeverTime"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:scaleY="4"
-                    android:progressBackgroundTint="#FF0000"
-                    android:layout_width="300dp"
-                    android:layout_marginTop="20dp"
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/scoreView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="36dp"
+                        android:layout_gravity="center"
+                        />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/home"
+                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:id="@+id/lifeView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="@string/chance3"
+                        android:layout_gravity="center"
+                        />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mode3ProgressBar_Layout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
                     android:visibility="gone"
-                    />
+                    >
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ranking"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/pB_FeverTime"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:scaleY="4"
+                        android:progressBackgroundTint="#FF0000"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                </LinearLayout>
+
+
 
             </LinearLayout> <!-- 상단 리니어 레이아웃 닫기 -->
 

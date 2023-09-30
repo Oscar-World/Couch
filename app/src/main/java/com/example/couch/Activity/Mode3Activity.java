@@ -3,6 +3,7 @@ package com.example.couch.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class Mode3Activity extends AppCompatActivity {
     ImageView btnRanking;
     Random random = new Random();
 
+    LinearLayout progressBarLayout;
     ProgressBar pB_FeverTime;
 
     FeverThread feverThread;
@@ -75,7 +77,8 @@ public class Mode3Activity extends AppCompatActivity {
     int row;
     int column;
 
-    boolean sound = true;
+    SharedPreferences soundShared;
+    String soundStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +129,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -153,6 +156,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 MediaPlayer feverMediaPlayer = new MediaPlayer();
                                 feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
                                 feverMediaPlayer.setLooping(false);
+                                setSound(feverMediaPlayer);
                                 feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                     @Override
                                     public void onCompletion(MediaPlayer mediaPlayer) {
@@ -162,7 +166,8 @@ public class Mode3Activity extends AppCompatActivity {
 
                                 feverMediaPlayer.start();
                                 pB_FeverTime.setProgress(7);
-                                pB_FeverTime.setVisibility(View.VISIBLE);
+//                                pB_FeverTime.setVisibility(View.VISIBLE);
+                                progressBarLayout.setVisibility(View.VISIBLE);
                                 feverThread = new FeverThread();
                                 feverTime();
                                 combo = 0;
@@ -173,6 +178,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -208,7 +214,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -234,6 +240,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 MediaPlayer feverMediaPlayer = new MediaPlayer();
                                 feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
                                 feverMediaPlayer.setLooping(false);
+                                setSound(feverMediaPlayer);
                                 feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                     @Override
                                     public void onCompletion(MediaPlayer mediaPlayer) {
@@ -241,7 +248,8 @@ public class Mode3Activity extends AppCompatActivity {
                                     }
                                 });
                                 pB_FeverTime.setProgress(7);
-                                pB_FeverTime.setVisibility(View.VISIBLE);
+//                                pB_FeverTime.setVisibility(View.VISIBLE);
+                                progressBarLayout.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -255,6 +263,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -288,7 +297,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -315,6 +324,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 MediaPlayer feverMediaPlayer = new MediaPlayer();
                                 feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
                                 feverMediaPlayer.setLooping(false);
+                                setSound(feverMediaPlayer);
                                 feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                     @Override
                                     public void onCompletion(MediaPlayer mediaPlayer) {
@@ -322,7 +332,8 @@ public class Mode3Activity extends AppCompatActivity {
                                     }
                                 });
                                 pB_FeverTime.setProgress(7);
-                                pB_FeverTime.setVisibility(View.VISIBLE);
+//                                pB_FeverTime.setVisibility(View.VISIBLE);
+                                progressBarLayout.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -335,6 +346,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -368,7 +380,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -395,6 +407,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 MediaPlayer feverMediaPlayer = new MediaPlayer();
                                 feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
                                 feverMediaPlayer.setLooping(false);
+                                setSound(feverMediaPlayer);
                                 feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                     @Override
                                     public void onCompletion(MediaPlayer mediaPlayer) {
@@ -402,7 +415,8 @@ public class Mode3Activity extends AppCompatActivity {
                                     }
                                 });
                                 pB_FeverTime.setProgress(7);
-                                pB_FeverTime.setVisibility(View.VISIBLE);
+//                                pB_FeverTime.setVisibility(View.VISIBLE);
+                                progressBarLayout.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -415,6 +429,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -449,7 +464,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer correctMediaPlayer = new MediaPlayer();
                             correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
                             correctMediaPlayer.setLooping(false);
-
+                            setSound(correctMediaPlayer);
                             correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -475,6 +490,7 @@ public class Mode3Activity extends AppCompatActivity {
                                 MediaPlayer feverMediaPlayer = new MediaPlayer();
                                 feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
                                 feverMediaPlayer.setLooping(false);
+                                setSound(feverMediaPlayer);
                                 feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                     @Override
                                     public void onCompletion(MediaPlayer mediaPlayer) {
@@ -482,7 +498,8 @@ public class Mode3Activity extends AppCompatActivity {
                                     }
                                 });
                                 pB_FeverTime.setProgress(7);
-                                pB_FeverTime.setVisibility(View.VISIBLE);
+//                                pB_FeverTime.setVisibility(View.VISIBLE);
+                                progressBarLayout.setVisibility(View.VISIBLE);
                                 feverMediaPlayer.start();
 
                                 feverThread = new FeverThread();
@@ -495,6 +512,7 @@ public class Mode3Activity extends AppCompatActivity {
                             MediaPlayer wrongMediaPlayer = new MediaPlayer();
                             wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
                             wrongMediaPlayer.setLooping(false);
+                            setSound(wrongMediaPlayer);
                             wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -671,8 +689,12 @@ public class Mode3Activity extends AppCompatActivity {
         btnHome = findViewById(R.id.btnHome);
         btnRanking = findViewById(R.id.btnRanking);
 
+        progressBarLayout = findViewById(R.id.mode3ProgressBar_Layout);
         pB_FeverTime = (ProgressBar) findViewById(R.id.pB_FeverTime);
         pB_FeverTime.setMax(7);
+
+        soundShared = getSharedPreferences("sound", MODE_PRIVATE);
+        soundStatus = soundShared.getString("sound", "");
 
     }
 
@@ -851,16 +873,12 @@ public class Mode3Activity extends AppCompatActivity {
                     }
                 });
 
-
-
-
-
-
             }
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    pB_FeverTime.setVisibility(View.GONE);
+//                    pB_FeverTime.setVisibility(View.GONE);
+                    progressBarLayout.setVisibility(View.GONE);
                     feverTop.setBackgroundColor(Color.WHITE);
                     feverBottom.setBackgroundColor(Color.WHITE);
                 }
@@ -902,5 +920,17 @@ public class Mode3Activity extends AppCompatActivity {
         correct();
         setColor();
     }
+
+
+    public void setSound(MediaPlayer mediaPlayer) {
+
+        if (soundStatus.equals("off")) {
+            mediaPlayer.setVolume(0,0);
+        } else {
+            mediaPlayer.setVolume(1,1);
+        }
+
+    } // setSound()
+
 
 }
