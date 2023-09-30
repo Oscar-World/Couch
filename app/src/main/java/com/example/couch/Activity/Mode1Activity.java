@@ -9,6 +9,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import com.example.couch.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import android.graphics.Color;
 import android.os.Handler;
 import android.view.View;
@@ -27,7 +30,6 @@ import java.util.Random;
 public class Mode1Activity extends AppCompatActivity {
 
     String TAG = "모드1 액티비티";
-    int mode = 1;
 
     TextView[][] three = new TextView[3][3];
     TextView[][] four = new TextView[4][4];
@@ -35,7 +37,6 @@ public class Mode1Activity extends AppCompatActivity {
     TextView[][] six = new TextView[6][6];
     TextView[][] seven = new TextView[7][7];
 
-    //    TextView timeTextView;
     TextView scoreView;
     TextView finalScoreView;
 
@@ -47,10 +48,6 @@ public class Mode1Activity extends AppCompatActivity {
     ProgressBar pbTime;
     ProgressBar pb_BonusTime;
     Animation scoreUp;
-
-
-    MediaPlayer mediaPlayer;
-
 
     ButtonThread buttonThread;
     BonusThread bonusThread;
@@ -101,6 +98,8 @@ public class Mode1Activity extends AppCompatActivity {
     SharedPreferences soundShared;
     String soundStatus;
 
+    AdView adView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,7 +123,7 @@ public class Mode1Activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume() 호출됨");
-    } // onResume()
+    }
 
     @Override
     protected void onPause() {
@@ -154,7 +153,6 @@ public class Mode1Activity extends AppCompatActivity {
 
     }
 
-
     public void setVariable() {
 
         scoreView = (TextView) findViewById(R.id.scoreView);
@@ -165,7 +163,7 @@ public class Mode1Activity extends AppCompatActivity {
 
         pbTime.setMax(60);
         pbTime.setProgress(60);
-//        timeTextView = (TextView) findViewById(R.id.timeTextView);
+
         handler = new Handler() ;
 
         bonusCount = 0;
@@ -199,12 +197,16 @@ public class Mode1Activity extends AppCompatActivity {
         soundShared = getSharedPreferences("sound", MODE_PRIVATE);
         soundStatus = soundShared.getString("sound", "");
 
+        adView = findViewById(R.id.mode1AdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        timeCount();
+
     } // setVariable()
 
 
     public void setView() {
-
-//        timeTextView.setText(timeS);
 
         scoreView.setText(""+score);
 
@@ -219,18 +221,7 @@ public class Mode1Activity extends AppCompatActivity {
 
                 buttonThread.start();
 
-                mediaPlayer = new MediaPlayer();
-                mediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.effectshort);
-                mediaPlayer.setLooping(false);
-                setSound(mediaPlayer);
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.release();
-                    }
-                });
-
-                mediaPlayer.start();
+                startMediaPlayer(R.raw.effectshort);
 
                 score += 17;
                 scoreView.setText(String.valueOf(score));
@@ -245,18 +236,8 @@ public class Mode1Activity extends AppCompatActivity {
         button2ImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer = new MediaPlayer();
-                mediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.effectshort);
-                mediaPlayer.setLooping(false);
-                setSound(mediaPlayer);
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.release();
-                    }
-                });
 
-                mediaPlayer.start();
+                startMediaPlayer(R.raw.effectshort);
                 score += 17;
                 scoreView.setText(String.valueOf(score));
 
@@ -267,17 +248,9 @@ public class Mode1Activity extends AppCompatActivity {
             }
         });
 
-
-    } // setView()
-
-    public void playing() {
-
-        timeCount();
         btnRestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Intent i = new Intent(Mode1Activity.this,Mode1Activity.class);
                 startActivity(i);
                 finish();
@@ -290,6 +263,10 @@ public class Mode1Activity extends AppCompatActivity {
                 finish();
             }
         });
+
+    } // setView()
+
+    public void playing() {
 
 //        btnRanking.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -308,80 +285,13 @@ public class Mode1Activity extends AppCompatActivity {
                     public void onClick(View view) {
 
                         if (x == row && y == column) {
-                            Log.d(TAG, "onClick : " + combo);
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
 
-                            correctMediaPlayer.start();
+                            rightAnswer();
 
+                        } else {
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            score += 100;
-                            scoreView.setText(""+score);
-                            combo ++;
-                            Log.d(TAG, "combo : " + combo);
+                            wrongAnswer();
 
-                            if (combo == 10 | combo == 20 | combo == 30 | combo == 40 | combo == 50) {
-                                MediaPlayer bonusMediaPlayer = new MediaPlayer();
-                                bonusMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.bonus);
-                                bonusMediaPlayer.setLooping(false);
-                                setSound(bonusMediaPlayer);
-                                bonusMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
-
-                                bonusMediaPlayer.start();
-
-                                bonusTime = 5;
-                                if (!status) {
-                                    status = true;
-                                }
-                                bonus1Layout.setVisibility(View.VISIBLE);
-                                layout4.setVisibility(View.GONE);
-
-
-                                pbTime.setVisibility(View.GONE);
-                                pb_BonusTime.setVisibility(View.VISIBLE);
-                                pb_BonusTime.setProgress(5);
-
-
-                                bonusThread = new BonusThread();
-                                bonusThread.start();
-
-                            }
-
-                        }
-                        else{
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-
-                            wrongMediaPlayer.start();
-                            sound = false;
-
-                            gameOver();
                         }
                     }
                 });
@@ -396,89 +306,13 @@ public class Mode1Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (x == row && y == column) {
-                            Log.d(TAG, "onClick : " + combo);
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
 
-                            correctMediaPlayer.start();
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            score += 100;
-                            scoreView.setText(""+score);
-                            combo ++;
-                            Log.d(TAG, "combo : " + combo);
+                            rightAnswer();
 
-//                            if (combo == 20) {
-//
-//                                bonusTime = 5;
-//                                if (!status) {
-//                                    status = true;
-//                                }
-//                                bonus1Layout.setVisibility(View.VISIBLE);
-//                                layout5.setVisibility(View.GONE);
-//                                bonusThread = new BonusThread();
-//                                bonusThread.start();
-//
-//                            }
+                        } else {
 
-                            if (combo == 10 | combo == 20 | combo == 30 | combo == 40 | combo == 50) {
-                                MediaPlayer bonusMediaPlayer = new MediaPlayer();
-                                bonusMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.bonus);
-                                bonusMediaPlayer.setLooping(false);
-                                setSound(bonusMediaPlayer);
-                                bonusMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
+                            wrongAnswer();
 
-                                bonusMediaPlayer.start();
-
-                                pbTime.setVisibility(View.GONE);
-                                pb_BonusTime.setVisibility(View.VISIBLE);
-                                pb_BonusTime.setProgress(5);
-
-                                bonusTime = 5;
-                                if (!status) {
-                                    status = true;
-                                }
-
-                                bonus1Layout.setVisibility(View.VISIBLE);
-                                layout5.setVisibility(View.GONE);
-                                bonusThread = new BonusThread();
-                                bonusThread.start();
-
-                            }
-
-                        }
-                        else{
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 4x4 소리나기 전");
-                            wrongMediaPlayer.start();
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 4x4 소리나기 후");
-                            sound = false;
-                            gameOver();
                         }
                     }
                 });
@@ -493,75 +327,13 @@ public class Mode1Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (x == row && y == column) {
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
 
-                            correctMediaPlayer.start();
+                            rightAnswer();
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            score += 100;
-                            scoreView.setText(""+score);
-                            combo ++;
-                            Log.d(TAG, "combo : " + combo);
+                        } else {
 
-                            if (combo == 10 | combo == 20 | combo == 30 | combo == 40 | combo == 50) {
-                                MediaPlayer bonusMediaPlayer = new MediaPlayer();
-                                bonusMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.bonus);
-                                bonusMediaPlayer.setLooping(false);
-                                setSound(bonusMediaPlayer);
-                                bonusMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
+                            wrongAnswer();
 
-                                bonusMediaPlayer.start();
-                                bonusTime = 5;
-
-                                pbTime.setVisibility(View.GONE);
-                                pb_BonusTime.setVisibility(View.VISIBLE);
-                                pb_BonusTime.setProgress(5);
-
-                                if (!status) {
-                                    status = true;
-                                }
-                                bonus1Layout.setVisibility(View.VISIBLE);
-                                layout6.setVisibility(View.GONE);
-                                bonusThread = new BonusThread();
-                                bonusThread.start();
-
-                            }
-
-                        }
-                        else{
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 5x5 소리나기 전");
-                            wrongMediaPlayer.start();
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 5x5 소리나기 후");
-                            sound = false;
-                            gameOver();
                         }
                     }
                 });
@@ -576,75 +348,13 @@ public class Mode1Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (x == row && y == column) {
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
 
-                            correctMediaPlayer.start();
+                            rightAnswer();
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            score += 100;
-                            scoreView.setText(""+score);
-                            combo ++;
-                            Log.d(TAG, "combo : " + combo);
+                        } else {
 
-                            if (combo == 10 | combo == 20 | combo == 30 | combo == 40 | combo == 50) {
-                                MediaPlayer bonusMediaPlayer = new MediaPlayer();
-                                bonusMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.bonus);
-                                bonusMediaPlayer.setLooping(false);
-                                setSound(bonusMediaPlayer);
-                                bonusMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
+                            wrongAnswer();
 
-                                bonusMediaPlayer.start();
-                                bonusTime = 5;
-                                if (!status) {
-                                    status = true;
-                                }
-
-                                pbTime.setVisibility(View.GONE);
-                                pb_BonusTime.setVisibility(View.VISIBLE);
-                                pb_BonusTime.setProgress(5);
-
-                                bonus1Layout.setVisibility(View.VISIBLE);
-                                layout7.setVisibility(View.GONE);
-                                bonusThread = new BonusThread();
-                                bonusThread.start();
-
-                            }
-
-                        }
-                        else{
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 6x6 소리나기 전");
-                            wrongMediaPlayer.start();
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 6x6 소리나기 후");
-                            sound = false;
-                            gameOver();
                         }
                     }
                 });
@@ -659,83 +369,91 @@ public class Mode1Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (x == row && y == column) {
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
 
-                            correctMediaPlayer.start();
+                            rightAnswer();
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            score += 100;
-                            scoreView.setText(""+score);
+                        } else {
 
-                            combo ++;
-                            Log.d(TAG, "combo : " + combo);
-                            if (combo == 10 | combo == 20 | combo == 30 | combo == 40 | combo == 50) {
-                                MediaPlayer bonusMediaPlayer = new MediaPlayer();
-                                bonusMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.bonus);
-                                bonusMediaPlayer.setLooping(false);
-                                setSound(bonusMediaPlayer);
-                                bonusMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
+                            wrongAnswer();
 
-                                bonusMediaPlayer.start();
-                                bonusTime = 5;
-
-                                pbTime.setVisibility(View.GONE);
-                                pb_BonusTime.setVisibility(View.VISIBLE);
-                                pb_BonusTime.setProgress(5);
-
-
-                                if (!status) {
-                                    status = true;
-                                }
-                                bonus1Layout.setVisibility(View.VISIBLE);
-                                layout7.setVisibility(View.GONE);
-                                bonusThread = new BonusThread();
-                                bonusThread.start();
-
-                            }
-
-                        }else{
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode1Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 7x7 소리나기 전");
-                            wrongMediaPlayer.start();
-                            Log.d(TAG, "틀렸을 때 미디어 플레이어 7x7 소리나기 후");
-                            sound = false;
-                            gameOver();
                         }
                     }
                 });
             }
         }
 
-    }
+    } // playing()
 
+    public void rightAnswer() {
+
+        startMediaPlayer(R.raw.correct);
+
+        correct();
+        stage++;
+        levelArray();
+        setColor();
+        levelColor();
+        score += 100;
+        scoreView.setText(""+score);
+        combo ++;
+
+        if (combo == 10) {
+
+            startMediaPlayer(R.raw.bonus);
+
+            bonusTime = 5;
+            if (!status) {
+                status = true;
+            }
+
+            pbTime.setVisibility(View.GONE);
+            pb_BonusTime.setVisibility(View.VISIBLE);
+            pb_BonusTime.setProgress(5);
+
+            goneLayout();
+            bonusThread = new BonusThread();
+            bonusThread.start();
+
+        }
+
+    } // rightAnswer()
+
+    public void wrongAnswer() {
+
+        startMediaPlayer(R.raw.wrong);
+        sound = false;
+        gameOver();
+
+    } // wrongAnswer()
+
+    public void startMediaPlayer(int id) {
+
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        mediaPlayer = MediaPlayer.create(Mode1Activity.this, id);
+        mediaPlayer.setLooping(false);
+        setSound(mediaPlayer);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
+
+        mediaPlayer.start();
+
+    } // startMediaPlayer()
+
+    public void goneLayout() {
+
+        bonus1Layout.setVisibility(View.VISIBLE);
+
+        layout3.setVisibility(View.GONE);
+        layout4.setVisibility(View.GONE);
+        layout5.setVisibility(View.GONE);
+        layout6.setVisibility(View.GONE);
+        layout7.setVisibility(View.GONE);
+
+    } // goneLayout()
 
     public void btnInitialize() {
 
@@ -879,17 +597,13 @@ public class Mode1Activity extends AppCompatActivity {
         seven[6][5] = findViewById(R.id.seven65);
         seven[6][6] = findViewById(R.id.seven66);
 
-    } // btnInitialize()
-
+    } // btninit()
 
     public void setColor() {
 
         r = random.nextInt(230);
         g = random.nextInt(230);
         b = random.nextInt(230);
-        Log.v("Color", "R : " + r);
-        Log.v("Color", "G : " + g);
-        Log.v("Color", "B : " + b);
 
         if (stage < 10) {
             for (int i = 0; i < 3; i++) {
@@ -960,8 +674,6 @@ public class Mode1Activity extends AppCompatActivity {
         }
         row = random.nextInt(arrayCount);
         column = random.nextInt(arrayCount);
-        Log.v("확인", "row : " + row);
-        Log.v("확인", "column : " + column);
 
     } // correct()
 
@@ -1029,38 +741,8 @@ public class Mode1Activity extends AppCompatActivity {
         finalScoreView.setText("SCORE : " + score);
         gameLayout.setVisibility(View.GONE);
         overLayout.setVisibility(View.VISIBLE);
+
     } // gameOver()
-
-
-    public void resetGame() {
-
-        score = 0;
-        stage = 0;
-
-        combo = 0;
-        time = 60;
-
-        colorA = 44;
-        arrayCount = 3;
-        bonusTime = 5;
-
-        bonus1Layout.setVisibility(View.GONE);
-        gameLayout.setVisibility(View.VISIBLE);
-        overLayout.setVisibility(View.GONE);
-
-        scoreView.setText("Score : " + score);
-//        timeTextView.setText("" + time);
-
-
-        levelArray();
-        correct();
-        setColor();
-
-        timeThread = new TimeThread();
-        timeThread.start();
-
-    } // resetGame()
-
 
     public class TimeThread extends Thread {
 
@@ -1098,10 +780,6 @@ public class Mode1Activity extends AppCompatActivity {
 
 
                     } else {
-
-//                        pb_BonusTime.setProgress(5);
-
-
 
                         for (int i = 0; i < 5; i++) {
 
@@ -1168,7 +846,6 @@ public class Mode1Activity extends AppCompatActivity {
 
                     Log.d(TAG, "run: Interrupt");
 
-
                 }
                 handler.post(new Runnable() {
                     @Override
@@ -1187,13 +864,11 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // ButtonThread
 
-
     public class BonusThread extends Thread {
 
         public void run() {
 
             for (int i = 0; i < 5; i ++) {
-
 
                 try {
                     Thread.sleep(1000);
@@ -1211,37 +886,26 @@ public class Mode1Activity extends AppCompatActivity {
                         if (bonusTime == 0) {
 
                             if (stage < 20) {
-
                                 layout4.setVisibility(View.VISIBLE);
-
                             } else if (stage < 30) {
-
                                 layout5.setVisibility(View.VISIBLE);
-
                             } else if (stage < 40) {
-
                                 layout6.setVisibility(View.VISIBLE);
-
                             } else {
-
                                 layout7.setVisibility(View.VISIBLE);
-
                             }
 
+                            combo = 0;
                             bonus1Layout.setVisibility(View.GONE);
 
                         }
 
                     }
                 });
-
             }
-
-
         }
 
     } // BonusThread
-
 
     public void setSound(MediaPlayer mediaPlayer) {
 
@@ -1252,6 +916,5 @@ public class Mode1Activity extends AppCompatActivity {
         }
 
     } // setSound()
-
 
 }

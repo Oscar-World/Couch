@@ -43,4 +43,7 @@ dependencies {
     // Gson (변환기)
     implementation 'com.squareup.retrofit2:converter-gson:2.6.4'
 
+    // 구글 애드몹
+    implementation 'com.google.android.gms:play-services-ads:21.5.0'
+
 }

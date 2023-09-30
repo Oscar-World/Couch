@@ -22,6 +22,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.couch.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -86,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton soundOffImage;
     ImageButton soundOnImage;
+
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void setVariable() {
 
         gameMode1Btn = findViewById(R.id.gameMode1_Btn);
@@ -218,8 +222,12 @@ public class MainActivity extends AppCompatActivity {
         AppearThread thread = new AppearThread();
         thread.start();
 
-    } // setVariable()
+        MobileAds.initialize(this);
+        adView = findViewById(R.id.mainAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
+    } // setVariable()
 
     public void setAnim() {
 
@@ -240,10 +248,11 @@ public class MainActivity extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_iv_t);
         iv_couch_ouch.startAnimation(animation);
 
-    }
+    } // setAnim()
 
     public void setView() {
 
+        // 게임 모드 1 버튼 클릭
         gameMode1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -267,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 게임 모드 2 버튼 클릭
         gameMode2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -290,6 +300,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 게임 모드 3 버튼 클릭
         gameMode3Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -313,6 +324,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 랭킹 버튼 클릭
 //        checkRankingBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -321,6 +333,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        // 설정 이미지 클릭
         setUpImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -332,6 +345,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 설정 레이아웃 false 리턴 (설정 안해줄 시, 겹치는 뷰 터치되는 오류 발생)
         settingLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -339,6 +353,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 언어 변경 텍스트뷰 클릭
         languageChoiceText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -346,6 +361,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 설정 레이아웃 뒤로가기 버튼 클릭
         settingBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -355,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        // 게임 모드 1 규칙 레이아웃 확인 버튼 클릭
         rule1OkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -376,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 게임 모드 1 규칙 레이아웃 뒤로가기 버튼 클릭
         rule1BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -385,6 +402,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 게임 모드 2 규칙 레이아웃 확인 버튼 클릭
         rule2OkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -406,6 +424,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 게임 모드 2 규칙 레이아웃 뒤로가기 버튼 클릭
         rule2BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -415,6 +434,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 게임 모드 3 규칙 레이아웃 확인 버튼 클릭
         rule3OkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -436,6 +456,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 게임 모드 3 규칙 레이아웃 뒤로가기 버튼 클릭
         rule3BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -445,6 +466,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 설정 레이아웃 음소거 이미지 클릭
         soundOffImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -458,6 +480,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 설정 레이아웃 음소거 해제 이미지 클릭
         soundOnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -472,7 +495,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     } // setView()
-
 
     public void languageDlg() {
 
@@ -497,7 +519,6 @@ public class MainActivity extends AppCompatActivity {
 
     } // languageDlg()
 
-
     public void saveLanguage(int num) {
 
         languageEditor.putInt("num", num);
@@ -506,7 +527,6 @@ public class MainActivity extends AppCompatActivity {
         setLanguage();
 
     }
-
 
     public void setLanguage() {
 
@@ -631,7 +651,6 @@ public class MainActivity extends AppCompatActivity {
 
     } // setLanguage()
 
-
     public void setSoundImage() {
 
         if (soundShared.getString("sound", "").equals("off")) {
@@ -642,8 +661,7 @@ public class MainActivity extends AppCompatActivity {
             soundOffImage.setVisibility(View.VISIBLE);
         }
 
-    }
-
+    } // setSoundImage()
 
     public class AppearThread extends Thread {
 
@@ -676,6 +694,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-    }
+    } // AppearThread
 
 }

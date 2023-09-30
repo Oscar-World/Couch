@@ -19,13 +19,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.couch.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.Random;
 
 public class Mode3Activity extends AppCompatActivity {
 
     String TAG = "모드3 액티비티";
-    int mode = 3;
 
     TextView[][] three = new TextView[3][3];
     TextView[][] four = new TextView[4][4];
@@ -80,6 +81,8 @@ public class Mode3Activity extends AppCompatActivity {
     SharedPreferences soundShared;
     String soundStatus;
 
+    AdView adView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,14 +92,78 @@ public class Mode3Activity extends AppCompatActivity {
         feverThread = new FeverThread();
         setLayout();
         btnInitialize();
+        setVariable();
+        setView();
         correct();
         setColor();
+        playing();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() 호출됨");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume() 호출됨");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() 호출됨");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() 호출됨");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart() 호출됨");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() 호출됨");
+    }
+
+    public void setVariable() {
+
+        lifeView = findViewById(R.id.lifeView);
+        scoreView = findViewById(R.id.scoreView);
+
+        gameLayout = findViewById(R.id.gameLayout);
+        overLayout = findViewById(R.id.overLayout);
+
+        finalScoreView = findViewById(R.id.finalScoreView);
+
+        btnRestart = findViewById(R.id.btnRestart);
+        btnHome = findViewById(R.id.btnHome);
+        btnRanking = findViewById(R.id.btnRanking);
+
+        progressBarLayout = findViewById(R.id.mode3ProgressBar_Layout);
+        pB_FeverTime = (ProgressBar) findViewById(R.id.pB_FeverTime);
+        pB_FeverTime.setMax(7);
+
+        soundShared = getSharedPreferences("sound", MODE_PRIVATE);
+        soundStatus = soundShared.getString("sound", "");
+
+        adView = findViewById(R.id.mode3AdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+    } // setVariable()
+
+    public void setView() {
 
         btnRestart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +177,11 @@ public class Mode3Activity extends AppCompatActivity {
                 finish();
             }
         });
+
+    } // setView()
+
+    public void playing() {
+
 //        btnRanking.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -126,75 +198,12 @@ public class Mode3Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (x == row && y == column) {
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
 
-                            correctMediaPlayer.start();
+                            rightAnswer();
 
+                        } else {
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            if(feverThread.isAlive()){
-                                score += 100;
-                            }
-                            score += 100;
-                            scoreView.setText("" + score);
-                            combo++;
-                            if(combo == 20){
-
-                                MediaPlayer feverMediaPlayer = new MediaPlayer();
-                                feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
-                                feverMediaPlayer.setLooping(false);
-                                setSound(feverMediaPlayer);
-                                feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
-
-                                feverMediaPlayer.start();
-                                pB_FeverTime.setProgress(7);
-//                                pB_FeverTime.setVisibility(View.VISIBLE);
-                                progressBarLayout.setVisibility(View.VISIBLE);
-                                feverThread = new FeverThread();
-                                feverTime();
-                                combo = 0;
-                            }
-
-                        }
-                        else {
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-
-                            wrongMediaPlayer.start();
-
-
-                            if (life > 0) {
-                                life--;
-                                gameOver();
-                            }
-                            lifeView.setText("" + life);
-                            combo = 0;
+                            wrongAnswer();
 
                         }
                     }
@@ -211,74 +220,12 @@ public class Mode3Activity extends AppCompatActivity {
                     public void onClick(View view) {
                         if (x == row && y == column) {
 
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
+                            rightAnswer();
 
-                            correctMediaPlayer.start();
+                        } else {
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            if(feverThread.isAlive()){
-                                score += 100;
-                            }
-                            score += 100;
-                            scoreView.setText("" + score);
-                            combo++;
-                            if(combo == 20){
+                            wrongAnswer();
 
-                                MediaPlayer feverMediaPlayer = new MediaPlayer();
-                                feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
-                                feverMediaPlayer.setLooping(false);
-                                setSound(feverMediaPlayer);
-                                feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
-                                pB_FeverTime.setProgress(7);
-//                                pB_FeverTime.setVisibility(View.VISIBLE);
-                                progressBarLayout.setVisibility(View.VISIBLE);
-                                feverMediaPlayer.start();
-
-                                feverThread = new FeverThread();
-                                feverTime();
-                                combo = 0;}
-
-
-                        }
-                        else {
-
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-
-                            wrongMediaPlayer.start();
-
-                            if (life > 0) {
-                                life--;
-                                gameOver();
-                            }
-                            lifeView.setText("Life : " + life);
-                            combo = 0;
                         }
                     }
                 });
@@ -294,74 +241,12 @@ public class Mode3Activity extends AppCompatActivity {
                     public void onClick(View view) {
                         if (x == row && y == column) {
 
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
+                            rightAnswer();
 
-                            correctMediaPlayer.start();
+                        } else {
 
+                            wrongAnswer();
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            if(feverThread.isAlive()){
-                                score += 100;
-                            }
-                            score += 100;
-                            scoreView.setText("" + score);
-                            combo++;
-                            if(combo == 20){
-
-                                MediaPlayer feverMediaPlayer = new MediaPlayer();
-                                feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
-                                feverMediaPlayer.setLooping(false);
-                                setSound(feverMediaPlayer);
-                                feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
-                                pB_FeverTime.setProgress(7);
-//                                pB_FeverTime.setVisibility(View.VISIBLE);
-                                progressBarLayout.setVisibility(View.VISIBLE);
-                                feverMediaPlayer.start();
-
-                                feverThread = new FeverThread();
-                                feverTime();
-                                combo = 0;}
-
-                        }
-                        else {
-
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-
-                            wrongMediaPlayer.start();
-
-                            if (life > 0) {
-                                life--;
-                                gameOver();
-                            }
-                            lifeView.setText("" + life);
-                            combo = 0;
                         }
                     }
                 });
@@ -377,74 +262,11 @@ public class Mode3Activity extends AppCompatActivity {
                     public void onClick(View view) {
                         if (x == row && y == column) {
 
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
+                            rightAnswer();
 
-                            correctMediaPlayer.start();
+                        } else {
 
-
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            if(feverThread.isAlive()){
-                                score += 100;
-                            }
-                            score += 100;
-                            scoreView.setText("" + score);
-                            combo++;
-                            if(combo == 20){
-
-                                MediaPlayer feverMediaPlayer = new MediaPlayer();
-                                feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
-                                feverMediaPlayer.setLooping(false);
-                                setSound(feverMediaPlayer);
-                                feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
-                                pB_FeverTime.setProgress(7);
-//                                pB_FeverTime.setVisibility(View.VISIBLE);
-                                progressBarLayout.setVisibility(View.VISIBLE);
-                                feverMediaPlayer.start();
-
-                                feverThread = new FeverThread();
-                                feverTime();
-                                combo = 0;}
-
-                        }
-                        else {
-
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-
-                            wrongMediaPlayer.start();
-
-                            if (life > 0) {
-                                life--;
-                                gameOver();
-                            }
-                            lifeView.setText("" + life);
-                            combo = 0;
+                            wrongAnswer();
 
                         }
                     }
@@ -461,82 +283,90 @@ public class Mode3Activity extends AppCompatActivity {
                     public void onClick(View view) {
                         if (x == row && y == column) {
 
-                            MediaPlayer correctMediaPlayer = new MediaPlayer();
-                            correctMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.correct);
-                            correctMediaPlayer.setLooping(false);
-                            setSound(correctMediaPlayer);
-                            correctMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
+                            rightAnswer();
 
-                            correctMediaPlayer.start();
+                        } else {
 
-                            correct();
-                            stage++;
-                            levelArray();
-                            setColor();
-                            levelColor();
-                            if(feverThread.isAlive()){
-                                score += 100;
-                            }
-                            score += 100;
-                            scoreView.setText("" + score);
-                            combo ++;
-                            if(combo == 20){
-
-                                MediaPlayer feverMediaPlayer = new MediaPlayer();
-                                feverMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.fever);
-                                feverMediaPlayer.setLooping(false);
-                                setSound(feverMediaPlayer);
-                                feverMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.release();
-                                    }
-                                });
-                                pB_FeverTime.setProgress(7);
-//                                pB_FeverTime.setVisibility(View.VISIBLE);
-                                progressBarLayout.setVisibility(View.VISIBLE);
-                                feverMediaPlayer.start();
-
-                                feverThread = new FeverThread();
-                                feverTime();
-                                combo = 0;}
-
-                        }
-                        else {
-
-                            MediaPlayer wrongMediaPlayer = new MediaPlayer();
-                            wrongMediaPlayer = MediaPlayer.create(Mode3Activity.this, R.raw.wrong);
-                            wrongMediaPlayer.setLooping(false);
-                            setSound(wrongMediaPlayer);
-                            wrongMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    mediaPlayer.release();
-                                }
-                            });
-
-                            wrongMediaPlayer.start();
-
-                            if (life > 0) {
-                                life--;
-                                gameOver();
-                            }
-                            lifeView.setText("" + life);
-                            combo = 0;
+                            wrongAnswer();
 
                         }
                     }
                 });
             }
         }
-    }
+
+    } // playing()
+
+    public void rightAnswer() {
+
+        startMediaPlayer(R.raw.correct);
+
+        correct();
+        stage++;
+        levelArray();
+        setColor();
+        levelColor();
+        if(feverThread.isAlive()){
+            score += 100;
+        }
+        score += 100;
+        scoreView.setText("" + score);
+        combo++;
+        if(combo == 20){
+
+            startMediaPlayer(R.raw.fever);
+
+            pB_FeverTime.setProgress(7);
+            progressBarLayout.setVisibility(View.VISIBLE);
+            feverThread = new FeverThread();
+            feverTime();
+            combo = 0;
+        }
+
+    } // rightAnswer()
+
+    public void wrongAnswer() {
+
+        startMediaPlayer(R.raw.wrong);
+
+        if (life > 0) {
+            life--;
+            gameOver();
+        }
+        lifeView.setText("" + life);
+        combo = 0;
+
+    } // wrongAnswer()
+
+    public void startMediaPlayer(int id) {
+
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        mediaPlayer = MediaPlayer.create(Mode3Activity.this, id);
+        mediaPlayer.setLooping(false);
+        setSound(mediaPlayer);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
+
+        mediaPlayer.start();
+
+    } // startMediaPlayer()
+
+    public void setSound(MediaPlayer mediaPlayer) {
+
+        if (soundStatus.equals("off")) {
+            mediaPlayer.setVolume(0,0);
+        } else {
+            mediaPlayer.setVolume(1,1);
+        }
+
+    } // setSound()
 
     public void btnInitialize() {
+
         three[0][0] = findViewById(R.id.three00);
         three[0][1] = findViewById(R.id.three01);
         three[0][2] = findViewById(R.id.three02);
@@ -677,34 +507,13 @@ public class Mode3Activity extends AppCompatActivity {
         seven[6][5] = findViewById(R.id.seven65);
         seven[6][6] = findViewById(R.id.seven66);
 
-        lifeView = findViewById(R.id.lifeView);
-        scoreView = findViewById(R.id.scoreView);
-
-        gameLayout = findViewById(R.id.gameLayout);
-        overLayout = findViewById(R.id.overLayout);
-
-        finalScoreView = findViewById(R.id.finalScoreView);
-
-        btnRestart = findViewById(R.id.btnRestart);
-        btnHome = findViewById(R.id.btnHome);
-        btnRanking = findViewById(R.id.btnRanking);
-
-        progressBarLayout = findViewById(R.id.mode3ProgressBar_Layout);
-        pB_FeverTime = (ProgressBar) findViewById(R.id.pB_FeverTime);
-        pB_FeverTime.setMax(7);
-
-        soundShared = getSharedPreferences("sound", MODE_PRIVATE);
-        soundStatus = soundShared.getString("sound", "");
-
-    }
+    } // btninit()
 
     public void setColor() {
+
         r = random.nextInt(230);
         g = random.nextInt(230);
         b = random.nextInt(230);
-        Log.v("Color", "R : " + r);
-        Log.v("Color", "G : " + g);
-        Log.v("Color", "B : " + b);
 
         if (stage < 10) {
             for (int i = 0; i < 3; i++) {
@@ -754,9 +563,11 @@ public class Mode3Activity extends AppCompatActivity {
             }
             seven[row][column].setBackgroundColor(Color.argb(255 - colorA, r, g, b));
         }
-    }
+
+    } // setColor()
 
     public void correct() {
+
         if (stage == 10) {
             arrayCount++;
         }
@@ -771,11 +582,11 @@ public class Mode3Activity extends AppCompatActivity {
         }
         row = random.nextInt(arrayCount);
         column = random.nextInt(arrayCount);
-        Log.v("확인", "row : " + row);
-        Log.v("확인", "column : " + column);
-    }
+
+    } // correct()
 
     public void setLayout() {
+
         layout3 = findViewById(R.id.layout3);
         layout4 = findViewById(R.id.layout4);
         layout5 = findViewById(R.id.layout5);
@@ -783,9 +594,11 @@ public class Mode3Activity extends AppCompatActivity {
         layout7 = findViewById(R.id.layout7);
         feverTop = findViewById(R.id.feverTop);
         feverBottom = findViewById(R.id.feverBottom);
-    }
+
+    } // setLayout()
 
     public void levelArray() {
+
         if (stage < 10) {
             layout3.setVisibility(View.VISIBLE);
             layout4.setVisibility(View.GONE);
@@ -821,14 +634,19 @@ public class Mode3Activity extends AppCompatActivity {
             layout6.setVisibility(View.GONE);
             layout7.setVisibility(View.VISIBLE);
         }
-    }
+
+    } // levelArray()
 
     public void levelColor() {
+
         if (stage % 5 == 0) {
             colorA -= 4;
         }
-    }
-    public class FeverThread extends Thread{
+
+    } // levelColor()
+
+    public class FeverThread extends Thread {
+
         @Override
         public void run() {
 
@@ -874,6 +692,7 @@ public class Mode3Activity extends AppCompatActivity {
                 });
 
             }
+
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -884,23 +703,26 @@ public class Mode3Activity extends AppCompatActivity {
                 }
             });
         }
-    }
+    } // FeverThread
 
     public void feverTime(){
 
-
         feverThread.start();
 
+    } // feverTime()
 
-    }
     public void gameOver() {
+
         if (life == 0) {
             finalScoreView.setText("SCORE : " + score);
             gameLayout.setVisibility(View.GONE);
             overLayout.setVisibility(View.VISIBLE);
         }
-    }
+
+    } // gameOver()
+
     public void resetGame() {
+
         score = 0;
         stage = 0;
 
@@ -919,18 +741,7 @@ public class Mode3Activity extends AppCompatActivity {
         levelArray();
         correct();
         setColor();
-    }
 
-
-    public void setSound(MediaPlayer mediaPlayer) {
-
-        if (soundStatus.equals("off")) {
-            mediaPlayer.setVolume(0,0);
-        } else {
-            mediaPlayer.setVolume(1,1);
-        }
-
-    } // setSound()
-
+    } // resetGame()
 
 }

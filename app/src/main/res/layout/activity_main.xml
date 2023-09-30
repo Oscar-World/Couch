@@ -770,7 +770,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1.8"
+        android:layout_weight="0.8"
         />
 
     <Button
@@ -779,7 +779,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mode1Text_EN"
         android:textSize="18dp"
-        android:paddingVertical="15dp"
+        android:paddingVertical="12dp"
         android:layout_marginHorizontal="50dp"
         android:backgroundTint="@color/blue"
         android:visibility="invisible"
@@ -788,7 +788,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="0.5"
         />
 
     <Button
@@ -797,7 +797,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mode2Text_EN"
         android:textSize="18dp"
-        android:paddingVertical="15dp"
+        android:paddingVertical="12dp"
         android:layout_marginHorizontal="50dp"
         android:backgroundTint="@color/blue"
         android:visibility="invisible"
@@ -806,7 +806,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="0.5"
         />
 
     <Button
@@ -815,7 +815,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mode3Text_EN"
         android:textSize="18dp"
-        android:paddingVertical="15dp"
+        android:paddingVertical="12dp"
         android:layout_marginHorizontal="50dp"
         android:backgroundTint="@color/blue"
         android:visibility="invisible"
@@ -824,8 +824,17 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1.8"
+        android:layout_weight="0.7"
         />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/mainAdView"
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            />
 
     </LinearLayout>
 
