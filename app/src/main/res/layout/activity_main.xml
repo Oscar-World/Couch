@@ -40,8 +40,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rule_EN"
-                android:textSize="28dp"
+                android:textSize="26dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_gravity="center"
                 />
 
@@ -55,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
                 >
 
                 <ImageView
@@ -70,8 +71,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22dp"
+                    android:textSize="20dp"
                     android:text="@string/timeLimit60"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     />
 
@@ -89,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
                 >
 
                 <ImageView
@@ -104,8 +106,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22dp"
+                    android:textSize="20dp"
                     android:text="@string/chance1"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     />
 
@@ -119,15 +122,34 @@
                 android:layout_weight="0.5"
                 />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="20dp"
+            >
+
             <ImageView
                 android:id="@+id/mode1RuleBonus_Image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/couch"
                 android:scaleType="centerCrop"
-                android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
+                android:layout_marginRight="20dp"
                 />
+
+            <TextView
+                android:id="@+id/mode1RuleBonusTitle_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="@string/bonus_EN"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
 
             <TextView
                 android:id="@+id/mode1RuleBonus_Text"
@@ -137,7 +159,7 @@
                 android:text="@string/info_mode1_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="50dp"
                 />
 
             <View
@@ -217,8 +239,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rule_EN"
-                android:textSize="28dp"
+                android:textSize="26dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_gravity="center"
                 />
 
@@ -232,7 +255,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
                 >
 
                 <ImageView
@@ -247,8 +270,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22dp"
+                    android:textSize="20dp"
                     android:text="@string/timeLimit5"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     />
 
@@ -266,7 +290,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
                 >
 
                 <ImageView
@@ -281,8 +305,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22dp"
+                    android:textSize="20dp"
                     android:text="@string/chance1"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     />
 
@@ -296,15 +321,34 @@
                 android:layout_weight="0.5"
                 />
 
-            <ImageView
-                android:id="@+id/mode2RuleBonus_Image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/couch"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
-                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="20dp"
+                >
+
+                <ImageView
+                    android:id="@+id/mode2RuleBonus_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/mode2RuleBonusTitle_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:text="@string/bonus_EN"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/mode2RuleBonus_Text"
@@ -314,7 +358,7 @@
                 android:text="@string/info_mode2_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="50dp"
                 />
 
             <View
@@ -395,7 +439,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rule_EN"
-                android:textSize="28dp"
+                android:textSize="26dp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 />
@@ -410,7 +455,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
                 >
 
                 <ImageView
@@ -425,8 +470,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22dp"
+                    android:textSize="20dp"
                     android:text="@string/timeLimitInfinite"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     />
 
@@ -444,7 +490,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
                 >
 
                 <ImageView
@@ -459,8 +505,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22dp"
+                    android:textSize="20dp"
                     android:text="@string/chance3"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     />
 
@@ -474,15 +521,34 @@
                 android:layout_weight="0.5"
                 />
 
-            <ImageView
-                android:id="@+id/mode3RuleBonus_Image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/couch"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
-                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="20dp"
+                >
+
+                <ImageView
+                    android:id="@+id/mode3RuleBonus_Image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/couch"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/mode3RuleBonusTitle_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:text="@string/bonus_EN"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/mode3RuleBonus_Text"
@@ -492,7 +558,7 @@
                 android:text="@string/info_mode3_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="50dp"
                 />
 
             <View
@@ -719,7 +785,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="end"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/setup"
         android:visibility="invisible"
@@ -728,7 +794,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/iv_couch_c"
@@ -770,7 +835,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_weight="0.5"
         />
 
     <Button
@@ -779,7 +844,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mode1Text_EN"
         android:textSize="18dp"
-        android:paddingVertical="12dp"
+        android:paddingVertical="15dp"
         android:layout_marginHorizontal="50dp"
         android:backgroundTint="@color/blue"
         android:visibility="invisible"
@@ -788,7 +853,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.3"
         />
 
     <Button
@@ -797,7 +862,25 @@
         android:layout_height="wrap_content"
         android:text="@string/mode2Text_EN"
         android:textSize="18dp"
-        android:paddingVertical="12dp"
+        android:paddingVertical="15dp"
+        android:layout_marginHorizontal="50dp"
+        android:backgroundTint="@color/blue"
+        android:visibility="invisible"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        />
+
+    <Button
+        android:id="@+id/gameMode3_Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mode3Text_EN"
+        android:textSize="18dp"
+        android:paddingVertical="15dp"
         android:layout_marginHorizontal="50dp"
         android:backgroundTint="@color/blue"
         android:visibility="invisible"
@@ -809,32 +892,24 @@
         android:layout_weight="0.5"
         />
 
-    <Button
-        android:id="@+id/gameMode3_Btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mode3Text_EN"
-        android:textSize="18dp"
-        android:paddingVertical="12dp"
-        android:layout_marginHorizontal="50dp"
-        android:backgroundTint="@color/blue"
-        android:visibility="invisible"
-        />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.7"
-        />
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/mainAdView"
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
-            />
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            >
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/mainAdView"
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+                />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

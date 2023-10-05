@@ -11,15 +11,9 @@ import android.widget.TextView;
 
 import com.example.couch.Adapter.RankAdapter;
 import com.example.couch.Data.RankData;
-import com.example.couch.Interface.ApiClient;
-import com.example.couch.Interface.ApiInterface;
 import com.example.couch.R;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RankActivity extends AppCompatActivity {
 
@@ -141,8 +135,6 @@ public class RankActivity extends AppCompatActivity {
         mode3OffText.setVisibility(View.VISIBLE);
         mode3OnText.setVisibility(View.GONE);
 
-        getRank(1);
-
     } // onClickMode1()
 
 
@@ -154,8 +146,6 @@ public class RankActivity extends AppCompatActivity {
         mode2OnText.setVisibility(View.VISIBLE);
         mode3OffText.setVisibility(View.VISIBLE);
         mode3OnText.setVisibility(View.GONE);
-
-        getRank(2);
 
     } // onClickMode2()
 
@@ -169,57 +159,8 @@ public class RankActivity extends AppCompatActivity {
         mode3OffText.setVisibility(View.GONE);
         mode3OnText.setVisibility(View.VISIBLE);
 
-        getRank(3);
-
     } // onClickMode3()
 
-    public void getRank (int modeNum) {
-
-        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<ArrayList<RankData>> call = apiInterface.getRank(modeNum);
-        call.enqueue(new Callback<ArrayList<RankData>>() {
-            @Override
-            public void onResponse(Call<ArrayList<RankData>> call, Response<ArrayList<RankData>> response) {
-
-                if (response.isSuccessful()) {
-                    Log.d(TAG, "getRank - onResponse isSuccessful");
-
-                    ArrayList<RankData> data = response.body();
-
-                    if (data.size() > 0) {
-
-                        for (int i = 0; i <data.size(); i++) {
-
-                            int modeNum = data.get(i).getModeNum();
-                            int ranking = data.get(i).getRanking();
-                            String nickname = data.get(i).getNickname();
-                            int score = data.get(i).getScore();
-
-                            RankData rankData = new RankData(modeNum, ranking, nickname, score);
-
-                            arrayList.add(rankData);
-
-                        }
-                        recyclerView.setVisibility(View.VISIBLE);
-                        adapter.setItemRankData(arrayList);
-
-
-                    } else {
-                        Log.d(TAG, "data.size() == 0");
-                    }
-
-                } else {
-                    Log.d(TAG, "getRank - onResponse isFailure");
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<RankData>> call, Throwable t) {
-                Log.d(TAG, "getRank - onFailure");
-            }
-        });
-    }
 
 
 }

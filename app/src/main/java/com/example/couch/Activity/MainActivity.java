@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -25,6 +26,8 @@ import com.example.couch.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     TextView rule1BonusText;
     CheckBox rule1CheckBox;
     Button rule1OkBtn;
+    TextView rule1BonusTitleText;
 
     FrameLayout rule2Layout;
     ImageButton rule2BackBtn;
@@ -79,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     TextView rule2BonusText;
     CheckBox rule2CheckBox;
     Button rule2OkBtn;
+    TextView rule2BonusTitleText;
 
     FrameLayout rule3Layout;
     ImageButton rule3BackBtn;
@@ -86,16 +91,20 @@ public class MainActivity extends AppCompatActivity {
     TextView rule3BonusText;
     CheckBox rule3CheckBox;
     Button rule3OkBtn;
+    TextView rule3BonusTitleText;
 
     ImageButton soundOffImage;
     ImageButton soundOnImage;
 
     AdView adView;
+    Locale locale;
+    String localLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         setVariable();
         setView();
 
@@ -138,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onDestroy() 호출됨");
     }
 
+
     @Override
     public void onBackPressed() {
 
@@ -160,7 +170,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-    }
+    } // onBackPressed()
+
 
     public void setVariable() {
 
@@ -198,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
         rule1OkBtn = findViewById(R.id.mode1RuleOk_Btn);
         rule1BonusText = findViewById(R.id.mode1RuleBonus_Text);
         rule1CheckBox = findViewById(R.id.mode1Rule_CheckBox);
+        rule1BonusTitleText = findViewById(R.id.mode1RuleBonusTitle_Text);
 
         rule2Layout = findViewById(R.id.mode2Rule_FrameLayout);
         rule2BackBtn = findViewById(R.id.mode2RuleBack_Btn);
@@ -205,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
         rule2OkBtn = findViewById(R.id.mode2RuleOk_Btn);
         rule2BonusText = findViewById(R.id.mode2RuleBonus_Text);
         rule2CheckBox = findViewById(R.id.mode2Rule_CheckBox);
+        rule2BonusTitleText = findViewById(R.id.mode2RuleBonusTitle_Text);
 
         rule3Layout = findViewById(R.id.mode3Rule_FrameLayout);
         rule3BackBtn = findViewById(R.id.mode3RuleBack_Btn);
@@ -212,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
         rule3OkBtn = findViewById(R.id.mode3RuleOk_Btn);
         rule3BonusText = findViewById(R.id.mode3RuleBonus_Text);
         rule3CheckBox = findViewById(R.id.mode3Rule_CheckBox);
+        rule3BonusTitleText = findViewById(R.id.mode3RuleBonusTitle_Text);
 
         soundOffImage = findViewById(R.id.settingSoundOff_Image);
         soundOnImage = findViewById(R.id.settingSoundOn_Image);
@@ -222,12 +236,8 @@ public class MainActivity extends AppCompatActivity {
         AppearThread thread = new AppearThread();
         thread.start();
 
-        MobileAds.initialize(this);
-        adView = findViewById(R.id.mainAdView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
     } // setVariable()
+
 
     public void setAnim() {
 
@@ -249,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
         iv_couch_ouch.startAnimation(animation);
 
     } // setAnim()
+
 
     public void setView() {
 
@@ -496,6 +507,7 @@ public class MainActivity extends AppCompatActivity {
 
     } // setView()
 
+
     public void languageDlg() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -519,6 +531,7 @@ public class MainActivity extends AppCompatActivity {
 
     } // languageDlg()
 
+
     public void saveLanguage(int num) {
 
         languageEditor.putInt("num", num);
@@ -526,130 +539,229 @@ public class MainActivity extends AppCompatActivity {
 
         setLanguage();
 
-    }
+    } // saveLanguage()
+
+
+    public void getLocalLanguage() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            locale = getApplicationContext().getResources().getConfiguration().getLocales().get(0);
+        } else {
+            locale = getApplicationContext().getResources().getConfiguration().locale;
+        }
+
+        localLanguage = locale.getLanguage();
+        Log.d(TAG, "getLocal - 국가 이름 : " + locale.getDisplayCountry());
+        Log.d(TAG, "getLocal - 국가 코드 : " + locale.getCountry());
+        Log.d(TAG, "getLocal - 언어 : " + localLanguage);
+
+        if (localLanguage.equals("en")) {
+
+            setLanguageEN();
+
+        } else if (localLanguage.equals("ko")) {
+
+            setLanguageKR();
+
+        } else if (localLanguage.equals("zh")) {
+
+            setLanguageCN1();
+
+        } else if (localLanguage.equals("ja")) {
+
+            setLanguageJP();
+
+        } else {
+
+            setLanguageEN();
+
+        }
+
+    } // getLocalLanguage()
+
 
     public void setLanguage() {
 
         getLanguageNum = languageShared.getInt("num", -1);
 
-        if (getLanguageNum == -1 | getLanguageNum == 0) {
+        if (getLanguageNum == -1) {
+
+            getLocalLanguage();
+
+        } else if (getLanguageNum == 0) {
 
             //영어
-            gameMode1Btn.setText(getString(R.string.mode1Text_EN));
-            gameMode2Btn.setText(getString(R.string.mode2Text_EN));
-            gameMode3Btn.setText(getString(R.string.mode3Text_EN));
-            settingText.setText(getString(R.string.setting_EN));
-            soundText.setText(getString(R.string.setSound_EN));
-            languageText.setText(getString(R.string.setLanguage_EN));
-            languageChoiceText.setText(getString(R.string.language_EN));
-            rule1OkBtn.setText(getString(R.string.ok_EN));
-            rule1CheckBox.setText(getString(R.string.checkBox_EN));
-            rule1Text.setText(getString(R.string.rule_EN));
-            rule1BonusText.setText(getString(R.string.info_mode1_EN));
-            rule2OkBtn.setText(getString(R.string.ok_EN));
-            rule2CheckBox.setText(getString(R.string.checkBox_EN));
-            rule2Text.setText(getString(R.string.rule_EN));
-            rule2BonusText.setText(getString(R.string.info_mode2_EN));
-            rule3OkBtn.setText(getString(R.string.ok_EN));
-            rule3CheckBox.setText(getString(R.string.checkBox_EN));
-            rule3Text.setText(getString(R.string.rule_EN));
-            rule3BonusText.setText(getString(R.string.info_mode3_EN));
+            setLanguageEN();
 
         } else if (getLanguageNum == 1) {
 
             //한국어
-            gameMode1Btn.setText(getString(R.string.mode1Text_KR));
-            gameMode2Btn.setText(getString(R.string.mode2Text_KR));
-            gameMode3Btn.setText(getString(R.string.mode3Text_KR));
-            settingText.setText(getString(R.string.setting_KR));
-            soundText.setText(getString(R.string.setSound_KR));
-            languageText.setText(getString(R.string.setLanguage_KR));
-            languageChoiceText.setText(getString(R.string.language_KR));
-            rule1OkBtn.setText(getString(R.string.ok_KR));
-            rule1CheckBox.setText(getString(R.string.checkBox_KR));
-            rule1Text.setText(getString(R.string.rule_KR));
-            rule1BonusText.setText(getString(R.string.info_mode1_KR));
-            rule2OkBtn.setText(getString(R.string.ok_KR));
-            rule2CheckBox.setText(getString(R.string.checkBox_KR));
-            rule2Text.setText(getString(R.string.rule_KR));
-            rule2BonusText.setText(getString(R.string.info_mode2_KR));
-            rule3OkBtn.setText(getString(R.string.ok_KR));
-            rule3CheckBox.setText(getString(R.string.checkBox_KR));
-            rule3Text.setText(getString(R.string.rule_KR));
-            rule3BonusText.setText(getString(R.string.info_mode3_KR));
+            setLanguageKR();
 
         } else if (getLanguageNum == 2) {
 
             //중국어(간체)
-            gameMode1Btn.setText(getString(R.string.mode1Text_CN1));
-            gameMode2Btn.setText(getString(R.string.mode2Text_CN1));
-            gameMode3Btn.setText(getString(R.string.mode3Text_CN1));
-            settingText.setText(getString(R.string.setting_CN1));
-            soundText.setText(getString(R.string.setSound_CN1));
-            languageText.setText(getString(R.string.setLanguage_CN1));
-            languageChoiceText.setText(getString(R.string.language_CN1));
-            rule1OkBtn.setText(getString(R.string.ok_CN1));
-            rule1CheckBox.setText(getString(R.string.checkBox_CN1));
-            rule1Text.setText(getString(R.string.rule_CN1));
-            rule1BonusText.setText(getString(R.string.info_mode1_CN1));
-            rule2OkBtn.setText(getString(R.string.ok_CN1));
-            rule2CheckBox.setText(getString(R.string.checkBox_CN1));
-            rule2Text.setText(getString(R.string.rule_CN1));
-            rule2BonusText.setText(getString(R.string.info_mode2_CN1));
-            rule3OkBtn.setText(getString(R.string.ok_CN1));
-            rule3CheckBox.setText(getString(R.string.checkBox_CN1));
-            rule3Text.setText(getString(R.string.rule_CN1));
-            rule3BonusText.setText(getString(R.string.info_mode3_CN1));
+            setLanguageCN1();
 
         } else if (getLanguageNum == 3) {
 
             //중국어(번체)
-            gameMode1Btn.setText(getString(R.string.mode1Text_CN2));
-            gameMode2Btn.setText(getString(R.string.mode2Text_CN2));
-            gameMode3Btn.setText(getString(R.string.mode3Text_CN2));
-            settingText.setText(getString(R.string.setting_CN2));
-            soundText.setText(getString(R.string.setSound_CN2));
-            languageText.setText(getString(R.string.setLanguage_CN2));
-            languageChoiceText.setText(getString(R.string.language_CN2));
-            rule1OkBtn.setText(getString(R.string.ok_CN2));
-            rule1CheckBox.setText(getString(R.string.checkBox_CN2));
-            rule1Text.setText(getString(R.string.rule_CN2));
-            rule1BonusText.setText(getString(R.string.info_mode1_CN2));
-            rule2OkBtn.setText(getString(R.string.ok_CN2));
-            rule2CheckBox.setText(getString(R.string.checkBox_CN2));
-            rule2Text.setText(getString(R.string.rule_CN2));
-            rule2BonusText.setText(getString(R.string.info_mode2_CN2));
-            rule3OkBtn.setText(getString(R.string.ok_CN2));
-            rule3CheckBox.setText(getString(R.string.checkBox_CN2));
-            rule3Text.setText(getString(R.string.rule_CN2));
-            rule3BonusText.setText(getString(R.string.info_mode3_CN2));
+            setLanguageCN2();
 
         } else if (getLanguageNum == 4) {
 
             //일본어
-            gameMode1Btn.setText(getString(R.string.mode1Text_JP));
-            gameMode2Btn.setText(getString(R.string.mode2Text_JP));
-            gameMode3Btn.setText(getString(R.string.mode3Text_JP));
-            settingText.setText(getString(R.string.setting_JP));
-            soundText.setText(getString(R.string.setSound_JP));
-            languageText.setText(getString(R.string.setLanguage_JP));
-            languageChoiceText.setText(getString(R.string.language_JP));
-            rule1OkBtn.setText(getString(R.string.ok_JP));
-            rule1CheckBox.setText(getString(R.string.checkBox_JP));
-            rule1Text.setText(getString(R.string.rule_JP));
-            rule1BonusText.setText(getString(R.string.info_mode1_JP));
-            rule2OkBtn.setText(getString(R.string.ok_JP));
-            rule2CheckBox.setText(getString(R.string.checkBox_JP));
-            rule2Text.setText(getString(R.string.rule_JP));
-            rule2BonusText.setText(getString(R.string.info_mode2_JP));
-            rule3OkBtn.setText(getString(R.string.ok_JP));
-            rule3CheckBox.setText(getString(R.string.checkBox_JP));
-            rule3Text.setText(getString(R.string.rule_JP));
-            rule3BonusText.setText(getString(R.string.info_mode3_JP));
+            setLanguageJP();
 
         }
 
     } // setLanguage()
+
+
+    public void setLanguageEN() {
+
+        //영어
+        gameMode1Btn.setText(getString(R.string.mode1Text_EN));
+        gameMode2Btn.setText(getString(R.string.mode2Text_EN));
+        gameMode3Btn.setText(getString(R.string.mode3Text_EN));
+        settingText.setText(getString(R.string.setting_EN));
+        soundText.setText(getString(R.string.setSound_EN));
+        languageText.setText(getString(R.string.setLanguage_EN));
+        languageChoiceText.setText(getString(R.string.language_EN));
+        rule1OkBtn.setText(getString(R.string.ok_EN));
+        rule1CheckBox.setText(getString(R.string.checkBox_EN));
+        rule1Text.setText(getString(R.string.rule_EN));
+        rule1BonusText.setText(getString(R.string.info_mode1_EN));
+        rule1BonusTitleText.setText(R.string.bonus_EN);
+        rule2OkBtn.setText(getString(R.string.ok_EN));
+        rule2CheckBox.setText(getString(R.string.checkBox_EN));
+        rule2Text.setText(getString(R.string.rule_EN));
+        rule2BonusText.setText(getString(R.string.info_mode2_EN));
+        rule2BonusTitleText.setText(R.string.bonus_EN);
+        rule3OkBtn.setText(getString(R.string.ok_EN));
+        rule3CheckBox.setText(getString(R.string.checkBox_EN));
+        rule3Text.setText(getString(R.string.rule_EN));
+        rule3BonusText.setText(getString(R.string.info_mode3_EN));
+        rule3BonusTitleText.setText(R.string.fever_EN);
+
+    } // setLanguageEn()
+
+
+    public void setLanguageKR() {
+
+        //한국어
+        gameMode1Btn.setText(getString(R.string.mode1Text_KR));
+        gameMode2Btn.setText(getString(R.string.mode2Text_KR));
+        gameMode3Btn.setText(getString(R.string.mode3Text_KR));
+        settingText.setText(getString(R.string.setting_KR));
+        soundText.setText(getString(R.string.setSound_KR));
+        languageText.setText(getString(R.string.setLanguage_KR));
+        languageChoiceText.setText(getString(R.string.language_KR));
+        rule1OkBtn.setText(getString(R.string.ok_KR));
+        rule1CheckBox.setText(getString(R.string.checkBox_KR));
+        rule1Text.setText(getString(R.string.rule_KR));
+        rule1BonusText.setText(getString(R.string.info_mode1_KR));
+        rule1BonusTitleText.setText(R.string.bonus_KR);
+        rule2OkBtn.setText(getString(R.string.ok_KR));
+        rule2CheckBox.setText(getString(R.string.checkBox_KR));
+        rule2Text.setText(getString(R.string.rule_KR));
+        rule2BonusText.setText(getString(R.string.info_mode2_KR));
+        rule2BonusTitleText.setText(R.string.bonus_KR);
+        rule3OkBtn.setText(getString(R.string.ok_KR));
+        rule3CheckBox.setText(getString(R.string.checkBox_KR));
+        rule3Text.setText(getString(R.string.rule_KR));
+        rule3BonusText.setText(getString(R.string.info_mode3_KR));
+        rule3BonusTitleText.setText(R.string.fever_KR);
+
+    } // setLanguageKR()
+
+
+    public void setLanguageCN1() {
+
+        //중국어(간체)
+        gameMode1Btn.setText(getString(R.string.mode1Text_CN1));
+        gameMode2Btn.setText(getString(R.string.mode2Text_CN1));
+        gameMode3Btn.setText(getString(R.string.mode3Text_CN1));
+        settingText.setText(getString(R.string.setting_CN1));
+        soundText.setText(getString(R.string.setSound_CN1));
+        languageText.setText(getString(R.string.setLanguage_CN1));
+        languageChoiceText.setText(getString(R.string.language_CN1));
+        rule1OkBtn.setText(getString(R.string.ok_CN1));
+        rule1CheckBox.setText(getString(R.string.checkBox_CN1));
+        rule1Text.setText(getString(R.string.rule_CN1));
+        rule1BonusText.setText(getString(R.string.info_mode1_CN1));
+        rule1BonusTitleText.setText(R.string.bonus_CN1);
+        rule2OkBtn.setText(getString(R.string.ok_CN1));
+        rule2CheckBox.setText(getString(R.string.checkBox_CN1));
+        rule2Text.setText(getString(R.string.rule_CN1));
+        rule2BonusText.setText(getString(R.string.info_mode2_CN1));
+        rule2BonusTitleText.setText(R.string.bonus_CN1);
+        rule3OkBtn.setText(getString(R.string.ok_CN1));
+        rule3CheckBox.setText(getString(R.string.checkBox_CN1));
+        rule3Text.setText(getString(R.string.rule_CN1));
+        rule3BonusText.setText(getString(R.string.info_mode3_CN1));
+        rule3BonusTitleText.setText(R.string.fever_CN1);
+
+    } // setLanguageCN1()
+
+
+    public void setLanguageCN2() {
+
+        //중국어(번체)
+        gameMode1Btn.setText(getString(R.string.mode1Text_CN2));
+        gameMode2Btn.setText(getString(R.string.mode2Text_CN2));
+        gameMode3Btn.setText(getString(R.string.mode3Text_CN2));
+        settingText.setText(getString(R.string.setting_CN2));
+        soundText.setText(getString(R.string.setSound_CN2));
+        languageText.setText(getString(R.string.setLanguage_CN2));
+        languageChoiceText.setText(getString(R.string.language_CN2));
+        rule1OkBtn.setText(getString(R.string.ok_CN2));
+        rule1CheckBox.setText(getString(R.string.checkBox_CN2));
+        rule1Text.setText(getString(R.string.rule_CN2));
+        rule1BonusText.setText(getString(R.string.info_mode1_CN2));
+        rule1BonusTitleText.setText(R.string.bonus_CN2);
+        rule2OkBtn.setText(getString(R.string.ok_CN2));
+        rule2CheckBox.setText(getString(R.string.checkBox_CN2));
+        rule2Text.setText(getString(R.string.rule_CN2));
+        rule2BonusText.setText(getString(R.string.info_mode2_CN2));
+        rule2BonusTitleText.setText(R.string.bonus_CN2);
+        rule3OkBtn.setText(getString(R.string.ok_CN2));
+        rule3CheckBox.setText(getString(R.string.checkBox_CN2));
+        rule3Text.setText(getString(R.string.rule_CN2));
+        rule3BonusText.setText(getString(R.string.info_mode3_CN2));
+        rule3BonusTitleText.setText(R.string.fever_CN2);
+
+    } // setLanguageCN2()
+
+
+    public void setLanguageJP() {
+
+        //일본어
+        gameMode1Btn.setText(getString(R.string.mode1Text_JP));
+        gameMode2Btn.setText(getString(R.string.mode2Text_JP));
+        gameMode3Btn.setText(getString(R.string.mode3Text_JP));
+        settingText.setText(getString(R.string.setting_JP));
+        soundText.setText(getString(R.string.setSound_JP));
+        languageText.setText(getString(R.string.setLanguage_JP));
+        languageChoiceText.setText(getString(R.string.language_JP));
+        rule1OkBtn.setText(getString(R.string.ok_JP));
+        rule1CheckBox.setText(getString(R.string.checkBox_JP));
+        rule1Text.setText(getString(R.string.rule_JP));
+        rule1BonusText.setText(getString(R.string.info_mode1_JP));
+        rule1BonusTitleText.setText(R.string.bonus_JP);
+        rule2OkBtn.setText(getString(R.string.ok_JP));
+        rule2CheckBox.setText(getString(R.string.checkBox_JP));
+        rule2Text.setText(getString(R.string.rule_JP));
+        rule2BonusText.setText(getString(R.string.info_mode2_JP));
+        rule2BonusTitleText.setText(R.string.bonus_JP);
+        rule3OkBtn.setText(getString(R.string.ok_JP));
+        rule3CheckBox.setText(getString(R.string.checkBox_JP));
+        rule3Text.setText(getString(R.string.rule_JP));
+        rule3BonusText.setText(getString(R.string.info_mode3_JP));
+        rule3BonusTitleText.setText(R.string.fever_JP);
+
+    } // setLanguageJP()
+
 
     public void setSoundImage() {
 
@@ -662,6 +774,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     } // setSoundImage()
+
 
     public class AppearThread extends Thread {
 
@@ -689,11 +802,17 @@ public class MainActivity extends AppCompatActivity {
                     setUpImage.startAnimation(appear);
 //                    checkRankingBtn.startAnimation(appear);
 
+                    MobileAds.initialize(MainActivity.this);
+                    adView = findViewById(R.id.mainAdView);
+                    AdRequest adRequest = new AdRequest.Builder().build();
+                    adView.loadAd(adRequest);
+
                 }
             });
 
         }
 
     } // AppearThread
+
 
 }

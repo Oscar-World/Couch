@@ -2,7 +2,7 @@
     <string name="app_name">Couch</string>
 
     <string name="timeLimit60">60s</string>
-    <string name="timeLimit5">5s/1Stage</string>
+    <string name="timeLimit5">5s / 1Stage</string>
     <string name="timeLimitInfinite">∞</string>
     <string name="chance1">x1</string>
     <string name="chance3">x3</string>
@@ -15,6 +15,8 @@
     <string name="checkBox_KR">다시 보지 않기</string>
     <string name="ok_KR">확인</string>
     <string name="rule_KR">규칙</string>
+    <string name="bonus_KR">보너스 타임</string>
+    <string name="fever_KR">피버 타임</string>
 
     <string name="mode1Text_KR">게임 모드 1</string>
     <string name="mode2Text_KR">게임 모드 2</string>
@@ -32,7 +34,8 @@
     <string name="checkBox_EN">Don\'t look again</string>
     <string name="ok_EN">OK</string>
     <string name="rule_EN">Rule</string>
-
+    <string name="bonus_EN">Bonus Time</string>
+    <string name="fever_EN">Fever Time</string>
 
     <string name="mode1Text_EN">Game Mode 1</string>
     <string name="mode2Text_EN">Game Mode 2</string>
@@ -50,6 +53,8 @@
     <string name="checkBox_CN1">别再看了</string>
     <string name="ok_CN1">好</string>
     <string name="rule_CN1">规规矩矩</string>
+    <string name="bonus_CN1">奖金时间</string>
+    <string name="fever_CN1">发热时间</string>
 
     <string name="mode1Text_CN1">游戏模式 1</string>
     <string name="mode2Text_CN1">游戏模式 2</string>
@@ -67,6 +72,8 @@
     <string name="checkBox_CN2">別再看了</string>
     <string name="ok_CN2">好</string>
     <string name="rule_CN2">規規矩矩</string>
+    <string name="bonus_CN2">獎金時間</string>
+    <string name="fever_CN2">發熱時間</string>
 
     <string name="mode1Text_CN2">遊戲模式 1</string>
     <string name="mode2Text_CN2">遊戲模式 2</string>
@@ -84,6 +91,8 @@
     <string name="checkBox_JP">二度と見ないでください</string>
     <string name="ok_JP">OK</string>
     <string name="rule_JP">支配する</string>
+    <string name="bonus_JP">ボーナス·タイム</string>
+    <string name="fever_JP">フィーバー·タイム</string>
 
     <string name="mode1Text_JP">ゲームモード 1</string>
     <string name="mode2Text_JP">ゲームモード 2</string>
