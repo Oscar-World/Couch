@@ -28,16 +28,6 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name=".Activity.RankActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".Activity.AdActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            />
-        <activity
             android:name=".Activity.StartActivity"
             android:exported="true"
             android:screenOrientation="portrait"

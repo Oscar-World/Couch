@@ -7,6 +7,18 @@
     <string name="chance1">x1</string>
     <string name="chance3">x3</string>
 
+    <string name="goat">GOAT</string>
+    <string name="challenger">Challenger</string>
+    <string name="master">Master</string>
+    <string name="diamond">Diamond</string>
+    <string name="emerald">Emerald</string>
+    <string name="platinum">Platinum</string>
+    <string name="gold">Gold</string>
+    <string name="silver">Silver</string>
+    <string name="bronze">Bronze</string>
+    <string name="iron">Iron</string>
+    <string name="stone">Stone</string>
+
 
     <string name="language_KR">한국어</string>
     <string name="setting_KR">설정</string>
@@ -18,9 +30,9 @@
     <string name="bonus_KR">보너스 타임</string>
     <string name="fever_KR">피버 타임</string>
 
-    <string name="mode1Text_KR">게임 모드 1</string>
-    <string name="mode2Text_KR">게임 모드 2</string>
-    <string name="mode3Text_KR">게임 모드 3</string>
+    <string name="mode1Text_KR">시간 제한 모드</string>
+    <string name="mode2Text_KR">스피드 모드</string>
+    <string name="mode3Text_KR">무한 모드</string>
 
     <string name="info_mode1_KR">일정 콤보 도달 시 보너스 스테이지 발생.\n버튼을 마구 눌러주세요!</string>
     <string name="info_mode2_KR">일정 콤보 도달 시 보너스 스테이지 발생.\n쉬운 난이도의 문제가 등장합니다!</string>
@@ -37,9 +49,9 @@
     <string name="bonus_EN">Bonus Time</string>
     <string name="fever_EN">Fever Time</string>
 
-    <string name="mode1Text_EN">Game Mode 1</string>
-    <string name="mode2Text_EN">Game Mode 2</string>
-    <string name="mode3Text_EN">Game Mode 3</string>
+    <string name="mode1Text_EN">TIMEOUT MODE</string>
+    <string name="mode2Text_EN">SPEED MODE</string>
+    <string name="mode3Text_EN">INFINITE MODE</string>
 
     <string name="info_mode1_EN">Bonus stage happen when a specific combo is reached.\nPress the button!</string>
     <string name="info_mode2_EN">Bonus stage happen when a specific combo is reached.\nAn easy stage appears!</string>
@@ -56,9 +68,9 @@
     <string name="bonus_CN1">奖金时间</string>
     <string name="fever_CN1">发热时间</string>
 
-    <string name="mode1Text_CN1">游戏模式 1</string>
-    <string name="mode2Text_CN1">游戏模式 2</string>
-    <string name="mode3Text_CN1">游戏模式 3</string>
+    <string name="mode1Text_CN1">超时模式</string>
+    <string name="mode2Text_CN1">速度模式</string>
+    <string name="mode3Text_CN1">无限模式</string>
 
     <string name="info_mode1_CN1">达到一定组合时，将产生奖励舞台.\n点击按钮!</string>
     <string name="info_mode2_CN1">达到一定组合时，将产生奖励舞台.\n一个简单的阶段出现!</string>
@@ -75,9 +87,9 @@
     <string name="bonus_CN2">獎金時間</string>
     <string name="fever_CN2">發熱時間</string>
 
-    <string name="mode1Text_CN2">遊戲模式 1</string>
-    <string name="mode2Text_CN2">遊戲模式 2</string>
-    <string name="mode3Text_CN2">遊戲模式 3</string>
+    <string name="mode1Text_CN2">超時模式</string>
+    <string name="mode2Text_CN2">速度模式</string>
+    <string name="mode3Text_CN2">無限模式</string>
 
     <string name="info_mode1_CN2">達到一定組合時，將產生獎勵舞臺.\n點擊按鈕!</string>
     <string name="info_mode2_CN2">達到一定組合時，將產生獎勵舞臺.\n一個簡單的階段出現!</string>
@@ -94,9 +106,9 @@
     <string name="bonus_JP">ボーナス·タイム</string>
     <string name="fever_JP">フィーバー·タイム</string>
 
-    <string name="mode1Text_JP">ゲームモード 1</string>
-    <string name="mode2Text_JP">ゲームモード 2</string>
-    <string name="mode3Text_JP">ゲームモード 3</string>
+    <string name="mode1Text_JP">時間制限モード</string>
+    <string name="mode2Text_JP">スピードモード</string>
+    <string name="mode3Text_JP">無限モード</string>
 
     <string name="info_mode1_JP">ボーナスステージは、特定のコンボに到達すると発生します.\nボタンを押します!</string>
     <string name="info_mode2_JP">ボーナスステージは、特定のコンボに到達すると発生します.\n楽なステージが登場!</string>

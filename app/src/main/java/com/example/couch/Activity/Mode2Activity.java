@@ -48,7 +48,6 @@ public class Mode2Activity extends AppCompatActivity {
 
     ImageView btnRestart;
     ImageView btnHome;
-    ImageView btnRanking;
 
     ProgressBar pB_Time;
     ProgressBar pB_BonusTime;
@@ -150,7 +149,6 @@ public class Mode2Activity extends AppCompatActivity {
 
         btnRestart = findViewById(R.id.btnRestart);
         btnHome = findViewById(R.id.btnHome);
-        btnRanking = findViewById(R.id.btnRanking);
 
         pB_Time = (ProgressBar) findViewById(R.id.pB_Mod2Time);
         pB_Time.setMax(5);
@@ -334,14 +332,6 @@ public class Mode2Activity extends AppCompatActivity {
     } // btninit()
 
     public void playing() {
-
-//        btnRanking.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(getApplicationContext(), RankActivity.class);
-//                startActivity(i);
-//            }
-//        });
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

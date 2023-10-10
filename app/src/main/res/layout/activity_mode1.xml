@@ -2020,7 +2020,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:text="SCORE : "
                 android:textSize="30sp"
                 android:textAlignment="center"/>
 
@@ -2028,7 +2027,7 @@
                 android:id="@+id/btnGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="35dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal" >
 
@@ -2045,30 +2044,46 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:backgroundTint="@color/white"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="50dp"
                     android:src="@drawable/home"
                     android:scaleType="fitCenter" />
 
-                <ImageView
-                    android:id="@+id/btnRanking"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:backgroundTint="@color/white"
-                    android:src="@drawable/ranking"
-                    android:scaleType="fitCenter" />
-
             </LinearLayout>
 
 
-            <LinearLayout
+            <FrameLayout
                 android:id="@+id/rankingLayout"
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_margin="50dp"
-                android:orientation="vertical" >
+                android:layout_width="250dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/custom_settingbox"
+                >
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/Tier_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="여기 내 티어"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/rank_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="여기 내 랭크"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    />
+
+            </FrameLayout>
 
         </LinearLayout>
 

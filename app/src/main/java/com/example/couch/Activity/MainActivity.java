@@ -1,5 +1,6 @@
 package com.example.couch.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +27,11 @@ import com.example.couch.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Locale;
 
@@ -36,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     Button gameMode1Btn;
     Button gameMode2Btn;
     Button gameMode3Btn;
-//    Button checkRankingBtn;
 
     Animation appear;
 
@@ -121,6 +126,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume() 호출됨");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("test");
+        ref.setValue("Hello Oscar!");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "onDataChange : " + snapshot.getKey());
+                Log.d(TAG, "onDataChange : " + snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG, "onCancelled: " + error.toException());
+            }
+        });
     }
 
     @Override
@@ -178,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
         gameMode1Btn = findViewById(R.id.gameMode1_Btn);
         gameMode2Btn = findViewById(R.id.gameMode2_Btn);
         gameMode3Btn = findViewById(R.id.gameMode3_Btn);
-//        checkRankingBtn = findViewById(R.id.checkRanking_Btn);
 
         appear = AnimationUtils.loadAnimation(MainActivity.this, R.anim.logoappear);
 
@@ -334,15 +353,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        // 랭킹 버튼 클릭
-//        checkRankingBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this, RankActivity.class);
-//                startActivity(i);
-//            }
-//        });
 
         // 설정 이미지 클릭
         setUpImage.setOnClickListener(new View.OnClickListener() {

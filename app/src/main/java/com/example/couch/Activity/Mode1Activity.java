@@ -1,5 +1,6 @@
 package com.example.couch.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -56,7 +57,6 @@ public class Mode1Activity extends AppCompatActivity {
 
     ImageView btnRestart;
     ImageView btnHome;
-    ImageView btnRanking;
 
     GridLayout layout3;
     GridLayout layout4;
@@ -192,7 +192,6 @@ public class Mode1Activity extends AppCompatActivity {
 
         btnRestart = findViewById(R.id.btnRestart);
         btnHome = findViewById(R.id.btnHome);
-        btnRanking = findViewById(R.id.btnRanking);
 
         soundShared = getSharedPreferences("sound", MODE_PRIVATE);
         soundStatus = soundShared.getString("sound", "");
@@ -267,14 +266,6 @@ public class Mode1Activity extends AppCompatActivity {
     } // setView()
 
     public void playing() {
-
-//        btnRanking.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(Mode1Activity.this, RankActivity.class);
-//                startActivity(i);
-//            }
-//        });
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -743,6 +734,7 @@ public class Mode1Activity extends AppCompatActivity {
         overLayout.setVisibility(View.VISIBLE);
 
     } // gameOver()
+
 
     public class TimeThread extends Thread {
 

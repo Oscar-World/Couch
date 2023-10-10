@@ -52,7 +52,6 @@ public class Mode3Activity extends AppCompatActivity {
 
     ImageView btnRestart;
     ImageView btnHome;
-    ImageView btnRanking;
     Random random = new Random();
 
     LinearLayout progressBarLayout;
@@ -148,7 +147,6 @@ public class Mode3Activity extends AppCompatActivity {
 
         btnRestart = findViewById(R.id.btnRestart);
         btnHome = findViewById(R.id.btnHome);
-        btnRanking = findViewById(R.id.btnRanking);
 
         progressBarLayout = findViewById(R.id.mode3ProgressBar_Layout);
         pB_FeverTime = (ProgressBar) findViewById(R.id.pB_FeverTime);
@@ -181,14 +179,6 @@ public class Mode3Activity extends AppCompatActivity {
     } // setView()
 
     public void playing() {
-
-//        btnRanking.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(getApplicationContext(), RankActivity.class);
-//                startActivity(i);
-//            }
-//        });
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
