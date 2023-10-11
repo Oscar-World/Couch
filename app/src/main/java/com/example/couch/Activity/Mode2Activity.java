@@ -1,5 +1,6 @@
 package com.example.couch.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,6 +21,11 @@ import android.widget.TextView;
 import com.example.couch.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
@@ -724,6 +730,22 @@ public class Mode2Activity extends AppCompatActivity {
     } // levelColor()
 
     public void gameOver() {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("score");
+        ref.child("mode2").setValue(score);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "onDataChange : " + snapshot.getKey());
+                Log.d(TAG, "onDataChange : " + snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG, "onCancelled: " + error.toException());
+            }
+        });
 
         finalScoreView.setText("SCORE : " + score);
         gameLayout.setVisibility(View.GONE);

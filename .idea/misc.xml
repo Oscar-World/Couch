@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/Couch/app/src/main/res/drawable/custom_btn.xml" value="0.2355" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Couch/app/src/main/res/drawable/custom_framelayout.xml" value="0.2955" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Couch/app/src/main/res/drawable/custom_framelayout2.xml" value="0.2955" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Couch/app/src/main/res/drawable/custom_rulecheckbox.xml" value="0.2955" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Couch/app/src/main/res/drawable/custom_settingbox.xml" value="0.2955" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Couch/app/src/main/res/layout/activity_ad.xml" value="0.3515625" />

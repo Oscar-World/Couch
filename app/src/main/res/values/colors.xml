@@ -11,5 +11,10 @@
     <color name="gray">#FFC3C3C3</color>
     <color name="gray2">#FFE8E8E8</color>
     <color name="none">#00FFFFFF</color>
+    <color name="blue2">#FF8E95FF</color>
+    <color name="blue3">#FFA0A6FF</color>
+    <color name="blue4">#FFD3D6FF</color>
+    <color name="blue5">#FFDADDFF</color>
+    <color name="blue6">#FFe9eaff</color>
 
 </resources>

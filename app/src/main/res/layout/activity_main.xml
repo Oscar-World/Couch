@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_framelayout"
-        android:layout_marginVertical="100dp"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="35dp"
+        android:layout_marginHorizontal="20dp"
         android:visibility="gone"
         >
 
@@ -26,8 +26,8 @@
 
             <ImageButton
                 android:id="@+id/mode1RuleBack_Btn"
-                android:layout_width="55dp"
-                android:layout_height="50dp"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/none"
                 android:scaleType="fitXY"
                 android:translationZ="1dp"
@@ -159,7 +159,7 @@
                 android:text="@string/info_mode1_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="50dp"
+                android:layout_marginHorizontal="40dp"
                 />
 
             <View
@@ -196,8 +196,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ok_EN"
+                    android:background="@drawable/custom_btn"
                     android:layout_gravity="center"
-                    android:layout_marginRight="5dp"
                     />
 
             </LinearLayout>
@@ -212,8 +212,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_framelayout"
-        android:layout_marginVertical="100dp"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="35dp"
+        android:layout_marginHorizontal="20dp"
         android:visibility="gone"
         >
 
@@ -225,8 +225,8 @@
 
             <ImageButton
                 android:id="@+id/mode2RuleBack_Btn"
-                android:layout_width="55dp"
-                android:layout_height="50dp"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/none"
                 android:scaleType="fitXY"
                 android:translationZ="1dp"
@@ -358,7 +358,7 @@
                 android:text="@string/info_mode2_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="50dp"
+                android:layout_marginHorizontal="40dp"
                 />
 
             <View
@@ -412,8 +412,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_framelayout"
-        android:layout_marginVertical="100dp"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="35dp"
+        android:layout_marginHorizontal="20dp"
         android:visibility="gone"
         >
 
@@ -425,8 +425,8 @@
 
             <ImageButton
                 android:id="@+id/mode3RuleBack_Btn"
-                android:layout_width="55dp"
-                android:layout_height="50dp"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/none"
                 android:scaleType="fitXY"
                 android:translationZ="1dp"
@@ -558,7 +558,7 @@
                 android:text="@string/info_mode3_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="50dp"
+                android:layout_marginHorizontal="40dp"
                 />
 
             <View
@@ -612,15 +612,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginVertical="80dp"
+        android:layout_marginVertical="70dp"
         android:background="@drawable/custom_framelayout"
         android:visibility="gone"
         >
 
         <ImageButton
             android:id="@+id/settingBack_Btn"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
             android:backgroundTint="@color/none"
             android:scaleType="fitXY"
             android:translationZ="1dp"
@@ -681,8 +681,8 @@
 
                 <ImageButton
                     android:id="@+id/settingSoundOn_Image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/ranking"
                     android:scaleType="centerInside"
                     android:background="@color/none"
@@ -691,8 +691,8 @@
 
                 <ImageButton
                     android:id="@+id/settingSoundOff_Image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/home"
                     android:scaleType="centerInside"
                     android:background="@color/none"
@@ -751,7 +751,7 @@
                 android:layout_gravity="center"
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="25dp"
-                android:background="@drawable/custom_framelayout"
+                android:background="@drawable/custom_framelayout2"
                 />
 
             <View

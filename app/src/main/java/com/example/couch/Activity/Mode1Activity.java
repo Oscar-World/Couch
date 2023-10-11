@@ -1,5 +1,6 @@
 package com.example.couch.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +13,11 @@ import android.util.Log;
 import com.example.couch.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.graphics.Color;
 import android.os.Handler;
@@ -92,8 +98,8 @@ public class Mode1Activity extends AppCompatActivity {
     int column;
 
     boolean status = false;
-
     boolean sound = true;
+    boolean gameOverStatus = false;
 
     SharedPreferences soundShared;
     String soundStatus;
@@ -413,6 +419,7 @@ public class Mode1Activity extends AppCompatActivity {
 
         startMediaPlayer(R.raw.wrong);
         sound = false;
+        gameOverStatus = true;
         gameOver();
 
     } // wrongAnswer()
@@ -729,6 +736,23 @@ public class Mode1Activity extends AppCompatActivity {
 
     public void gameOver() {
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("score");
+        ref.child("mode1").setValue(score);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "onDataChange : " + snapshot.getKey());
+                Log.d(TAG, "onDataChange : " + snapshot.child("mode1").getValue());
+                Log.d(TAG, "onDataChange : " + snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG, "onCancelled: " + error.toException());
+            }
+        });
+
         finalScoreView.setText("SCORE : " + score);
         gameLayout.setVisibility(View.GONE);
         overLayout.setVisibility(View.VISIBLE);
@@ -815,7 +839,10 @@ public class Mode1Activity extends AppCompatActivity {
                     if(sound){
                         wrongMediaPlayer.start();}
 
-                    gameOver();
+                    if(!gameOverStatus) {
+                        gameOver();
+                    }
+
                 }
             });
 

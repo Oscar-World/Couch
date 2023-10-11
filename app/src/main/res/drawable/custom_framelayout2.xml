@@ -9,10 +9,10 @@
 
         <shape android:shape="rectangle">
 
-            <stroke android:width="5dp"
-                android:color="@color/gray2"/>
+            <stroke android:width="3dp"
+                android:color="@color/blue"/>
 
-            <solid android:color="@color/blue4"/>
+            <solid android:color="@color/blue5"/>
 
             <corners
                 android:topLeftRadius="15dp"
