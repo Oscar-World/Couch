@@ -397,7 +397,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ok_EN"
                     android:layout_gravity="center"
-                    android:layout_marginRight="5dp"
+                    android:background="@drawable/custom_btn"
                     />
 
             </LinearLayout>
@@ -597,7 +597,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ok_EN"
                     android:layout_gravity="center"
-                    android:layout_marginRight="5dp"
+                    android:background="@drawable/custom_btn"
                     />
 
             </LinearLayout>

@@ -1,15 +1,16 @@
 package com.example.couch.Activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.couch.Data.Database;
+import com.example.couch.Data.Tier;
 import com.example.couch.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -26,12 +27,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Mode1Activity extends AppCompatActivity {
@@ -105,6 +106,15 @@ public class Mode1Activity extends AppCompatActivity {
     String soundStatus;
 
     AdView adView;
+    long dataSize = 0;
+
+    TextView tierText;
+    TextView rankText;
+
+    FirebaseDatabase database;
+    DatabaseReference ref;
+    boolean check1 = false;
+    boolean check2 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,6 +211,12 @@ public class Mode1Activity extends AppCompatActivity {
 
         soundShared = getSharedPreferences("sound", MODE_PRIVATE);
         soundStatus = soundShared.getString("sound", "");
+
+        tierText = findViewById(R.id.tier_Text);
+        rankText = findViewById(R.id.rank_Text);
+
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("score");
 
         adView = findViewById(R.id.mode1AdView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -733,18 +749,40 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // timeCount()
 
-
     public void gameOver() {
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("score");
-        ref.child("mode1").setValue(score);
+        ArrayList<Integer> list = new ArrayList<>();
+        Tier tier = new Tier();
+        Database db = new Database(score);
+
+        getData(list, tier, db);
+
+//        ref.child("mode1").removeValue();
+
+        finalScoreView.setText("SCORE : " + score);
+        gameLayout.setVisibility(View.GONE);
+        overLayout.setVisibility(View.VISIBLE);
+
+    } // gameOver()
+
+    public void getData(ArrayList<Integer> list, Tier tier, Database db) {
+
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d(TAG, "onDataChange : " + snapshot.getKey());
-                Log.d(TAG, "onDataChange : " + snapshot.child("mode1").getValue());
-                Log.d(TAG, "onDataChange : " + snapshot.getValue().toString());
+
+                if (!check1) {
+
+                    dataSize = snapshot.child("mode1").getChildrenCount();
+                    Log.d(TAG, "dataSize1 : " + dataSize);
+
+                    ref.child("mode1").child(String.valueOf(dataSize+1)).setValue(db);
+
+                    setData(list, tier, db);
+                    check1 = true;
+
+                }
+
             }
 
             @Override
@@ -753,11 +791,44 @@ public class Mode1Activity extends AppCompatActivity {
             }
         });
 
-        finalScoreView.setText("SCORE : " + score);
-        gameLayout.setVisibility(View.GONE);
-        overLayout.setVisibility(View.VISIBLE);
+    } // getData()
 
-    } // gameOver()
+    public void setData(ArrayList<Integer> list, Tier tier, Database db) {
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (!check2) {
+
+                    dataSize = snapshot.child("mode1").getChildrenCount();
+                    Log.d(TAG, "dataSize3 : " + dataSize);
+
+                    for (int i = 1; i <= dataSize; i++) {
+
+                        Database db2 = snapshot.child("mode1").child(String.valueOf(i)).getValue(Database.class);
+                        Log.d(TAG, "db.getNum() : " + db2.getScore());
+                        list.add(db2.getScore());
+
+                    }
+
+                    tier.checkDB(list, score);
+                    tierText.setText(tier.getTier());
+                    rankText.setText(String.valueOf(tier.getPercentage()));
+
+                    check2 = true;
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG, "onCancelled: " + error.toException());
+            }
+        });
+
+    } // setData()
 
 
     public class TimeThread extends Thread {

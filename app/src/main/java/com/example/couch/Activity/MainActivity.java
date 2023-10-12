@@ -126,9 +126,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume() 호출됨");
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference ref = database.getReference("test");
-//        ref.removeValue();
     }
 
     @Override

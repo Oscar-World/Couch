@@ -1,13 +1,16 @@
 package com.example.couch.Data;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Tier {
 
+    String TAG = "티어 클래스";
     long rankSize = 0;
     String tier = "";
     double percentage = 0;
-    ArrayList<Integer> list = new ArrayList<>();
 
     public Tier(String tier, double percentage) {
 
@@ -16,37 +19,49 @@ public class Tier {
 
     }
 
-    public void checkDB(int score, int mode) {
+    public Tier() {
+
+    }
+
+    public void checkDB(ArrayList<Integer> list, int score) {
 
         // DB에 내 점수 등록 후 모든 리스트 읽기.
         // 반복문으로 리스트에 넣고 리스트 정렬(내림차순)
         // 백분율 먼저 구하기
         // 백분율로 티어 구하기
         rankSize = list.size();
-        percentage = (list.indexOf(score)+1) / rankSize * 100;
+        Collections.sort(list, Collections.reverseOrder());
+        double index = list.indexOf(score) + 1.0;
+        percentage = index / rankSize * 100;
+
+        Log.d(TAG, "list.indexOf : " + list.indexOf(score));
+        Log.d(TAG, "rankSize : " + rankSize);
+        Log.d(TAG, "index / rankSize : " + index / rankSize);
 
         if (list.indexOf(score) == 0) {
-            tier = "goat";
+            tier = "GOAT";
+            percentage = 0.0;
         } else if (score == 0) {
-            tier = "stone";
+            tier = "Stone";
+            percentage = 100.0;
         } else if (percentage <= 4) {
-            tier = "challenger";
+            tier = "Challenger";
         } else if (percentage <= 11) {
-            tier = "master";
+            tier = "Master";
         } else if (percentage <= 23) {
-            tier = "diamond";
+            tier = "Diamond";
         } else if (percentage <= 40) {
-            tier = "emerald";
+            tier = "Emerald";
         } else if (percentage <= 60) {
-            tier = "platinum";
+            tier = "Platinum";
         } else if (percentage <= 77) {
-            tier = "gold";
+            tier = "Gold";
         } else if (percentage <= 89) {
-            tier = "silver";
+            tier = "Silver";
         } else if (percentage <= 96) {
-            tier = "bronze";
+            tier = "Bronze";
         } else if (percentage <= 100) {
-            tier = "iron";
+            tier = "Iron";
         }
 
     } // checkDB()

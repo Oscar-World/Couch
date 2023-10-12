@@ -2061,10 +2061,10 @@
                 >
 
                 <TextView
-                    android:id="@+id/Tier_Text"
+                    android:id="@+id/tier_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="여기 내 티어"
+                    android:text="티어"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
                     android:textSize="20dp"
@@ -2076,7 +2076,7 @@
                     android:id="@+id/rank_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="여기 내 랭크"
+                    android:text="%"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:textSize="20dp"
