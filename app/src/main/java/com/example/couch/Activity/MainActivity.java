@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -494,6 +495,8 @@ public class MainActivity extends AppCompatActivity {
                 soundEditor.putString("sound", "on");
                 soundEditor.commit();
 
+                startMediaPlayer(R.raw.correct);
+
                 soundOnImage.setVisibility(View.GONE);
                 soundOffImage.setVisibility(View.VISIBLE);
 
@@ -546,25 +549,30 @@ public class MainActivity extends AppCompatActivity {
         }
 
         localLanguage = locale.getLanguage();
-        Log.d(TAG, "getLocal - 국가 이름 : " + locale.getDisplayCountry());
-        Log.d(TAG, "getLocal - 국가 코드 : " + locale.getCountry());
-        Log.d(TAG, "getLocal - 언어 : " + localLanguage);
 
         if (localLanguage.equals("en")) {
 
             setLanguageEN();
+            languageEditor.putInt("num", 0);
+            languageEditor.commit();
 
         } else if (localLanguage.equals("ko")) {
 
             setLanguageKR();
+            languageEditor.putInt("num", 1);
+            languageEditor.commit();
 
         } else if (localLanguage.equals("zh")) {
 
             setLanguageCN1();
+            languageEditor.putInt("num", 2);
+            languageEditor.commit();
 
         } else if (localLanguage.equals("ja")) {
 
             setLanguageJP();
+            languageEditor.putInt("num", 4);
+            languageEditor.commit();
 
         } else {
 
@@ -769,6 +777,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
     } // setSoundImage()
+
+
+    public void startMediaPlayer(int id) {
+
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        mediaPlayer = MediaPlayer.create(MainActivity.this, id);
+        mediaPlayer.setLooping(false);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
+
+        mediaPlayer.start();
+
+    } // startMediaPlayer()
 
 
     public class AppearThread extends Thread {

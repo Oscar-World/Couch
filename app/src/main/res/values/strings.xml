@@ -4,8 +4,8 @@
     <string name="timeLimit60">60s</string>
     <string name="timeLimit5">5s / 1Stage</string>
     <string name="timeLimitInfinite">∞</string>
-    <string name="chance1">x1</string>
-    <string name="chance3">x3</string>
+    <string name="chance1">x 1</string>
+    <string name="chance3">x 3</string>
 
     <string name="goat">GOAT</string>
     <string name="challenger">Challenger</string>
@@ -37,6 +37,7 @@
     <string name="info_mode1_KR">일정 콤보 도달 시 보너스 스테이지 발생.\n버튼을 마구 눌러주세요!</string>
     <string name="info_mode2_KR">일정 콤보 도달 시 보너스 스테이지 발생.\n쉬운 난이도의 문제가 등장합니다!</string>
     <string name="info_mode3_KR">일정 콤보 도달 시 피버 타임 발생.\n피버 타임 중에는 점수를 2배 획득합니다!</string>
+    <string name="backPressed_KR">한번 더 누르면 종료됩니다.</string>
 
 
     <string name="language_EN">English</string>
@@ -56,6 +57,8 @@
     <string name="info_mode1_EN">Bonus stage happen when a specific combo is reached.\nPress the button!</string>
     <string name="info_mode2_EN">Bonus stage happen when a specific combo is reached.\nAn easy stage appears!</string>
     <string name="info_mode3_EN">Fever time happen when a specific combo is reached.\nDuring Fever Time, score twice as much!</string>
+    <string name="backPressed_EN">Press it again to end.</string>
+
 
 
     <string name="language_CN1">中文(简体)</string>
@@ -75,6 +78,7 @@
     <string name="info_mode1_CN1">达到一定组合时，将产生奖励舞台.\n点击按钮!</string>
     <string name="info_mode2_CN1">达到一定组合时，将产生奖励舞台.\n一个简单的阶段出现!</string>
     <string name="info_mode3_CN1">达到一定组合时，将产生奖励舞台.\n在奖金时间内获得2倍的分数!</string>
+    <string name="backPressed_CN1">再按一次就结束了</string>
 
 
     <string name="language_CN2">中文(繁體)</string>
@@ -94,6 +98,7 @@
     <string name="info_mode1_CN2">達到一定組合時，將產生獎勵舞臺.\n點擊按鈕!</string>
     <string name="info_mode2_CN2">達到一定組合時，將產生獎勵舞臺.\n一個簡單的階段出現!</string>
     <string name="info_mode3_CN2">達到一定組合時，將產生獎勵舞臺.\n在額外時間中獲得2倍的分數!</string>
+    <string name="backPressed_CN2">再按一次就結束了</string>
 
 
     <string name="language_JP">日本語</string>
@@ -113,5 +118,6 @@
     <string name="info_mode1_JP">ボーナスステージは、特定のコンボに到達すると発生します.\nボタンを押します!</string>
     <string name="info_mode2_JP">ボーナスステージは、特定のコンボに到達すると発生します.\n楽なステージが登場!</string>
     <string name="info_mode3_JP">発熱時間は、特定のコンボに到達したときに発生します.\nフィーバータイム中は点数を2倍獲得します!</string>
+    <string name="backPressed_JP">もう一度押すと終了します</string>
 
 </resources>

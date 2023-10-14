@@ -12,7 +12,7 @@
             <stroke android:width="5dp"
                 android:color="@color/gray2"/>
 
-            <solid android:color="@color/gray"/>
+            <solid android:color="@color/blue6"/>
 
             <corners
                 android:bottomLeftRadius="15dp"

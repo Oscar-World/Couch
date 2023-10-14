@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.couch.Data.Database;
 import com.example.couch.Data.Tier;
@@ -99,6 +100,13 @@ public class Mode2Activity extends AppCompatActivity {
     boolean check1 = false;
     boolean check2 = false;
 
+    long backPressedTime = 0;
+
+    int getLanguageNum = 0;
+    SharedPreferences languageShared;
+
+    String message = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +122,7 @@ public class Mode2Activity extends AppCompatActivity {
         setColor();
         setTime();
         playing();
+        setLanguage();
 
     }
 
@@ -182,6 +191,9 @@ public class Mode2Activity extends AppCompatActivity {
         tierText = findViewById(R.id.tier_Text);
         rankText = findViewById(R.id.rank_Text);
 
+        languageShared = getSharedPreferences("language", MODE_PRIVATE);
+        getLanguageNum = languageShared.getInt("num", -1);
+
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("score");
 
@@ -210,6 +222,42 @@ public class Mode2Activity extends AppCompatActivity {
         });
 
     } // setView()
+
+
+    @Override
+    public void onBackPressed() {
+
+        if (System.currentTimeMillis() - backPressedTime > 2000) {
+
+            backPressedTime = System.currentTimeMillis();
+            Toast.makeText(Mode2Activity.this, message, Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            finish();
+
+        }
+
+    } // onBackPressed()
+
+
+    public void setLanguage() {
+
+        if (getLanguageNum == -1) {
+            message = getString(R.string.backPressed_EN);
+        } else if (getLanguageNum == 0) {
+            message = getString(R.string.backPressed_EN);
+        } else if (getLanguageNum == 1) {
+            message = getString(R.string.backPressed_KR);
+        } else if (getLanguageNum == 2) {
+            message = getString(R.string.backPressed_CN1);
+        } else if (getLanguageNum == 3) {
+            message = getString(R.string.backPressed_CN2);
+        } else if (getLanguageNum == 4) {
+            message = getString(R.string.backPressed_JP);
+        }
+
+    } // setLanguage()
 
     public void btnInitialize() {
 
