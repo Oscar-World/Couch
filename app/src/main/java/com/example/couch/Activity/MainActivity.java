@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.couch.R;
+import com.example.couch.function.RandomResult;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -76,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences soundShared;
     SharedPreferences.Editor soundEditor;
 
+    SharedPreferences userShared;
+    SharedPreferences.Editor userEditor;
+
+    RandomResult randomResult;
+
     FrameLayout rule1Layout;
     ImageButton rule1BackBtn;
     TextView rule1Text;
@@ -114,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         setVariable();
         setView();
+        setUserInfo();
 
     }
 
@@ -208,6 +215,10 @@ public class MainActivity extends AppCompatActivity {
         ruleEditor = ruleShared.edit();
         soundShared = getSharedPreferences("sound", MODE_PRIVATE);
         soundEditor = soundShared.edit();
+        userShared = getSharedPreferences("userInfo", MODE_PRIVATE);
+        userEditor = userShared.edit();
+
+        randomResult = new RandomResult();
 
         rule1Layout = findViewById(R.id.mode1Rule_FrameLayout);
         rule1BackBtn = findViewById(R.id.mode1RuleBack_Btn);
@@ -506,6 +517,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
     } // setView()
+
+
+    public void setUserInfo() {
+
+        String userInfo = userShared.getString("userCode", "");
+
+        if (userInfo.equals("")) {
+
+            userEditor.putString("userCode", randomResult.getUserCode());
+            userEditor.commit();
+
+        }
+
+    } // setUserInfo()
 
 
     public void languageDlg() {
