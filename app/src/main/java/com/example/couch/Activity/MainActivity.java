@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -240,6 +241,7 @@ public class MainActivity extends AppCompatActivity {
 
         AppearThread thread = new AppearThread();
         thread.start();
+        ArrayList<Integer> list = new ArrayList<>();
 
     } // setVariable()
 
