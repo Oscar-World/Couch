@@ -12,6 +12,8 @@ public class Tier {
     String tier = "";
     double percentage = 0;
 
+    String result = "";
+
     public Tier(String tier, double percentage) {
 
         this.tier = tier;
@@ -64,6 +66,10 @@ public class Tier {
             tier = "Iron";
         }
 
+        String[] array = String.valueOf(percentage).split("\\.");
+
+        result = "상위 " + array[0] + "%";
+
     } // checkDB()
 
     public String getTier() {
@@ -77,6 +83,8 @@ public class Tier {
     public double getPercentage() {
         return percentage;
     }
+
+    public String getResult() { return result; }
 
     public void setPercentage(double percentage) {
         this.percentage = percentage;

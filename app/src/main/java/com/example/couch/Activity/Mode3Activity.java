@@ -844,7 +844,7 @@ public class Mode3Activity extends AppCompatActivity {
 
                     tier.checkDB(list, score);
                     tierText.setText(tier.getTier());
-                    rankText.setText(String.valueOf(tier.getPercentage()));
+                    rankText.setText(String.valueOf(tier.getResult()));
 
                     check2 = true;
 
