@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Activity.Mode3Activity" >
+    tools:context="abled.sonja.couch.Activity.Mode3Activity" >
 
     <FrameLayout
         android:id="@+id/gameLayout"

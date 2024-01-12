@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Activity.Mode1Activity">
+    tools:context="abled.sonja.couch.Activity.Mode1Activity">
 
     <FrameLayout
         android:id="@+id/gameLayout"

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Activity.Mode2Activity">
+    tools:context="abled.sonja.couch.Activity.Mode2Activity">
 
     <FrameLayout
         android:id="@+id/gameLayout"
