@@ -35,13 +35,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    // 레트로핏
-    implementation 'com.squareup.retrofit2:retrofit:2.6.4'
-    // 스칼라 (변환기)
-    implementation 'com.squareup.retrofit2:converter-scalars:2.6.4'
-    // Gson (변환기)
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.4'
+    
     // 구글 애드몹
     implementation 'com.google.android.gms:play-services-ads:21.5.0'
     // 파이어베이스
