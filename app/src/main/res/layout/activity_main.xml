@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_framelayout"
-        android:layout_marginVertical="50dp"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="@dimen/ruleLayoutMarginVer"
+        android:layout_marginHorizontal="@dimen/ruleLayoutMarginHor"
         android:visibility="gone"
         >
 
@@ -26,8 +26,8 @@
 
             <ImageButton
                 android:id="@+id/mode1RuleBack_Btn"
-                android:layout_width="65dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/ruleBackButton"
+                android:layout_height="@dimen/ruleBackButton"
                 android:backgroundTint="@color/none"
                 android:scaleType="fitXY"
                 android:translationZ="1dp"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rule_EN"
-                android:textSize="26dp"
+                android:textSize="@dimen/ruleTitleText"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
@@ -61,17 +61,17 @@
 
                 <ImageView
                     android:id="@+id/mode1RuleTime_Image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/ruleContentImage"
+                    android:layout_height="@dimen/ruleContentImage"
                     android:src="@drawable/time"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:text="@string/timeLimit60"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
@@ -96,17 +96,17 @@
 
                 <ImageView
                     android:id="@+id/mode1RuleLife_Image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/ruleContentImage"
+                    android:layout_height="@dimen/ruleContentImage"
                     android:src="@drawable/life"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:text="@string/chance1"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
@@ -127,23 +127,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="@dimen/ruleBonusMargin"
             >
 
             <ImageView
                 android:id="@+id/mode1RuleBonus_Image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/ruleBackButton"
+                android:layout_height="@dimen/ruleBackButton"
                 android:src="@drawable/bonusgame"
                 android:scaleType="centerCrop"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="@dimen/ruleContentImageMargin"
                 />
 
             <TextView
                 android:id="@+id/mode1RuleBonusTitle_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="@dimen/ruleContentText"
                 android:text="@string/bonus_EN"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
@@ -155,11 +155,11 @@
                 android:id="@+id/mode1RuleBonus_Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:textSize="@dimen/ruleBonusText"
                 android:text="@string/info_mode1_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="40dp"
+                android:layout_marginHorizontal="@dimen/ruleBonusTextMargin"
                 />
 
             <View
@@ -180,9 +180,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/checkBox_EN"
                     android:background="@drawable/custom_rulecheckbox"
-                    android:textSize="10dp"
+                    android:textSize="@dimen/ruleCheckBoxText"
                     android:layout_gravity="center"
-                    android:paddingHorizontal="10dp"
+                    android:paddingHorizontal="@dimen/ruleCheckBoxPadding"
                     android:buttonTint="@color/blue"
                     />
 
@@ -197,6 +197,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ok_EN"
+                    android:textSize="@dimen/ruleOkButtonText"
+                    android:paddingHorizontal="@dimen/ruleOkButtonPaddingHor"
+                    android:paddingVertical="@dimen/ruleOkButtonPaddingVer"
                     android:background="@drawable/custom_btn"
                     android:layout_gravity="center"
                     />
@@ -213,8 +216,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_framelayout"
-        android:layout_marginVertical="35dp"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="@dimen/ruleLayoutMarginVer"
+        android:layout_marginHorizontal="@dimen/ruleLayoutMarginHor"
         android:visibility="gone"
         >
 
@@ -226,8 +229,8 @@
 
             <ImageButton
                 android:id="@+id/mode2RuleBack_Btn"
-                android:layout_width="65dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/ruleBackButton"
+                android:layout_height="@dimen/ruleBackButton"
                 android:backgroundTint="@color/none"
                 android:scaleType="fitXY"
                 android:translationZ="1dp"
@@ -240,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rule_EN"
-                android:textSize="26dp"
+                android:textSize="@dimen/ruleTitleText"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
@@ -261,17 +264,17 @@
 
                 <ImageView
                     android:id="@+id/mode2RuleTime_Image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/ruleContentImage"
+                    android:layout_height="@dimen/ruleContentImage"
                     android:src="@drawable/time"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:text="@string/timeLimit5"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
@@ -296,17 +299,17 @@
 
                 <ImageView
                     android:id="@+id/mode2RuleLife_Image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/ruleContentImage"
+                    android:layout_height="@dimen/ruleContentImage"
                     android:src="@drawable/life"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:text="@string/chance1"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
@@ -327,23 +330,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="@dimen/ruleBonusMargin"
                 >
 
                 <ImageView
                     android:id="@+id/mode2RuleBonus_Image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/ruleBackButton"
+                    android:layout_height="@dimen/ruleBackButton"
                     android:src="@drawable/bonusgame"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:id="@+id/mode2RuleBonusTitle_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:textColor="@color/black"
                     android:text="@string/bonus_EN"
                     android:layout_gravity="center"
@@ -355,11 +358,11 @@
                 android:id="@+id/mode2RuleBonus_Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:textSize="@dimen/ruleBonusText"
                 android:text="@string/info_mode2_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="40dp"
+                android:layout_marginHorizontal="@dimen/ruleBonusTextMargin"
                 />
 
             <View
@@ -380,10 +383,10 @@
                     android:layout_height="wrap_content"
                     android:text="@string/checkBox_EN"
                     android:background="@drawable/custom_rulecheckbox"
-                    android:textSize="10dp"
+                    android:textSize="@dimen/ruleCheckBoxText"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:paddingHorizontal="10dp"
+                    android:paddingHorizontal="@dimen/ruleCheckBoxPadding"
                     />
 
                 <View
@@ -397,8 +400,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ok_EN"
-                    android:layout_gravity="center"
+                    android:textSize="@dimen/ruleOkButtonText"
+                    android:paddingHorizontal="@dimen/ruleOkButtonPaddingHor"
+                    android:paddingVertical="@dimen/ruleOkButtonPaddingVer"
                     android:background="@drawable/custom_btn"
+                    android:layout_gravity="center"
                     />
 
             </LinearLayout>
@@ -413,8 +419,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_framelayout"
-        android:layout_marginVertical="35dp"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="@dimen/ruleLayoutMarginVer"
+        android:layout_marginHorizontal="@dimen/ruleLayoutMarginHor"
         android:visibility="gone"
         >
 
@@ -426,8 +432,8 @@
 
             <ImageButton
                 android:id="@+id/mode3RuleBack_Btn"
-                android:layout_width="65dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/ruleBackButton"
+                android:layout_height="@dimen/ruleBackButton"
                 android:backgroundTint="@color/none"
                 android:scaleType="fitXY"
                 android:translationZ="1dp"
@@ -440,7 +446,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rule_EN"
-                android:textSize="26dp"
+                android:textSize="@dimen/ruleTitleText"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_gravity="center"
@@ -461,17 +467,17 @@
 
                 <ImageView
                     android:id="@+id/mode3RuleTime_Image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/ruleContentImage"
+                    android:layout_height="@dimen/ruleContentImage"
                     android:src="@drawable/time"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:text="@string/timeLimitInfinite"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
@@ -496,17 +502,17 @@
 
                 <ImageView
                     android:id="@+id/mode3RuleLife_Image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/ruleContentImage"
+                    android:layout_height="@dimen/ruleContentImage"
                     android:src="@drawable/life"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:text="@string/chance3"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
@@ -527,23 +533,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="@dimen/ruleBonusMargin"
                 >
 
                 <ImageView
                     android:id="@+id/mode3RuleBonus_Image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/ruleBackButton"
+                    android:layout_height="@dimen/ruleBackButton"
                     android:src="@drawable/bonusgame"
                     android:scaleType="centerCrop"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/ruleContentImageMargin"
                     />
 
                 <TextView
                     android:id="@+id/mode3RuleBonusTitle_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/ruleContentText"
                     android:textColor="@color/black"
                     android:text="@string/bonus_EN"
                     android:layout_gravity="center"
@@ -555,11 +561,11 @@
                 android:id="@+id/mode3RuleBonus_Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:textSize="@dimen/ruleBonusText"
                 android:text="@string/info_mode3_EN"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginHorizontal="40dp"
+                android:layout_marginHorizontal="@dimen/ruleBonusTextMargin"
                 />
 
             <View
@@ -580,10 +586,10 @@
                     android:layout_height="wrap_content"
                     android:text="@string/checkBox_EN"
                     android:background="@drawable/custom_rulecheckbox"
-                    android:textSize="10dp"
+                    android:textSize="@dimen/ruleCheckBoxText"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:paddingHorizontal="10dp"
+                    android:paddingHorizontal="@dimen/ruleCheckBoxPadding"
                     android:buttonTint="@color/blue"
                     />
 
@@ -599,6 +605,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ok_EN"
                     android:layout_gravity="center"
+                    android:textSize="@dimen/ruleOkButtonText"
+                    android:paddingHorizontal="@dimen/ruleOkButtonPaddingHor"
+                    android:paddingVertical="@dimen/ruleOkButtonPaddingVer"
                     android:background="@drawable/custom_btn"
                     />
 
@@ -613,59 +622,37 @@
         android:id="@+id/setUp_FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginVertical="70dp"
+        android:layout_marginHorizontal="@dimen/settingLayoutMarginHor"
+        android:layout_marginVertical="@dimen/settingLayoutMarginVer"
         android:background="@drawable/custom_framelayout"
         android:visibility="gone"
         >
 
-        <ImageButton
-            android:id="@+id/settingBack_Btn"
-            android:layout_width="65dp"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/none"
-            android:scaleType="fitXY"
-            android:translationZ="1dp"
-            android:layout_gravity="end"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-
-        <TextView
-            android:id="@+id/settingText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_EN"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_gravity="center|top"
-            android:layout_marginTop="30dp"
-            />
-
-
         <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="130dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/custom_settingbox"
-            android:layout_gravity="center"
-            android:layout_marginBottom="120dp"
             >
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                />
+            <ImageButton
+                android:id="@+id/settingBack_Btn"
+                android:layout_width="@dimen/ruleBackButton"
+                android:layout_height="@dimen/ruleBackButton"
+                android:backgroundTint="@color/none"
+                android:scaleType="fitXY"
+                android:translationZ="1dp"
+                android:layout_gravity="end"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
             <TextView
-                android:id="@+id/soundText"
+                android:id="@+id/settingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/setSound_EN"
-                android:textSize="20dp"
+                android:text="@string/setting_EN"
+                android:textSize="@dimen/settingTitleText"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:textColor="@color/black"
                 />
 
             <View
@@ -675,30 +662,69 @@
                 />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_width="@dimen/settingContentLayoutWidth"
+                android:layout_height="@dimen/settingContentLayoutHeight"
+                android:orientation="vertical"
+                android:background="@drawable/custom_settingbox"
                 android:layout_gravity="center"
                 >
 
-                <ImageButton
-                    android:id="@+id/settingSoundOn_Image"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/soundon"
-                    android:scaleType="centerInside"
-                    android:background="@color/none"
-                    android:visibility="gone"
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     />
 
-                <ImageButton
-                    android:id="@+id/settingSoundOff_Image"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/soundoff"
-                    android:scaleType="centerInside"
-                    android:background="@color/none"
+                <TextView
+                    android:id="@+id/soundText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setSound_EN"
+                    android:textSize="@dimen/ruleContentText"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    />
 
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/settingSoundOn_Image"
+                        android:layout_width="@dimen/settingSoundImage"
+                        android:layout_height="@dimen/settingSoundImage"
+                        android:src="@drawable/soundon"
+                        android:scaleType="centerInside"
+                        android:background="@color/none"
+                        android:visibility="gone"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/settingSoundOff_Image"
+                        android:layout_width="@dimen/settingSoundImage"
+                        android:layout_height="@dimen/settingSoundImage"
+                        android:src="@drawable/soundoff"
+                        android:scaleType="centerInside"
+                        android:background="@color/none"
+
+                        />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     />
 
             </LinearLayout>
@@ -709,33 +735,57 @@
                 android:layout_weight="1"
                 />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="130dp"
-            android:orientation="vertical"
-            android:background="@drawable/custom_settingbox"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            >
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:id="@+id/languageText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/setLanguage_EN"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+            <LinearLayout
+                android:layout_width="@dimen/settingContentLayoutWidth"
+                android:layout_height="@dimen/settingContentLayoutHeight"
+                android:orientation="vertical"
+                android:background="@drawable/custom_settingbox"
                 android:layout_gravity="center"
-                />
+                >
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:id="@+id/languageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setLanguage_EN"
+                    android:textSize="@dimen/ruleContentText"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:id="@+id/language_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/language_EN"
+                    android:textSize="@dimen/settingLanguageText"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:paddingVertical="@dimen/settingLanguagePaddingVer"
+                    android:paddingHorizontal="@dimen/settingLanguagePaddingHor"
+                    android:background="@drawable/custom_framelayout2"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
 
             <View
                 android:layout_width="0dp"
@@ -743,17 +793,12 @@
                 android:layout_weight="1"
                 />
 
-            <TextView
-                android:id="@+id/language_Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/language_EN"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:paddingVertical="12dp"
-                android:paddingHorizontal="25dp"
-                android:background="@drawable/custom_framelayout2"
+
+            <ImageView
+                android:layout_width="@dimen/settingLogoImageWidth"
+                android:layout_height="@dimen/settingLogoImageHeight"
+                android:src="@drawable/teamlogo"
+                android:layout_gravity="center|bottom"
                 />
 
             <View
@@ -763,15 +808,6 @@
                 />
 
         </LinearLayout>
-
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:src="@drawable/teamlogo"
-            android:layout_gravity="center|bottom"
-            android:layout_marginBottom="20dp"
-            />
 
     </FrameLayout>
 
@@ -784,11 +820,11 @@
 
     <ImageView
         android:id="@+id/setUp_Image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/mainSetupButton"
+        android:layout_height="@dimen/mainSetupButton"
         android:layout_gravity="end"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/mainSetupMargin"
+        android:layout_marginRight="@dimen/mainSetupMargin"
         android:src="@drawable/setup"
         android:visibility="invisible"
         />
@@ -802,7 +838,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="@dimen/mainLogoMarginHor"
             android:src="@drawable/couch_c"
             />
         <ImageView
@@ -810,16 +846,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="@dimen/mainLogoMarginHor"
             android:src="@drawable/couch_olor"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/mainLogoMarginVer"
             />
         <ImageView
             android:id="@+id/iv_couch_t"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="@dimen/mainLogoMarginHor"
             android:src="@drawable/couch_t"
             />
         <ImageView
@@ -827,9 +863,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="@dimen/mainLogoMarginHor"
             android:src="@drawable/couch_ouch"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/mainLogoMarginVer"
             />
 
     </LinearLayout>
@@ -845,9 +881,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mode1Text_EN"
-        android:textSize="18dp"
-        android:paddingVertical="15dp"
-        android:layout_marginHorizontal="50dp"
+        android:textSize="@dimen/mainButtonTextSize"
+        android:paddingVertical="@dimen/mainButtonPaddingVer"
+        android:layout_marginHorizontal="@dimen/mainButtonMarginHor"
         android:backgroundTint="@color/purple_700"
         android:visibility="invisible"
         />
@@ -863,9 +899,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mode2Text_EN"
-        android:textSize="18dp"
-        android:paddingVertical="15dp"
-        android:layout_marginHorizontal="50dp"
+        android:textSize="@dimen/mainButtonTextSize"
+        android:paddingVertical="@dimen/mainButtonPaddingVer"
+        android:layout_marginHorizontal="@dimen/mainButtonMarginHor"
         android:backgroundTint="@color/purple_700"
         android:visibility="invisible"
         />
@@ -881,9 +917,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mode3Text_EN"
-        android:textSize="18dp"
-        android:paddingVertical="15dp"
-        android:layout_marginHorizontal="50dp"
+        android:textSize="@dimen/mainButtonTextSize"
+        android:paddingVertical="@dimen/mainButtonPaddingVer"
+        android:layout_marginHorizontal="@dimen/mainButtonMarginHor"
         android:backgroundTint="@color/purple_700"
         android:visibility="invisible"
         />

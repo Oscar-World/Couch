@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="topLayout">120dp</dimen>
-    <dimen name="bottomLayout">100dp</dimen>
+
+    <dimen name="topLayout">100dp</dimen>
+    <dimen name="bottomLayout">80dp</dimen>
+
+    <dimen name="mainSetupButton">40dp</dimen>
+    <dimen name="mainSetupMargin">10dp</dimen>
+    <dimen name="mainLogoMarginHor">10dp</dimen>
+    <dimen name="mainLogoMarginVer">50dp</dimen>
+    <dimen name="mainButtonMarginHor">50dp</dimen>
+    <dimen name="mainButtonPaddingVer">15dp</dimen>
+    <dimen name="mainButtonTextSize">20dp</dimen>
+
+    <dimen name="ruleLayoutMarginHor">30dp</dimen>
+    <dimen name="ruleLayoutMarginVer">50dp</dimen>
+    <dimen name="ruleBackButton">60dp</dimen>
+    <dimen name="ruleContentImage">50dp</dimen>
+    <dimen name="ruleContentImageMargin">20dp</dimen>
+    <dimen name="ruleTitleText">26dp</dimen>
+    <dimen name="ruleContentText">20dp</dimen>
+    <dimen name="ruleBonusMargin">20dp</dimen>
+    <dimen name="ruleBonusText">14dp</dimen>
+    <dimen name="ruleBonusTextMargin">40dp</dimen>
+    <dimen name="ruleCheckBoxPadding">16dp</dimen>
+    <dimen name="ruleCheckBoxText">12dp</dimen>
+    <dimen name="ruleOkButtonPaddingVer">10dp</dimen>
+    <dimen name="ruleOkButtonPaddingHor">40dp</dimen>
+    <dimen name="ruleOkButtonText">16dp</dimen>
+
+    <dimen name="settingLayoutMarginHor">40dp</dimen>
+    <dimen name="settingLayoutMarginVer">50dp</dimen>
+    <dimen name="settingTitleText">24dp</dimen>
+    <dimen name="settingTitleMargin">30dp</dimen>
+    <dimen name="settingContentLayoutWidth">200dp</dimen>
+    <dimen name="settingContentLayoutHeight">130dp</dimen>
+    <dimen name="settingTopContentMargin">120dp</dimen>
+    <dimen name="settingBottomContentMargin">50dp</dimen>
+    <dimen name="settingLanguageText">18dp</dimen>
+    <dimen name="settingLanguagePaddingHor">25dp</dimen>
+    <dimen name="settingLanguagePaddingVer">12dp</dimen>
+    <dimen name="settingSoundImage">55dp</dimen>
+    <dimen name="settingLogoImageWidth">140dp</dimen>
+    <dimen name="settingLogoImageHeight">112dp</dimen>
+
 </resources>
