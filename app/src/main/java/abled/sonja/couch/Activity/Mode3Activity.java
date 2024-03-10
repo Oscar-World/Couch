@@ -42,70 +42,37 @@ public class Mode3Activity extends AppCompatActivity {
     TextView[][] five = new TextView[5][5];
     TextView[][] six = new TextView[6][6];
     TextView[][] seven = new TextView[7][7];
-
-    TextView lifeView;
-    TextView scoreView;
-    TextView finalScoreView;
-
-    GridLayout layout3;
-    GridLayout layout4;
-    GridLayout layout5;
-    GridLayout layout6;
-    GridLayout layout7;
-
-    LinearLayout feverTop;
-    LinearLayout feverBottom;
-
-    FrameLayout gameLayout;
-    FrameLayout overLayout;
-
-    ImageView btnRestart;
-    ImageView btnHome;
-    Random random = new Random();
-
-    LinearLayout progressBarLayout;
+    TextView lifeView, scoreView, finalScoreView, tierText, rankText;
+    GridLayout layout3, layout4, layout5, layout6, layout7;
+    LinearLayout feverTop, feverBottom, progressBarLayout;
+    FrameLayout gameLayout, overLayout;
+    ImageView btnRestart, btnHome;
     ProgressBar pB_FeverTime;
 
+    Random random = new Random();
     FeverThread feverThread;
-
     Handler handler;
 
+    String soundStatus;
+    String message = "";
+    int r, g, b,row, column;
     int score = 0;
     int stage = 0;
-
     int combo = 0;
     int life = 3;
-
     int colorA = 44;
     int arrayCount = 3;
-
-    int r;
-    int g;
-    int b;
-
-    int row;
-    int column;
-
-    SharedPreferences soundShared;
-    String soundStatus;
-
+    int getLanguageNum = 0;
     long dataSize = 0;
-    TextView tierText;
-    TextView rankText;
-
-    FirebaseDatabase database;
-    DatabaseReference ref;
+    long backPressedTime = 0;
     boolean check1 = false;
     boolean check2 = false;
 
+    SharedPreferences soundShared, languageShared;
+    FirebaseDatabase database;
+    DatabaseReference ref;
     AdView adView;
 
-    long backPressedTime = 0;
-
-    int getLanguageNum = 0;
-    SharedPreferences languageShared;
-
-    String message = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,44 +90,12 @@ public class Mode3Activity extends AppCompatActivity {
         playing();
         setLanguage();
 
-    }
+    } // onCreate()
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart() 호출됨");
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume() 호출됨");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause() 호출됨");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop() 호출됨");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "onRestart() 호출됨");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() 호출됨");
-    }
-
+    /*
+    변수 초기화
+     */
     public void setVariable() {
 
         lifeView = findViewById(R.id.lifeView);
@@ -196,6 +131,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // setVariable()
 
+
+    /*
+    뷰 초기화
+     */
     public void setView() {
 
         btnRestart.setOnClickListener(new View.OnClickListener() {
@@ -219,6 +158,9 @@ public class Mode3Activity extends AppCompatActivity {
     } // setView()
 
 
+    /*
+    시스템 뒤로가기 클릭 이벤트
+     */
     @Override
     public void onBackPressed() {
 
@@ -236,6 +178,9 @@ public class Mode3Activity extends AppCompatActivity {
     } // onBackPressed()
 
 
+    /*
+    언어 세팅
+     */
     public void setLanguage() {
 
         if (getLanguageNum == -1) {
@@ -255,6 +200,9 @@ public class Mode3Activity extends AppCompatActivity {
     } // setLanguage()
 
 
+    /*
+    게임 플레이 메인 로직
+     */
     public void playing() {
 
         for (int i = 0; i < 3; i++) {
@@ -364,6 +312,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // playing()
 
+
+    /*
+    정답 맞췄을 때
+     */
     public void rightAnswer() {
 
         startMediaPlayer(R.raw.correct);
@@ -392,6 +344,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // rightAnswer()
 
+
+    /*
+    오답 눌렀을 때
+     */
     public void wrongAnswer() {
 
         startMediaPlayer(R.raw.wrong);
@@ -405,6 +361,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // wrongAnswer()
 
+
+    /*
+    음악 재생
+     */
     public void startMediaPlayer(int id) {
 
         MediaPlayer mediaPlayer = new MediaPlayer();
@@ -422,6 +382,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // startMediaPlayer()
 
+
+    /*
+    음소거 · 해제 세팅
+     */
     public void setSound(MediaPlayer mediaPlayer) {
 
         if (soundStatus.equals("off")) {
@@ -432,6 +396,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // setSound()
 
+
+    /*
+    버튼(타일) 초기화
+     */
     public void btnInitialize() {
 
         three[0][0] = findViewById(R.id.three00);
@@ -576,6 +544,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // btninit()
 
+
+    /*
+    타일 색상 세팅
+     */
     public void setColor() {
 
         r = random.nextInt(230);
@@ -633,6 +605,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // setColor()
 
+
+    /*
+    정답 맞췄을 때
+     */
     public void correct() {
 
         if (stage == 10) {
@@ -652,6 +628,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // correct()
 
+
+    /*
+    레이아웃 초기화
+     */
     public void setLayout() {
 
         layout3 = findViewById(R.id.layout3);
@@ -664,6 +644,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // setLayout()
 
+
+    /*
+    난이도에 따른 레이아웃 변경
+     */
     public void levelArray() {
 
         if (stage < 10) {
@@ -704,6 +688,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // levelArray()
 
+
+    /*
+    난이도에 따른 색상 차이 조정
+     */
     public void levelColor() {
 
         if (stage % 5 == 0) {
@@ -712,6 +700,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // levelColor()
 
+
+    /*
+    피버 타임 스레드
+     */
     public class FeverThread extends Thread {
 
         @Override
@@ -763,21 +755,29 @@ public class Mode3Activity extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-//                    pB_FeverTime.setVisibility(View.GONE);
                     progressBarLayout.setVisibility(View.GONE);
                     feverTop.setBackgroundColor(Color.WHITE);
                     feverBottom.setBackgroundColor(Color.WHITE);
                 }
             });
         }
+
     } // FeverThread
 
+
+    /*
+    피버 타임 스레드 시작
+     */
     public void feverTime(){
 
         feverThread.start();
 
     } // feverTime()
 
+
+    /*
+    게임 오버
+     */
     public void gameOver() {
 
         ArrayList<Integer> list = new ArrayList<>();
@@ -786,14 +786,16 @@ public class Mode3Activity extends AppCompatActivity {
 
         getData(list, tier, db);
 
-//        ref.child("mode3").removeValue();
-
             finalScoreView.setText("SCORE : " + score);
             gameLayout.setVisibility(View.GONE);
             overLayout.setVisibility(View.VISIBLE);
 
     } // gameOver()
 
+
+    /*
+    DB의 점수 랭킹 데이터 불러오기
+     */
     public void getData(ArrayList<Integer> list, Tier tier, Database db) {
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -822,6 +824,10 @@ public class Mode3Activity extends AppCompatActivity {
 
     } // getData()
 
+
+    /*
+    DB에 데이터 저장
+     */
     public void setData(ArrayList<Integer> list, Tier tier, Database db) {
 
         ref.addValueEventListener(new ValueEventListener() {

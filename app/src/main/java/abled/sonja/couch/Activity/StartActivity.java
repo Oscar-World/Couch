@@ -17,10 +17,8 @@ public class StartActivity extends AppCompatActivity {
 
     String TAG = "시작 액티비티";
 
-    ImageView teamLogo;
-    ImageView ableDLogo;
-    Animation appear;
-    Animation disappear;
+    ImageView teamLogo, ableDLogo;
+    Animation appear, disappear;
     Handler handler;
 
     @Override
@@ -31,7 +29,7 @@ public class StartActivity extends AppCompatActivity {
         setVariable();
         setView();
 
-    }
+    } // onCreate()
 
     @Override
     protected void onStart() {
@@ -39,37 +37,10 @@ public class StartActivity extends AppCompatActivity {
         Log.d(TAG, "onStart() 호출됨");
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume() 호출됨");
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause() 호출됨");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop() 호출됨");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "onRestart() 호출됨");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() 호출됨");
-    }
-
-
+    /*
+    변수 초기화
+     */
     public void setVariable() {
 
         teamLogo = findViewById(R.id.startLogo_Image);
@@ -83,6 +54,9 @@ public class StartActivity extends AppCompatActivity {
     } // setVariable()
 
 
+    /*
+    뷰 초기화
+     */
     public void setView() {
 
         teamLogo.startAnimation(appear);
@@ -94,6 +68,9 @@ public class StartActivity extends AppCompatActivity {
     } // setView()
 
 
+    /*
+    딜레이 후 화면 전환 스레드
+     */
     public class NextThread extends Thread {
 
         public void run() {
@@ -129,7 +106,7 @@ public class StartActivity extends AppCompatActivity {
 
         }
 
-    }
+    } // NextThread
 
 
 }

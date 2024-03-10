@@ -34,72 +34,26 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     String TAG = "메인 액티비티";
-
-    Button gameMode1Btn;
-    Button gameMode2Btn;
-    Button gameMode3Btn;
-
-    Animation appear;
-
-    Handler handler;
-
-    LinearLayout mainLayout;
-
-    ImageView iv_couch_c;
-    ImageView iv_couch_olor;
-    ImageView iv_couch_t;
-    ImageView iv_couch_ouch;
-    Animation animation;
-    ImageView setUpImage;
-
-    FrameLayout settingLayout;
-    TextView languageChoiceText;
-    ImageButton settingBackBtn;
-    TextView settingText;
-    TextView soundText;
-    TextView languageText;
-
+    String localLanguage;
     String[] language = {"English","한국어","中文(简体)","中文(繁體)","日本語"};
-
     int languageNum = 0;
     int getLanguageNum = 0;
-    SharedPreferences languageShared;
-    SharedPreferences.Editor languageEditor;
-    SharedPreferences ruleShared;
-    SharedPreferences.Editor ruleEditor;
-    SharedPreferences soundShared;
-    SharedPreferences.Editor soundEditor;
 
-    FrameLayout rule1Layout;
-    ImageButton rule1BackBtn;
-    TextView rule1Text;
-    TextView rule1BonusText;
-    CheckBox rule1CheckBox;
-    Button rule1OkBtn;
-    TextView rule1BonusTitleText;
-
-    FrameLayout rule2Layout;
-    ImageButton rule2BackBtn;
-    TextView rule2Text;
-    TextView rule2BonusText;
-    CheckBox rule2CheckBox;
-    Button rule2OkBtn;
-    TextView rule2BonusTitleText;
-
-    FrameLayout rule3Layout;
-    ImageButton rule3BackBtn;
-    TextView rule3Text;
-    TextView rule3BonusText;
-    CheckBox rule3CheckBox;
-    Button rule3OkBtn;
-    TextView rule3BonusTitleText;
-
-    ImageButton soundOffImage;
-    ImageButton soundOnImage;
-
+    FrameLayout settingLayout, rule1Layout, rule2Layout, rule3Layout;
+    LinearLayout mainLayout;
+    Button gameMode1Btn, gameMode2Btn, gameMode3Btn, rule1OkBtn, rule2OkBtn, rule3OkBtn;
+    ImageView iv_couch_c, iv_couch_olor, iv_couch_t, iv_couch_ouch, setUpImage;
+    ImageButton settingBackBtn, rule1BackBtn, rule2BackBtn, rule3BackBtn, soundOffImage, soundOnImage;
+    TextView languageChoiceText, settingText, soundText, languageText, rule1Text, rule1BonusText,
+            rule1BonusTitleText, rule2Text, rule2BonusText, rule2BonusTitleText, rule3Text, rule3BonusText, rule3BonusTitleText;
+    CheckBox rule1CheckBox, rule2CheckBox, rule3CheckBox;
+    Handler handler;
+    Animation appear, animation;
+    SharedPreferences languageShared, ruleShared, soundShared;
+    SharedPreferences.Editor languageEditor, ruleEditor, soundEditor;
     AdView adView;
     Locale locale;
-    String localLanguage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,46 +63,20 @@ public class MainActivity extends AppCompatActivity {
         setVariable();
         setView();
 
-    }
+    } // onCreate()
+
 
     @Override
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart() 호출됨");
         mainLayout.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume() 호출됨");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause() 호출됨");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop() 호출됨");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "onRestart() 호출됨");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() 호출됨");
-    }
+    } // onStart()
 
 
+    /*
+    시스템 뒤로가기 클릭 이벤트
+     */
     @Override
     public void onBackPressed() {
 
@@ -174,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
     } // onBackPressed()
 
 
+    /*
+    변수 초기화
+     */
     public void setVariable() {
 
         gameMode1Btn = findViewById(R.id.gameMode1_Btn);
@@ -240,6 +171,9 @@ public class MainActivity extends AppCompatActivity {
     } // setVariable()
 
 
+    /*
+    애니메이션 초기화
+     */
     public void setAnim() {
 
         iv_couch_c = (ImageView) findViewById(R.id.iv_couch_c);
@@ -262,6 +196,9 @@ public class MainActivity extends AppCompatActivity {
     } // setAnim()
 
 
+    /*
+    뷰 초기화
+     */
     public void setView() {
 
         // 게임 모드 1 버튼 클릭
@@ -502,6 +439,9 @@ public class MainActivity extends AppCompatActivity {
     } // setView()
 
 
+    /*
+    설정 - 언어 변경 다이얼로그
+     */
     public void languageDlg() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -526,6 +466,9 @@ public class MainActivity extends AppCompatActivity {
     } // languageDlg()
 
 
+    /*
+    변경된 언어 저장
+     */
     public void saveLanguage(int num) {
 
         languageEditor.putInt("num", num);
@@ -536,6 +479,9 @@ public class MainActivity extends AppCompatActivity {
     } // saveLanguage()
 
 
+    /*
+    기기의 기본 설정된 언어 불러오기
+     */
     public void getLocalLanguage() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -579,6 +525,9 @@ public class MainActivity extends AppCompatActivity {
     } // getLocalLanguage()
 
 
+    /*
+    저장된 언어 값을 앱에 세팅
+     */
     public void setLanguage() {
 
         getLanguageNum = languageShared.getInt("num", -1);
@@ -617,6 +566,9 @@ public class MainActivity extends AppCompatActivity {
     } // setLanguage()
 
 
+    /*
+    언어 - 영어 적용
+     */
     public void setLanguageEN() {
 
         //영어
@@ -646,6 +598,9 @@ public class MainActivity extends AppCompatActivity {
     } // setLanguageEn()
 
 
+    /*
+    언어 - 한국어 적용
+     */
     public void setLanguageKR() {
 
         //한국어
@@ -675,6 +630,9 @@ public class MainActivity extends AppCompatActivity {
     } // setLanguageKR()
 
 
+    /*
+    언어 - 중국어 간체 적용
+     */
     public void setLanguageCN1() {
 
         //중국어(간체)
@@ -704,6 +662,9 @@ public class MainActivity extends AppCompatActivity {
     } // setLanguageCN1()
 
 
+    /*
+    언어 - 중국어 번체 적용
+     */
     public void setLanguageCN2() {
 
         //중국어(번체)
@@ -733,6 +694,9 @@ public class MainActivity extends AppCompatActivity {
     } // setLanguageCN2()
 
 
+    /*
+    언어 - 일본어 적용
+     */
     public void setLanguageJP() {
 
         //일본어
@@ -762,6 +726,9 @@ public class MainActivity extends AppCompatActivity {
     } // setLanguageJP()
 
 
+    /*
+    현재 음소거 · 해제 상태에 따라 이미지 변환
+     */
     public void setSoundImage() {
 
         if (soundShared.getString("sound", "").equals("off")) {
@@ -775,6 +742,9 @@ public class MainActivity extends AppCompatActivity {
     } // setSoundImage()
 
 
+    /*
+    음악 재생
+     */
     public void startMediaPlayer(int id) {
 
         MediaPlayer mediaPlayer = new MediaPlayer();
@@ -792,6 +762,9 @@ public class MainActivity extends AppCompatActivity {
     } // startMediaPlayer()
 
 
+    /*
+    점차 나타나는 애니메이션 스레드
+     */
     public class AppearThread extends Thread {
 
         public void run() {
@@ -810,13 +783,11 @@ public class MainActivity extends AppCompatActivity {
                     gameMode2Btn.setVisibility(View.VISIBLE);
                     gameMode3Btn.setVisibility(View.VISIBLE);
                     setUpImage.setVisibility(View.VISIBLE);
-//                    checkRankingBtn.setVisibility(View.VISIBLE);
 
                     gameMode1Btn.startAnimation(appear);
                     gameMode2Btn.startAnimation(appear);
                     gameMode3Btn.startAnimation(appear);
                     setUpImage.startAnimation(appear);
-//                    checkRankingBtn.startAnimation(appear);
 
                     MobileAds.initialize(MainActivity.this);
                     adView = findViewById(R.id.mainAdView);

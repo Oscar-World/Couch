@@ -40,89 +40,48 @@ public class Mode1Activity extends AppCompatActivity {
 
     String TAG = "모드1 액티비티";
 
+    LinearLayout bonus1Layout;
+    FrameLayout gameLayout, overLayout;
+    GridLayout layout3, layout4, layout5, layout6, layout7;
     TextView[][] three = new TextView[3][3];
     TextView[][] four = new TextView[4][4];
     TextView[][] five = new TextView[5][5];
     TextView[][] six = new TextView[6][6];
     TextView[][] seven = new TextView[7][7];
+    TextView scoreView, finalScoreView, scoreUpTextView, tierText, rankText;
+    ImageView button1ImageView, button2ImageView, btnRestart, btnHome;
+    ProgressBar pbTime, pb_BonusTime;
 
-    TextView scoreView;
-    TextView finalScoreView;
-
-    LinearLayout bonus1Layout;
-    ImageView button1ImageView;
-    ImageView button2ImageView;
-    TextView scoreUpTextView;
-
-    ProgressBar pbTime;
-    ProgressBar pb_BonusTime;
     Animation scoreUp;
-
+    TimeThread timeThread;
+    Handler handler;
     ButtonThread buttonThread;
     BonusThread bonusThread;
 
-    int bonusCount;
-
-    ImageView btnRestart;
-    ImageView btnHome;
-
-    GridLayout layout3;
-    GridLayout layout4;
-    GridLayout layout5;
-    GridLayout layout6;
-    GridLayout layout7;
-    FrameLayout gameLayout;
-    FrameLayout overLayout;
-
     Random random = new Random();
-
-    TimeThread timeThread;
-
-    Handler handler;
-
+    String message = "";
+    String soundStatus;
     int score = 0;
-
     int combo = 0;
     int stage = 0;
-
     int time = 60;
     int bonusTime = 5;
-
-
     int colorA = 44;
     int arrayCount = 3;
-
-    int r;
-    int g;
-    int b;
-
-    int row;
-    int column;
-
+    int getLanguageNum = 0;
+    int bonusCount, r, g, b, row, column;
+    long dataSize = 0;
+    long backPressedTime = 0;
     boolean status = false;
     boolean sound = true;
     boolean gameOverStatus = false;
-
-    SharedPreferences soundShared;
-    String soundStatus;
-
-    AdView adView;
-    long dataSize = 0;
-
-    TextView tierText;
-    TextView rankText;
-
-    FirebaseDatabase database;
-    DatabaseReference ref;
     boolean check1 = false;
     boolean check2 = false;
+    SharedPreferences soundShared, languageShared;
+    FirebaseDatabase database;
+    DatabaseReference ref;
+    AdView adView;
 
-    long backPressedTime = 0;
-
-    int getLanguageNum = 0;
-    SharedPreferences languageShared;
-
-    String message = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,48 +95,35 @@ public class Mode1Activity extends AppCompatActivity {
         playing();
         setLanguage();
 
-    }
+    } // onCreate()
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart() 호출됨");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume() 호출됨");
-    }
 
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(TAG, "onPause() 호출됨");
         sound = false;
-    }
+    } // onPause()
 
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(TAG, "onStop() 호출됨");
         sound = false;
-    }
+    } // onStop()
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "onRestart() 호출됨");
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy() 호출됨");
         sound = false;
+    } // onDestroy()
 
-    }
 
+    /*
+    변수 초기화
+     */
     public void setVariable() {
 
         scoreView = (TextView) findViewById(R.id.scoreView);
@@ -239,6 +185,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // setVariable()
 
 
+    /*
+    뷰 초기화
+     */
     public void setView() {
 
         scoreView.setText(""+score);
@@ -300,6 +249,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // setView()
 
 
+    /*
+    시스템 뒤로가기 버튼 클릭 이벤트
+     */
     @Override
     public void onBackPressed() {
 
@@ -317,6 +269,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // onBackPressed()
 
 
+    /*
+    언어 세팅
+     */
     public void setLanguage() {
 
         if (getLanguageNum == -1) {
@@ -336,6 +291,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // setLanguage()
 
 
+    /*
+    게임 플레이 메인 로직
+     */
     public void playing() {
 
         for (int i = 0; i < 3; i++) {
@@ -446,6 +404,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // playing()
 
+
+    /*
+    정답을 맞췄을 때
+     */
     public void rightAnswer() {
 
         startMediaPlayer(R.raw.correct);
@@ -480,6 +442,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // rightAnswer()
 
+
+    /*
+    오답을 눌렀을 때
+     */
     public void wrongAnswer() {
 
         startMediaPlayer(R.raw.wrong);
@@ -489,6 +455,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // wrongAnswer()
 
+
+    /*
+    음악 재생
+     */
     public void startMediaPlayer(int id) {
 
         MediaPlayer mediaPlayer = new MediaPlayer();
@@ -506,6 +476,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // startMediaPlayer()
 
+
+    /*
+    보너스 게임 시작
+     */
     public void goneLayout() {
 
         bonus1Layout.setVisibility(View.VISIBLE);
@@ -518,6 +492,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // goneLayout()
 
+
+    /*
+    버튼(타일) 초기화
+     */
     public void btnInitialize() {
 
         three[0][0] = findViewById(R.id.three00);
@@ -662,6 +640,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // btninit()
 
+
+    /*
+    타일 색상 세팅
+     */
     public void setColor() {
 
         r = random.nextInt(230);
@@ -721,6 +703,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // setColor()
 
 
+    /*
+    정답 맞췄을 때 난이도 상향 여부
+     */
     public void correct() {
 
         if (stage == 10) {
@@ -741,6 +726,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // correct()
 
 
+    /*
+    난이도에 따른 레이아웃 변경
+     */
     public void levelArray() {
 
         if (stage < 10) {
@@ -782,6 +770,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // levelArray()
 
 
+    /*
+    난이도에 따른 색상 차이 조정
+     */
     public void levelColor() {
 
         if (stage % 5 == 0) {
@@ -791,13 +782,20 @@ public class Mode1Activity extends AppCompatActivity {
     } // levelColor()
 
 
-    public void timeCount(){
+    /*
+    제한 시간 스레드 시작
+     */
+    public void timeCount() {
 
         timeThread = new TimeThread();
         timeThread.start();
 
     } // timeCount()
 
+
+    /*
+    게임 오버
+     */
     public void gameOver() {
 
         ArrayList<Integer> list = new ArrayList<>();
@@ -806,14 +804,16 @@ public class Mode1Activity extends AppCompatActivity {
 
         getData(list, tier, db);
 
-//        ref.child("mode1").removeValue();
-
         finalScoreView.setText("SCORE : " + score);
         gameLayout.setVisibility(View.GONE);
         overLayout.setVisibility(View.VISIBLE);
 
     } // gameOver()
 
+
+    /*
+    DB의 점수 랭킹 데이터 불러오기
+     */
     public void getData(ArrayList<Integer> list, Tier tier, Database db) {
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -842,6 +842,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // getData()
 
+
+    /*
+    DB에 데이터 저장
+     */
     public void setData(ArrayList<Integer> list, Tier tier, Database db) {
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -880,6 +884,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // setData()
 
 
+    /*
+    제한 시간 스레드
+     */
     public class TimeThread extends Thread {
 
         int ii = 0;
@@ -971,6 +978,9 @@ public class Mode1Activity extends AppCompatActivity {
     } // TimeThread
 
 
+    /*
+    보너스 게임 버튼 클릭 제어 스레드
+     */
     public class ButtonThread extends Thread {
 
         @Override
@@ -996,13 +1006,17 @@ public class Mode1Activity extends AppCompatActivity {
                     }
 
                 });
-            }catch (Exception e){
+            } catch (Exception e){
 
             }
         }
 
     } // ButtonThread
 
+
+    /*
+    보너스 게임 제한 시간 스레드
+     */
     public class BonusThread extends Thread {
 
         public void run() {
@@ -1046,6 +1060,10 @@ public class Mode1Activity extends AppCompatActivity {
 
     } // BonusThread
 
+
+    /*
+    음소거 · 해제 세팅
+     */
     public void setSound(MediaPlayer mediaPlayer) {
 
         if (soundStatus.equals("off")) {
@@ -1055,5 +1073,6 @@ public class Mode1Activity extends AppCompatActivity {
         }
 
     } // setSound()
+
 
 }
