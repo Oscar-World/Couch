@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "abled.sonja.couch"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 3
         versionName "1.2"
 
